@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_50"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/qb_px_14"
+            android:text="@string/bond_top"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_100"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/bond_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/k_xz"
+                android:gravity="center"
+                android:text=""/>
+
+        </LinearLayout>
+
+
+        <com.allen.library.SuperButton
+            android:id="@+id/bond_sure"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_40"
+            android:layout_marginLeft="@dimen/qb_px_20"
+            android:layout_marginRight="@dimen/qb_px_20"
+            android:layout_marginBottom="@dimen/qb_px_20"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:sCornersRadius="@dimen/qb_px_5"
+            app:sSelectorNormalColor="@color/main"
+            app:sUseSelector="true" />
+
+    </LinearLayout>
+
+</RelativeLayout>

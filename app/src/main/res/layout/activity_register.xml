@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <include layout="@layout/title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_5"
+            android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_45"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/qb_px_5"
+        >
+
+        <TextView
+            android:layout_width="@dimen/qb_px_100"
+            android:layout_height="@dimen/qb_px_20"
+            android:text="@string/phone"
+            android:layout_marginLeft="@dimen/qb_px_20" />
+
+        <com.hlnwl.auction.view.widget.ClearEditText
+            android:id="@+id/register_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/input_phone"
+            android:textSize="@dimen/qb_px_12"
+            android:inputType="phone"
+            android:layout_marginRight="@dimen/qb_px_20"
+            />
+
+
+    </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_1"
+            android:background="@color/line"
+            android:layout_marginLeft="@dimen/qb_px_20"
+            android:layout_marginRight="@dimen/qb_px_20"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_45"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/qb_px_5">
+
+        <TextView
+            android:layout_width="@dimen/qb_px_100"
+            android:layout_height="@dimen/qb_px_20"
+            android:text="@string/ver_code"
+            android:layout_marginLeft="@dimen/qb_px_20" />
+
+        <com.hlnwl.auction.view.widget.ClearEditText
+            android:id="@+id/register_ver_code"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/input_ver_code"
+            android:textSize="@dimen/qb_px_12"
+            android:inputType="phone"
+            android:layout_marginRight="@dimen/qb_px_12"/>
+
+        <TextView
+            android:id="@+id/register_get_ver_code"
+            android:layout_width="@dimen/qb_px_120"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/qb_px_20"
+            android:text="@string/get_ver_code"
+            android:textColor="@color/main"
+            android:textSize="@dimen/qb_px_12"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+
+    </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_1"
+            android:background="@color/line"
+            android:layout_marginLeft="@dimen/qb_px_20"
+            android:layout_marginRight="@dimen/qb_px_20"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_45"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/qb_px_5">
+
+        <TextView
+            android:layout_width="@dimen/qb_px_100"
+            android:layout_height="@dimen/qb_px_20"
+            android:text="@string/set_pwd"
+            android:layout_marginLeft="@dimen/qb_px_20" />
+        <com.hlnwl.auction.view.widget.ClearEditText
+            android:id="@+id/register_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/input_pwd"
+            android:textSize="@dimen/qb_px_12"
+            android:inputType="textPassword"
+            android:layout_marginRight="@dimen/qb_px_20"/>
+    </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_1"
+            android:background="@color/line"
+            android:layout_marginLeft="@dimen/qb_px_20"
+            android:layout_marginRight="@dimen/qb_px_20"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_45"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/qb_px_5">
+
+        <TextView
+            android:layout_width="@dimen/qb_px_100"
+            android:layout_height="@dimen/qb_px_20"
+            android:text="@string/re_set_pwd"
+            android:layout_marginLeft="@dimen/qb_px_20" />
+
+        <com.hlnwl.auction.view.widget.ClearEditText
+            android:id="@+id/register_re_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/sure_pwd"
+            android:textSize="@dimen/qb_px_12"
+            android:inputType="textPassword"
+            android:layout_marginRight="@dimen/qb_px_12"/>
+    </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_1"
+            android:background="@color/line"
+            android:layout_marginLeft="@dimen/qb_px_20"
+            android:layout_marginRight="@dimen/qb_px_20"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_30"
+            android:layout_marginLeft="@dimen/qb_px_20"
+            android:layout_marginRight="@dimen/qb_px_20"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+            <RadioButton
+                android:id="@+id/regist_xieyi"
+                android:layout_width="@dimen/qb_px_20"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:checked="true"
+                style="@style/Radiobutton_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/read_and_agree" />
+
+            <TextView
+                android:id="@+id/shop_join_service_yrz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lectroneic_protocol"
+                android:textColor="@color/main"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.flod.loadingbutton.LoadingButton
+        android:id="@+id/regist_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="@dimen/qb_px_35"
+        android:layout_marginRight="@dimen/qb_px_35"
+        android:background="@drawable/selector_btn"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:minHeight="45dp"
+        android:padding="8dp"
+        android:text="@string/regist"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:enableShrink="false"
+        app:endCompleteDrawable="@drawable/ic_successful"
+        app:endFailDrawable="@drawable/ic_fail"
+        app:loadingDrawablePosition="Start" />
+
+</LinearLayout>

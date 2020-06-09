@@ -1,0 +1,194 @@
+ext {
+    //android开发版本配置
+    android = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.2",
+            applicationId    : "com.hlnwl.auction",
+            minSdkVersion    : 19,
+            targetSdkVersion : 29,
+            versionCode      : 4,
+            versionName      : "1.7",
+    ]
+    //version配置
+    versions = [
+            "support-version": "1.0.2",
+            "junit-version"  : "4.12",
+    ]
+//    implementation 'androidx.appcompat:appcompat:1.0.2'
+//    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test:runner:1.2.0'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //support配置
+    support = [
+            'appcompat'     : "androidx.appcompat:appcompat:${versions["support-version"]}",
+            'design'           : "androidx.appcompat:design:${versions["support-version"]}",
+            'junit'            : "junit:junit:${versions["junit-version"]}",
+            "constraint-layout": 'androidx.constraintlayout:constraintlayout:1.1.3',
+            "material": 'com.google.android.material:material:1.0.0',
+    ]
+
+    //依赖第三方配置
+    dependencies = [
+
+            // Dex分包，解决 65k 问题
+            "multidex"    : "com.android.support:multidex:1.0.3",
+
+           //防止重复点击
+            "SingleClick"    : "com.github.jarryleo:SingleClick:v1.8.3",
+            //标题栏
+            "TitleBar"       : "com.hjq:titlebar:6.0",
+            //状态栏
+            "immersionbar"   : "com.gyf.immersionbar:immersionbar:2.3.3",
+            //滑动返回
+            "swipebacklayout": "cn.bingoogolapple:bga-swipebacklayout:1.2.0",
+            //超级文本
+            "SuperTextView": "com.github.lygttpod:SuperTextView:2.1.5",
+
+            //页面状态
+            "loadinglayout": "com.github.czy1121:loadinglayout:1.0.1",
+
+           // ButterKnife注解库：https://github.com/JakeWharton/butterknife
+           "butterknife": "com.jakewharton:butterknife:10.0.0",
+           "butterknife-compiler": "com.jakewharton:butterknife-compiler:10.0.0",
+
+           //    utils
+           "utilcode": "com.blankj:utilcode:1.25.9",
+           //刷新
+           "SmartRefreshLayout": "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21",
+           "SmartRefreshHeader": "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-21",
+
+           //必须使用
+           "okgo": "com.lzy.net:okgo:3.0.4",
+            "rx2": "com.lzy.net:okrx2:2.0.2",
+           //fastjson
+           "fastjson": "com.alibaba:fastjson:1.2.9",
+
+           //gson
+           "gson": "com.google.code.gson:gson:2.8.5",
+
+           //微信
+           "wechat": "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+",
+
+            // 权限请求框架：https://github.com/getActivity/XXPermissions
+            "xxpermissions": "com.hjq:xxpermissions:5.2",
+
+           //eventbus
+           "eventbus": "org.greenrobot:eventbus:3.1.1",
+            "eventbus-annotation": "org.greenrobot:eventbus-annotation-processor:3.1.1",
+           //跑马灯
+           "marqueeview": "com.sunfusheng:marqueeview:1.3.3",
+
+           //banner
+           "banner": "com.youth.banner:banner:1.4.10",
+
+           //flytablayout
+           "FlycoTabLayout_Lib": "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+
+           //万能adapter
+           "adapter": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46",
+
+           //圆角图片
+           "YLCircleImageView": "com.github.ai2101039:YLCircleImageView:v1.0.5",
+
+            //图片加载
+            "GlideImageView": "com.sunfusheng:GlideImageView:2.1.0",
+
+            //GridLayoutManager分割线
+            "divideritemdecoration": "com.yanyusong.y_divideritemdecoration:y_divideritemdecoration:2.0",
+
+            //分页导航
+            "PageMenuLayout": "com.github.xiaohaibin:PageMenuLayout:0.3.0",
+
+           //图片处理
+           "PictureSelector": "com.github.LuckSiege.PictureSelector:picture_library:v2.5.0",
+           "glide": "com.github.bumptech.glide:glide:4.9.0",
+           "glide-compiler": "com.github.bumptech.glide:compiler:4.9.0",
+//           implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+//           implementation 'com.github.bumptech.glide:glide:4.8.0'
+//           annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+            //状态页面
+            "StatusLayoutManager": "com.github.Bakumon:StatusLayoutManager:1.0.4",
+
+            //自定义RadioGroup
+            "radiogrouplib": "com.kyle.nestedradiogrouplib:radiogrouplib:1.0.1",
+
+            //侧滑删除
+            "EasySwipeMenuLayout": "com.github.anzaizai:EasySwipeMenuLayout:1.1.2",
+
+            //微信
+            "wechat": "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+",
+
+            //图片展示
+            "photoview": "com.bm.photoview:library:1.4.1",
+
+            //dialog
+            "circleDialog": "com.github.zyyoona7:EasyPopup:1.1.2",
+
+            //选择器
+            "PickerView": "com.contrarywind:Android-PickerView:4.1.8",
+
+            //倒计时
+            "ZCountDownView": "com.github.zrunker:ZCountDownView:v1.1",
+
+            //生产二维码
+            "zxing": "com.google.zxing:core:3.2.1",
+
+            //身份证拍照
+            "IDCardCamera": "com.github.wildma:IDCardCamera:1.1.0",
+
+            //崩溃日志
+            "LogReport": "com.github.wenmingvs:LogReport:1.0.3",
+
+            //流式布局
+            "flowlayout": "com.hyman:flowlayout-lib:1.1.2",
+
+
+            //bugly
+            "crashreport": "com.tencent.bugly:crashreport:latest.release",
+            "nativecrashreport": "com.tencent.bugly:nativecrashreport:latest.release",
+
+            //页面状态
+            "UiStatus": "com.github.FengChenSunshine:UiStatus:1.0.3",
+
+            //loadingbutton
+            "LoadingButton": "com.github.FlodCoding:LoadingButton:1.0.1",
+
+            //网络请求
+            "RxRetroHttp": "com.github.BakerJQ:RxRetroHttp:1.0.5",
+
+            //点赞星星
+            "SimpleRatingBar": "com.github.ome450901:SimpleRatingBar:1.4.3",
+
+            "LSHttp": "com.lishang.http:LSHttp:1.0.1",
+
+            //HeaderViewPager
+            "HeaderViewPager": "com.lzy.widget:view-core:0.2.1",
+
+            "LayoutManager": "com.github.1002326270xc:LayoutManager-FlowLayout:v1.8",
+
+            //basepopup
+            "BasePopup": "com.github.razerdp:BasePopup:2.2.1",
+
+
+            //fresco
+            "fresco": "com.facebook.fresco:fresco:2.0.0",
+            //图片放大
+            "photodraweeview": "me.relex:photodraweeview:2.0.0",
+
+
+            "rxpay": "com.cuieney:rxpay-api:2.2.3",
+
+            "rxpay-compiler": "com.cuieney:rxpay-compiler:2.1.1",
+
+            //点赞
+            "shinebutton": "com.sackcentury:shinebutton:1.0.0",
+            //语言切换
+            "language": "com.hjq:language:3.0",
+            "flexbox": "com.google.android:flexbox:1.1.1",
+
+            // 倒计时
+            "countdownview": 'com.github.iwgang:countdownview:2.1.6'
+
+    ]
+}

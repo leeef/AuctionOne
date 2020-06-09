@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/good_btn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/coner_bg_white"
+    android:gravity="center"
+    android:layout_marginTop="@dimen/qb_px_6">
+
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_shop_list_imgs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_200"
+        android:layout_gravity="top|left|center"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:roundedCornerRadius="@dimen/qb_px_10"
+        fresco:roundTopLeft="true"
+        fresco:roundTopRight="true"
+        fresco:roundBottomLeft="false"
+        fresco:roundBottomRight="false"
+        fresco:placeholderImageScaleType="focusCrop"  />
+
+
+
+    <ImageView
+        android:id="@+id/iv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/zhanxiao"
+        android:layout_alignTop="@+id/item_shop_list_imgs"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="宜家"
+        android:layout_below="@+id/item_shop_list_imgs"
+        android:textSize="@dimen/qb_px_12"
+        android:layout_marginTop="@dimen/qb_px_8"
+        android:layout_marginLeft="@dimen/qb_px_3"
+        android:layout_marginRight="@dimen/qb_px_3"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="宜家"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginTop="@dimen/qb_px_5"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textSize="@dimen/qb_px_11"
+        android:layout_marginBottom="@dimen/qb_px_7"
+        android:layout_marginLeft="@dimen/qb_px_3"
+        android:layout_marginRight="@dimen/qb_px_3"/>
+
+
+
+
+
+</RelativeLayout>
+
+</LinearLayout>

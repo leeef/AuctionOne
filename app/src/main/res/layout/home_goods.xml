@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/good_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qb_px_5"
+            android:layout_weight="1"
+            android:background="@drawable/coner_bg_white"
+            android:orientation="vertical">
+
+<!--            <com.android.library.YLCircleImageView-->
+<!--                android:id="@+id/item_upgrade_img"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/qb_px_200"-->
+<!--                app:topLeftRadius="@dimen/qb_px_10"-->
+<!--                app:topRightRadius="@dimen/qb_px_10"-->
+<!--                android:scaleType="centerCrop" />-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/item_upgrade_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qb_px_200"
+                    android:layout_gravity="top|left|center"
+                    fresco:actualImageScaleType="focusCrop"
+                    fresco:roundedCornerRadius="@dimen/qb_px_10"
+                    fresco:roundTopLeft="true"
+                    fresco:roundTopRight="true"
+                    fresco:roundBottomLeft="false"
+                    fresco:roundBottomRight="false"
+                    fresco:placeholderImageScaleType="focusCrop"  />
+
+                <ImageView
+                    android:id="@+id/item_is_fine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/jingpinkuang"/>
+
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:id="@+id/item_upgrade_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/qb_px_5"
+                android:layout_marginRight="@dimen/qb_px_5"
+                android:textSize="@dimen/qb_px_14"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:maxLines="1" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="宜家"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginTop="@dimen/qb_px_5"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/qb_px_7"
+                android:layout_marginLeft="@dimen/qb_px_3"
+                android:layout_marginRight="@dimen/qb_px_3"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/qb_px_5"
+                android:layout_marginTop="@dimen/qb_px_5"
+                android:layout_marginLeft="@dimen/qb_px_10"
+                android:layout_marginRight="@dimen/qb_px_10"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/item_upgrade_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main"
+                    android:textSize="@dimen/qb_px_12"
+                    android:text="@string/yijia"
+                    />
+
+                <TextView
+                    android:id="@+id/item_chujia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/qb_px_20"
+                    android:textSize="@dimen/qb_px_12"
+                    />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

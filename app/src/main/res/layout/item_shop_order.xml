@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/qb_px_1">
+
+        <TextView
+            android:id="@+id/item_shop_order_sn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_15"/>
+
+        <TextView
+            android:id="@+id/item_shop_order_status"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="@dimen/qb_px_40"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/qb_px_15"
+            android:textColor="@color/main"
+            />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_80"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/qb_px_1"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/item_shop_order_img"
+            android:layout_width="@dimen/qb_px_60"
+            android:layout_height="@dimen/qb_px_60"
+            android:layout_marginLeft="@dimen/qb_px_15"/>
+
+        <TextView
+            android:id="@+id/item_shop_order_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:layout_marginRight="@dimen/qb_px_50"
+            android:lineSpacingMultiplier="1.5"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_shop_order_chujia"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_40"
+        android:gravity="center_vertical|right"
+        android:paddingRight="@dimen/qb_px_15"
+        android:textColor="@color/main"
+        android:layout_marginTop="@dimen/qb_px_1"
+        android:background="@color/white"
+        />
+
+    <LinearLayout
+        android:id="@+id/item_shop_order_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/qb_px_1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|right"
+        android:visibility="visible"
+        android:background="@color/white"
+        android:paddingRight="@dimen/qb_px_10">
+
+
+
+        <com.allen.library.SuperButton
+            android:id="@+id/item_shop_order_qrfh"
+            android:layout_width="@dimen/qb_px_70"
+            android:layout_height="@dimen/qb_px_30"
+            android:layout_margin="@dimen/qb_px_5"
+            android:textSize="@dimen/qb_px_13"
+            android:text="@string/querenfahuo"
+            app:sCornersRadius="5dp"
+            app:sSolidColor="@color/transparent"
+            app:sStrokeColor="@color/main"
+            app:sStrokeWidth="0.2dp"
+            android:textColor="@color/main"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_50"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/qb_px_5">
+
+        <TextView
+            android:id="@+id/item_bid_record_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:textColor="@color/main"/>
+
+        <TextView
+            android:id="@+id/item_bid_record_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/qb_px_15"
+            android:gravity="right"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_100"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/qb_px_1">
+
+        <ImageView
+            android:id="@+id/item_bid_record_img"
+            android:layout_width="@dimen/qb_px_80"
+            android:layout_height="@dimen/qb_px_80"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:layout_marginTop="@dimen/qb_px_10"/>
+
+        <TextView
+            android:id="@+id/item_bid_record_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_10"
+            android:layout_marginRight="@dimen/qb_px_15"
+            android:layout_marginTop="@dimen/qb_px_20"
+            android:lineSpacingMultiplier="1.5"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_40"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/qb_px_1"
+        android:gravity="center_vertical|right">
+
+        <TextView
+            android:id="@+id/item_bid_record_min_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/qb_px_11"/>
+
+        <TextView
+            android:id="@+id/item_bid_record_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:layout_marginRight="@dimen/qb_px_15"
+            android:textColor="@color/main"
+            android:textSize="@dimen/qb_px_11"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_bid_record_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_40"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/qb_px_1"
+        android:gravity="center_vertical|right">
+
+        <com.allen.library.SuperButton
+            android:id="@+id/item_bid_record_pay"
+            android:layout_width="@dimen/qb_px_90"
+            android:layout_height="@dimen/qb_px_30"
+            android:layout_marginRight="@dimen/qb_px_15"
+            android:textSize="@dimen/qb_px_13"
+            android:text="@string/goto_pay"
+            android:textColor="@color/main"
+            app:sCornersRadius="@dimen/qb_px_30"
+            app:sSolidColor="@color/transparent"
+            app:sStrokeColor="@color/main"
+            app:sStrokeWidth="0.2dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

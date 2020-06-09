@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <include layout="@layout/title" />
+
+    <com.hlnwl.auction.utils.my.HintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/qb_px_50"-->
+<!--                android:background="@color/white"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:layout_marginTop="@dimen/qb_px_1">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="@dimen/qb_px_100"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingLeft="@dimen/qb_px_15"-->
+<!--                    android:text="@string/shop_head_selet"/>-->
+<!--                <RadioGroup-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/release_jp"-->
+<!--                        android:layout_width="100dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:checked="true"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="@string/boutique_shop" />-->
+<!--                    &lt;!&ndash;                    style="@style/shop_join_select"&ndash;&gt;-->
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/release_jl"-->
+<!--                        android:layout_width="100dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="@string/leak_shop" />-->
+<!--                </RadioGroup>-->
+<!--            </LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/shop_head_is_pai"/>
+                <RadioGroup
+                    android:id="@+id/release_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/release_yse"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:checked="true"
+                        android:gravity="center"
+                        style="@style/Radiobutton_select"
+                        android:text="@string/yes" />
+                    <!--                    style="@style/shop_join_select"-->
+                    <RadioButton
+                        android:id="@+id/release_no"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        style="@style/Radiobutton_select"
+                        android:text="@string/no" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/release_margin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/margin"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/release_margin_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_margin"
+                    android:textSize="@dimen/qb_px_12"
+                    android:inputType="numberDecimal"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/release_bid"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/bid_amount"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/release_bid_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_bid_amount"
+                    android:textSize="@dimen/qb_px_12"
+                    android:inputType="numberDecimal"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/release_min"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/mix_bid_amount"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/release_min_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_mix_bid_amount"
+                    android:textSize="@dimen/qb_px_12"
+                    android:inputType="numberDecimal"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/release_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/bid_time"/>
+
+                <TextView
+                    android:id="@+id/release_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/qb_px_12"
+                    android:inputType="phone"
+                    android:layout_marginRight="@dimen/qb_px_5"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/more"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/release_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/hotline"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/release_phone_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_hotline"
+                    android:textSize="@dimen/qb_px_12"
+                    android:inputType="phone"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/goods_title"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/release_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_goods_title"
+                    android:textSize="@dimen/qb_px_12"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/goods_specification"/>
+
+                <TextView
+                    android:id="@+id/release_spec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/qb_px_12"
+                    android:inputType="phone"
+                    android:layout_marginRight="@dimen/qb_px_5"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/more"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/good_category"/>
+
+                <TextView
+                    android:id="@+id/release_bid_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/qb_px_12"
+                    android:inputType="phone"
+                    android:layout_marginRight="@dimen/qb_px_5"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/more"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_180"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="@dimen/qb_px_50"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:gravity="center_vertical"
+                    android:text="@string/goods_description"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/release_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="@string/input_goods_description"
+                    android:textSize="@dimen/qb_px_12"
+                    android:layout_marginTop="@dimen/qb_px_15"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/qb_px_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_100"
+                    android:layout_height="@dimen/qb_px_50"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:gravity="center_vertical"
+                    android:text="@string/goods_pic"/>
+
+                <com.hlnwl.auction.view.ExpandableGridView
+                    android:id="@+id/gridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="3"
+                    android:verticalSpacing="5dp"
+                    android:layout_marginBottom="30dp"
+                    android:descendantFocusability="blocksDescendants"
+                    android:visibility="gone"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/nine_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <com.flod.loadingbutton.LoadingButton
+                android:id="@+id/release_sure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_margin="@dimen/qb_px_30"
+                android:background="@drawable/selector_btn"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:minHeight="45dp"
+                android:padding="8dp"
+                android:text="@string/release"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:enableShrink="false"
+                app:endCompleteDrawable="@drawable/ic_successful"
+                app:endFailDrawable="@drawable/ic_fail"
+                app:loadingDrawablePosition="Start" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    </com.hlnwl.auction.utils.my.HintLayout>
+
+</LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/good_btn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:layout_marginLeft="@dimen/qb_px_1"
+    android:layout_marginRight="@dimen/qb_px_1">
+
+
+
+    <ImageView
+        android:id="@+id/item_shop_list_imgs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_100"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"/>
+
+    <ImageView
+        android:id="@+id/iv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/zhanxiao"
+        android:layout_alignTop="@+id/item_shop_list_imgs"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/qb_px_32"
+        android:text="宜家"
+        android:layout_below="@+id/item_shop_list_imgs"
+        android:textSize="@dimen/qb_px_12"
+        android:layout_marginTop="@dimen/qb_px_8"
+        android:layout_marginLeft="@dimen/qb_px_3"
+        android:layout_marginRight="@dimen/qb_px_3"
+        android:visibility="gone"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="宜家"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginTop="@dimen/qb_px_5"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/qb_px_7"
+        android:layout_marginLeft="@dimen/qb_px_3"
+        android:layout_marginRight="@dimen/qb_px_3"
+        android:textSize="@dimen/qb_px_11"
+         />
+
+
+
+
+
+</RelativeLayout>
+
+</LinearLayout>

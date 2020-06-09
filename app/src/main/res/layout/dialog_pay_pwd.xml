@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="30dp"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/title_reset_pay_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="请输入支付密码"
+                android:gravity="center"/>
+
+
+            <com.hlnwl.auction.view.dialog.codeview.CodeView
+                android:id="@+id/password_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:borderColor="#bebebe"
+                app:borderWidth="2px"
+                app:dividerColor="#eeeeee"
+                app:dividerWidth="2px"
+                android:layout_margin="16dp"
+                android:padding="16dp"/>
+
+
+
+        </LinearLayout>
+        <com.hlnwl.auction.view.dialog.codeview.KeyboardView
+            android:id="@+id/password_input"
+            android:layout_width="match_parent"
+            android:layout_height="240dp">
+
+        </com.hlnwl.auction.view.dialog.codeview.KeyboardView>
+    </LinearLayout>
+
+</RelativeLayout>

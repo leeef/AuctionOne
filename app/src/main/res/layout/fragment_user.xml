@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_130"
+                android:orientation="horizontal"
+                android:background="@mipmap/wode_banner">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/qb_px_25"
+                    android:layout_marginLeft="@dimen/qb_px_25"
+                    >
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/user_img"
+                        android:layout_width="@dimen/qb_px_50"
+                        android:layout_height="@dimen/qb_px_50"
+                        android:layout_gravity="top|left|center"
+                        app:actualImageScaleType="focusCrop"
+                        app:roundAsCircle="true"
+                        app:failureImage="@mipmap/moren"
+                        app:placeholderImage="@mipmap/moren"
+                        app:placeholderImageScaleType="focusCrop"  />
+<!--                    <com.allen.library.CircleImageView-->
+<!--                        android:id="@+id/user_img"-->
+<!--                        android:layout_width="@dimen/qb_px_50"-->
+<!--                        android:layout_height="@dimen/qb_px_50"-->
+<!--                        android:src="@mipmap/moren"/>-->
+
+                    <TextView
+                        android:id="@+id/user_nick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="有鬼"
+                        android:textSize="@dimen/qb_px_14"
+                        android:layout_marginLeft="@dimen/qb_px_8"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_100"
+                android:orientation="vertical"
+                android:background="@drawable/coner_bg_white"
+                android:layout_marginLeft="@dimen/qb_px_20"
+                android:layout_marginRight="@dimen/qb_px_20"
+                android:layout_marginTop="-40dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/qb_px_10"
+                    android:text="@string/my_order"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qb_px_1"
+                    android:background="@color/line"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+
+
+                    <LinearLayout
+                        android:id="@+id/user_dfh"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/qb_px_25"
+                            android:layout_height="@dimen/qb_px_25"
+                            android:src="@mipmap/wode_daifahuo"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/to_be_shipped"
+                            android:layout_marginTop="@dimen/qb_px_5"
+                            android:textSize="@dimen/qb_px_12"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/user_dsh"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/qb_px_25"
+                            android:layout_height="@dimen/qb_px_25"
+                            android:src="@mipmap/wode_daishouhuo"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/to_be_received"
+                            android:layout_marginTop="@dimen/qb_px_5"
+                            android:textSize="@dimen/qb_px_12"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/user_dfk"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/qb_px_25"
+                            android:layout_height="@dimen/qb_px_25"
+                            android:src="@mipmap/wode_daizhifu"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/to_be_comment"
+                            android:layout_marginTop="@dimen/qb_px_5"
+                            android:textSize="@dimen/qb_px_12"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/user_ywc"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="@dimen/qb_px_25"
+                            android:layout_height="@dimen/qb_px_25"
+                            android:src="@mipmap/wode_yiwancheng"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/completed"
+                            android:layout_marginTop="@dimen/qb_px_5"
+                            android:textSize="@dimen/qb_px_12"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/user_balance"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                app:sLeftIconHeight="@dimen/qb_px_16"
+                app:sLeftIconWidth="@dimen/qb_px_16"
+                app:sLeftIconRes="@mipmap/wode_yuer"
+                app:sLeftTextString="@string/balance"
+                app:sRightIconRes="@mipmap/more"
+                android:layout_marginTop="@dimen/qb_px_10"
+                />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/user_share"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                app:sLeftIconHeight="@dimen/qb_px_16"
+                app:sLeftIconWidth="@dimen/qb_px_16"
+                app:sLeftIconRes="@mipmap/wode_fenxiang"
+                app:sLeftTextString="@string/my_share"
+                app:sRightIconRes="@mipmap/more"
+
+                android:visibility="gone"/>
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/user_modify_data"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                app:sLeftIconHeight="@dimen/qb_px_16"
+                app:sLeftIconWidth="@dimen/qb_px_16"
+                app:sLeftIconRes="@mipmap/wode_ziliao"
+                app:sLeftTextString="@string/modifying_data"
+                app:sRightIconRes="@mipmap/more"
+
+                />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/user_system_bulletin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                app:sLeftIconHeight="@dimen/qb_px_16"
+                app:sLeftIconWidth="@dimen/qb_px_16"
+                app:sLeftIconRes="@mipmap/wode_gonggao"
+                app:sLeftTextString="@string/system_bulletin"
+                app:sRightIconRes="@mipmap/more"
+                />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/user_customer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                app:sLeftIconHeight="@dimen/qb_px_18"
+                app:sLeftIconWidth="@dimen/qb_px_18"
+                app:sLeftIconRes="@mipmap/wode_kefu"
+                app:sLeftTextString="@string/customer"
+                app:sRightIconRes="@mipmap/more"
+
+                />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/user_bid_record"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                app:sLeftIconHeight="@dimen/qb_px_16"
+                app:sLeftIconWidth="@dimen/qb_px_16"
+                app:sLeftIconRes="@mipmap/wode_jilu"
+                app:sLeftTextString="@string/bid_record"
+                app:sRightIconRes="@mipmap/more"
+                app:sShapeCornersTopLeftRadius="6dp"
+                app:sShapeCornersTopRightRadius="6dp"
+                />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/user_seller_center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                app:sLeftIconHeight="@dimen/qb_px_16"
+                app:sLeftIconWidth="@dimen/qb_px_16"
+                app:sLeftIconRes="@mipmap/wode_shangjia"
+                app:sLeftTextString="@string/seller_center"
+                app:sRightIconRes="@mipmap/more"
+                android:layout_marginTop="@dimen/qb_px_10"
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

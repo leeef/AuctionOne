@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/title"/>
+
+    <include layout="@layout/goods_spec_head"/>
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/spec_content"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"/>
+
+    <com.allen.library.SuperButton
+        android:id="@+id/add_spec"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_40"
+        android:layout_margin="@dimen/qb_px_20"
+        android:text="@string/add_new_spec"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:sCornersRadius="@dimen/qb_px_5"
+        app:sSelectorNormalColor="@color/main"
+        app:sUseSelector="true" />
+
+</LinearLayout>

@@ -1,0 +1,129 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'cn.leo.plugin.magic'
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions { includeCompileClasspath = true }
+        }
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                // EventBus Apt 索引类生成位置
+                arguments = [eventBusIndex: applicationId + '.MyEventBusIndex']
+            }
+        }
+    }
+    compileOptions {// 使用 JAVA8 语法解析
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+//    signingConfigs {
+//        debug {
+//            keyAlias "hlnwlkey"
+//            keyPassword "123456"
+//            storeFile file('E:/worlplace/key/hlnwl.jks')
+//            storePassword "123456"
+//        }
+//    }
+    buildTypes {
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            // 移除无用的resource文件，前提minifyEnabled必须打开
+            shrinkResources false
+            // ZipAlign优化
+            zipAlignEnabled true
+            // 设置混淆
+            minifyEnabled false
+            //加载默认混淆配置涵
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            //ZipAlign优化
+            zipAlignEnabled false
+            //设置混淆
+            minifyEnabled false
+            //加载默认混淆配置涵
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //base
+    api rootProject.ext.support["appcompat"]
+    api rootProject.ext.support["junit"]
+    api rootProject.ext.support["material"]
+//    api rootProject.ext.support["design"]
+    api rootProject.ext.support["constraint-layout"]
+//    api rootProject.ext.dependencies["SingleClick"]
+    api rootProject.ext.dependencies["xxpermissions"]
+    api rootProject.ext.dependencies["TitleBar"]
+    api rootProject.ext.dependencies["immersionbar"]
+    api rootProject.ext.dependencies["swipebacklayout"]
+    api rootProject.ext.dependencies["SuperTextView"]
+    //    api rootProject.ext.dependencies["loadinglayout"]
+
+    api rootProject.ext.dependencies["PickerView"]
+    api rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    api rootProject.ext.dependencies["utilcode"]
+    api rootProject.ext.dependencies["SmartRefreshLayout"]
+    api rootProject.ext.dependencies["SmartRefreshHeader"]
+
+    api rootProject.ext.dependencies["eventbus"]
+    annotationProcessor rootProject.ext.dependencies["eventbus-annotation"]
+        api rootProject.ext.dependencies["marqueeview"]
+    api rootProject.ext.dependencies["banner"]
+    api rootProject.ext.dependencies["FlycoTabLayout_Lib"]
+    api rootProject.ext.dependencies["adapter"]
+//    api rootProject.ext.dependencies["YLCircleImageView"]
+//    api rootProject.ext.dependencies["GlideImageView"]
+//    api rootProject.ext.dependencies["PictureSelector"]
+//    api rootProject.ext.dependencies["glide"]
+//    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.0'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    api rootProject.ext.dependencies["divideritemdecoration"]
+
+//    implementation files('libs/alipaySdk-20180601.jar')
+    implementation(name: 'alipaySdk', ext: 'aar')
+    api rootProject.ext.dependencies["wechat"]
+
+    api rootProject.ext.dependencies["crashreport"]
+    api rootProject.ext.dependencies["nativecrashreport"]
+    api rootProject.ext.dependencies["UiStatus"]
+    api rootProject.ext.dependencies["LoadingButton"]
+
+    api rootProject.ext.dependencies["BasePopup"]
+    api rootProject.ext.dependencies["RxRetroHttp"]
+    api rootProject.ext.dependencies["fresco"]
+    api rootProject.ext.dependencies["photodraweeview"]
+//    api rootProject.ext.dependencies["rxpay"]
+//    api rootProject.ext.dependencies["rxpay-compiler"]
+//    implementation 'com.jaeger.statusbaruitl:library:1.2.4'
+
+//    implementation 'com.github.385841539:MarqueeView:1.0.0'
+    api rootProject.ext.dependencies["SimpleRatingBar"]
+    api rootProject.ext.dependencies["flowlayout"]
+    api rootProject.ext.dependencies["shinebutton"]
+    api rootProject.ext.dependencies["language"]
+    api rootProject.ext.dependencies["flexbox"]
+    api rootProject.ext.dependencies["countdownview"]
+
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+}
+
+
+

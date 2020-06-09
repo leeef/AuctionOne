@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_110"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/name"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/shop_join_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_name"
+                    android:textSize="@dimen/qb_px_12"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_110"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/id"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/shop_join_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_id"
+                    android:textSize="@dimen/qb_px_12"
+                    android:digits="0123456789X"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_110"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/phone"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/shop_join_phone"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_phone"
+                    android:textSize="@dimen/qb_px_12"
+                    android:inputType="phone"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_270"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_110"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/identity_card_photos"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/qb_px_10"
+                    android:layout_marginBottom="@dimen/qb_px_10"
+                    android:layout_marginRight="@dimen/qb_px_50">
+
+                <ImageView
+                    android:id="@+id/shop_join_zheng"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/zhengmian" />
+
+                <ImageView
+                    android:id="@+id/shop_join_fan"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/fanmian"
+                    android:layout_marginTop="@dimen/qb_px_10"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_110"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/shop_name"/>
+
+                <com.hlnwl.auction.view.widget.ClearEditText
+                    android:id="@+id/shop_join_shop_name"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_shop_name"
+                    android:textSize="@dimen/qb_px_12"
+                    android:layout_marginRight="@dimen/qb_px_12"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/shop_join_shop_img_selet"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_80"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_110"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/shop_head_img"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <com.allen.library.CircleImageView
+                    android:id="@+id/shop_join_shop_img"
+                    android:layout_width="@dimen/qb_px_50"
+                    android:layout_height="@dimen/qb_px_50"
+                    android:src="@mipmap/moren"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/more"
+                    android:layout_marginRight="@dimen/qb_px_10"
+                    android:layout_marginLeft="@dimen/qb_px_5"/>
+            </LinearLayout>
+<!--            <com.allen.library.SuperTextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/qb_px_80"-->
+<!--                app:sLeftTextString="@string/shop"-->
+<!--                android:paddingLeft="@dimen/qb_px_5"-->
+<!--                app:sRightIconRes="@mipmap/moren"-->
+<!--                android:paddingRight="@dimen/qb_px_15"-->
+<!--                app:sRightIconShowCircle="true"-->
+<!--                app:sRightIconHeight="@dimen/qb_px_50"-->
+<!--                app:sRightIconWidth="@dimen/qb_px_50"/>-->
+
+            <LinearLayout
+                android:id="@+id/shop_join_chose"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <TextView
+                    android:layout_width="@dimen/qb_px_110"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/qb_px_15"
+                    android:text="@string/shop_head_selet"/>
+                <RadioGroup
+                    android:id="@+id/shop_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/shop_join_jp"
+                        android:layout_width="@dimen/qb_px_100"
+                        style="@style/Radiobutton_select"
+                        android:layout_height="match_parent"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="@string/boutique_shop"
+                        android:textColor="@drawable/index_textcolor_selecter"/>
+<!--                    -->
+                    <RadioButton
+                        android:id="@+id/shop_join_jl"
+                        android:layout_width="@dimen/qb_px_100"
+                        style="@style/Radiobutton_select"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/leak_shop"
+                        android:textColor="@drawable/index_textcolor_selecter"/>
+                </RadioGroup>
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_20"
+            android:layout_marginRight="@dimen/qb_px_20"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/dp_10">
+            <CheckBox
+                android:id="@+id/shop_join_xieyi"
+                android:layout_width="@dimen/qb_px_15"
+                android:layout_height="@dimen/qb_px_15"
+                android:gravity="center"
+                android:background="@drawable/checkbox_style"
+                android:button="@null"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/read_and_agree"
+                android:layout_marginLeft="@dimen/dp_10"/>
+
+            <TextView
+                android:id="@+id/shop_join_service_yrz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/join_protocol"
+                android:textColor="@color/main"/>
+
+        </LinearLayout>
+
+            <com.flod.loadingbutton.LoadingButton
+                android:id="@+id/shop_join_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_margin="@dimen/qb_px_30"
+                android:background="@drawable/selector_btn"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:minHeight="45dp"
+                android:padding="8dp"
+                android:text="@string/application_for_settlement"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:enableShrink="false"
+                app:endCompleteDrawable="@drawable/ic_successful"
+                app:endFailDrawable="@drawable/ic_fail"
+                app:loadingDrawablePosition="Start" />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

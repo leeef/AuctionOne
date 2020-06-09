@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title"/>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlDragRate="0.7"
+        app:srlHeaderHeight="@dimen/qb_px_60"
+        app:srlHeaderMaxDragRate="1.3">
+
+        <com.hlnwl.auction.utils.my.HintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.appbar.AppBarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                            <com.youth.banner.Banner
+                                android:id="@+id/home_banner"
+                                android:layout_width="match_parent"
+                                app:indicator_drawable_selected="@color/main"
+                                app:indicator_drawable_unselected="@color/gray"
+                                android:layout_height="@dimen/qb_px_150"
+                                android:background="@color/white"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/qb_px_50"
+                            android:background="@color/white"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <com.flyco.tablayout.SlidingTabLayout
+                                android:id="@+id/my_tl"
+                                android:background="@color/white"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/qb_px_50"
+                                android:layout_marginTop="@dimen/qb_px_1"
+                                app:tl_tab_space_equal="true"
+                                app:tl_indicator_color="@color/main"
+                                app:tl_indicator_style="NORMAL"
+                                app:tl_textSelectColor="@color/main"
+                                app:tl_indicator_width="@dimen/qb_px_50"
+                                app:tl_tab_width="@dimen/qb_px_70"
+                                app:tl_textUnselectColor="@color/default_color">
+                            </com.flyco.tablayout.SlidingTabLayout>
+
+
+                        </LinearLayout>
+
+                    </com.google.android.material.appbar.AppBarLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/my_vp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+
+                    </RelativeLayout>
+
+
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            </LinearLayout>
+
+        </com.hlnwl.auction.utils.my.HintLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

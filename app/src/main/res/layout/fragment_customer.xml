@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title"/>
+
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:src="@mipmap/kefu_banner"
+       android:scaleType="centerCrop"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/qb_px_10"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/customer_text"
+            android:lineSpacingMultiplier="1.2"
+            android:textSize="@dimen/qb_px_15"
+            android:layout_marginTop="@dimen/qb_px_30"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:layout_marginRight="@dimen/qb_px_15"/>
+
+        <com.allen.library.SuperButton
+            android:id="@+id/customer_call"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_40"
+            android:layout_margin="@dimen/qb_px_35"
+            android:text="@string/call"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:sCornersRadius="@dimen/qb_px_5"
+            app:sSelectorNormalColor="@color/main"
+            app:sUseSelector="true" />
+
+
+    </LinearLayout>
+</LinearLayout>

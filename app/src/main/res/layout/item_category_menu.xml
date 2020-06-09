@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/item_main_menu_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="@dimen/qb_px_16"
+            android:layout_centerInParent="true"
+            android:paddingTop="@dimen/qb_px_16"
+            android:text=""
+            android:textSize="@dimen/qb_px_14"
+            />
+        <View
+            android:id="@+id/item_main_left_bg"
+            android:layout_width="@dimen/qb_px_2"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:background="@color/main"
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>

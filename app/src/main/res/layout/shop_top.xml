@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/qb_px_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_60"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <com.allen.library.CircleImageView
+            android:id="@+id/item_shop_list_img"
+            android:layout_width="@dimen/qb_px_50"
+            android:layout_height="@dimen/qb_px_50"
+            android:layout_marginLeft="@dimen/qb_px_15"/>
+
+        <TextView
+            android:id="@+id/item_shop_list_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/qb_px_10"/>
+
+        <com.allen.library.SuperButton
+            android:id="@+id/item_shop_list_in"
+            style="?android:textAppearanceSmall"
+            android:layout_width="@dimen/qb_px_60"
+            android:layout_height="@dimen/qb_px_25"
+            android:layout_marginRight="@dimen/qb_px_15"
+            android:gravity="left"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:text="@string/shop_in"
+            android:textColor="@color/main"
+            android:textStyle="bold"
+            app:sCornersRadius="@dimen/qb_px_5"
+            app:sSolidColor="@color/transparent"
+            app:sStrokeColor="@color/main"
+            app:sStrokeWidth="0.2dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_1"
+        android:background="@color/line"
+        android:layout_marginLeft="@dimen/qb_px_15"
+        android:layout_marginRight="@dimen/qb_px_15"/>
+
+</LinearLayout>

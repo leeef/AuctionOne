@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/title_tb"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_50"
+        app:backButton="true"
+        app:barStyle="light"
+        app:titleSize="@dimen/qb_px_16"
+        app:titleColor="@color/black" />
+
+</LinearLayout>

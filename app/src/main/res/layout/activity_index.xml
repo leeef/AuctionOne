@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hlnwl.auction.utils.my.HintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:id="@+id/main_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_70"
+                android:background="@mipmap/di">
+
+
+
+
+
+                <com.hlnwl.auction.view.radiogrouplib.NestedRadioGroup
+                    android:id="@+id/index_nestedGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/qb_px_50"
+                        android:clipChildren="false"
+                        android:orientation="horizontal">
+
+
+                        <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
+                            android:id="@+id/index_home"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:checked="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/home_selector" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/qb_px_3"
+                                    android:text="@string/home"
+                                    android:textColor="@drawable/index_textcolor_selecter"
+                                    android:textSize="@dimen/qb_px_11"
+                                    android:gravity="center"/>
+
+                            </LinearLayout>
+                        </com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout>
+
+                        <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
+                            android:id="@+id/index_category"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:checked="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/category_selector" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/qb_px_3"
+                                    android:text="@string/category"
+                                    android:textColor="@drawable/index_textcolor_selecter"
+                                    android:textSize="@dimen/qb_px_11"
+                                    android:gravity="center"/>
+
+                            </LinearLayout>
+                        </com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout>
+
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
+                            android:id="@+id/index_customer_service"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:checked="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/customer_selector" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/qb_px_3"
+                                    android:text="@string/customer"
+                                    android:textColor="@drawable/index_textcolor_selecter"
+                                    android:textSize="@dimen/qb_px_11"
+                                    android:gravity="center"/>
+
+                            </LinearLayout>
+                        </com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout>
+
+                        <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
+                            android:id="@+id/user_center"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:checked="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/user_selector" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/qb_px_3"
+                                    android:text="@string/user_center"
+                                    android:textColor="@drawable/index_textcolor_selecter"
+                                    android:textSize="@dimen/qb_px_11"
+                                    android:gravity="center"/>
+
+                            </LinearLayout>
+                        </com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout>
+
+                    </LinearLayout>
+
+                </com.hlnwl.auction.view.radiogrouplib.NestedRadioGroup>
+
+
+                <LinearLayout
+                    android:id="@+id/index_public"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/qb_px_40"
+                        android:layout_height="@dimen/qb_px_40"
+                        android:background="@mipmap/home_fabu" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/qb_px_3"
+                        android:text="@string/release"
+                        android:textColor="@drawable/index_fabu_selecter"
+                        android:textSize="@dimen/qb_px_11" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </com.hlnwl.auction.utils.my.HintLayout>
+</LinearLayout>

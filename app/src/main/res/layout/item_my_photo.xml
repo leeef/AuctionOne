@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="@dimen/qb_px_80"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/item_sell_car_img"
+        android:layout_width="@dimen/qb_px_80"
+        android:layout_height="@dimen/qb_px_70"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="@dimen/qb_px_1"
+        android:layout_marginRight="@dimen/qb_px_1"
+        android:layout_marginTop="@dimen/qb_px_10"
+        android:layout_marginBottom="@dimen/qb_px_10"/>
+
+    <ImageView
+        android:id="@+id/item_sell_car_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/qb_px_12"
+        android:layout_marginRight="@dimen/qb_px_5"
+        android:src="@mipmap/cuo"
+        android:layout_alignParentRight="true"
+        android:visibility="visible"/>
+
+
+
+</RelativeLayout>

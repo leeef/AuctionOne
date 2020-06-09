@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title"/>
+
+    <com.hlnwl.auction.utils.my.HintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+
+
+            <LinearLayout
+                android:id="@+id/goods_order_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:layout_marginTop="@dimen/qb_px_1"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:src="@mipmap/dingwei" />
+
+                <TextView
+                    android:id="@+id/tv_goods_order_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:gravity="center_vertical" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:src="@mipmap/more" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_110"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/qb_px_1">
+
+                <ImageView
+                    android:id="@+id/bid_order_img"
+                    android:layout_width="@dimen/qb_px_90"
+                    android:layout_height="@dimen/qb_px_90"
+                    android:layout_marginLeft="@dimen/qb_px_15"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="@dimen/qb_px_10"
+                    android:layout_marginLeft="@dimen/qb_px_10">
+
+
+                    <TextView
+                        android:id="@+id/bid_order_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/qb_px_14"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:text="" />
+
+                        <TextView
+                            android:id="@+id/bid_order_price"
+                            android:layout_width="match_parent"
+                            android:gravity="right"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/main" />
+
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:gravity="right">
+
+
+
+
+
+                <TextView
+                    android:id="@+id/goods_order_goto_pay"
+                    android:layout_width="@dimen/qb_px_150"
+                    android:layout_height="match_parent"
+                    android:background="@color/main"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:text="@string/pay_now"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.hlnwl.auction.utils.my.HintLayout>
+</LinearLayout>

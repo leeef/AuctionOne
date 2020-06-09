@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10">
+
+    <LinearLayout
+        android:id="@+id/item_home_icons_shop"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+    <ImageView
+        android:layout_width="@dimen/qb_px_40"
+        android:layout_height="@dimen/qb_px_40"
+        android:src="@mipmap/ic_shop"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#A86767"
+        android:layout_marginTop="@dimen/qb_px_5"
+        android:text="@string/shop"
+        android:gravity="center"
+
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_home_icons_designer_frames"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+
+
+        <ImageView
+            android:gravity="center"
+            android:layout_width="@dimen/qb_px_40"
+            android:layout_height="@dimen/qb_px_40"
+            android:src="@mipmap/ic_gloab"
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qb_px_5"
+            android:text="@string/designer_frames"
+            android:gravity="center"
+            android:textColor="#A86767"
+           />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_home_icons_leak_hunting_area"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/qb_px_40"
+            android:layout_height="@dimen/qb_px_40"
+            android:src="@mipmap/ic_china_image"
+            android:background="@color/white"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#A86767"
+            android:layout_marginTop="@dimen/qb_px_5"
+            android:text="@string/leak_hunting_area"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_home_icons_new_user_on_road"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/qb_px_40"
+            android:layout_height="@dimen/qb_px_40"
+            android:src="@mipmap/ic_zhanxaio"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#A86767"
+            android:layout_marginTop="@dimen/qb_px_5"
+            android:text="@string/special_exhibition"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_home_icons_website"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+
+
+        <ImageView
+            android:layout_width="@dimen/qb_px_40"
+            android:layout_height="@dimen/qb_px_40"
+            android:src="@mipmap/ic_website"
+             />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#A86767"
+            android:layout_marginTop="@dimen/qb_px_5"
+            android:text="@string/website"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

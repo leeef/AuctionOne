@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_130"
+        android:orientation="horizontal"
+        android:background="@mipmap/maijia_banner">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/qb_px_25"
+            android:layout_marginLeft="@dimen/qb_px_25"
+            >
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/shop_center_img"
+                android:layout_width="@dimen/qb_px_50"
+                android:layout_height="@dimen/qb_px_50"
+                android:layout_gravity="top|left|center"
+                app:actualImageScaleType="focusCrop"
+                app:roundAsCircle="true"
+                app:failureImage="@mipmap/moren"
+                app:placeholderImage="@mipmap/moren"
+                app:placeholderImageScaleType="focusCrop"  />
+
+            <TextView
+                android:id="@+id/shop_center_nick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="有鬼"
+                android:textSize="@dimen/qb_px_14"
+                android:layout_marginLeft="@dimen/qb_px_8"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_100"
+        android:orientation="vertical"
+        android:background="@drawable/coner_bg_white"
+        android:layout_marginLeft="@dimen/qb_px_20"
+        android:layout_marginRight="@dimen/qb_px_20"
+        android:layout_marginTop="-40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/qb_px_10"
+            android:text="@string/shop_order"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_1"
+            android:background="@color/line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/user_dfk"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/qb_px_25"
+                    android:layout_height="@dimen/qb_px_25"
+                    android:src="@mipmap/wode_daizhifu"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/to_be_payment"
+                    android:layout_marginTop="@dimen/qb_px_5"
+                    android:textSize="@dimen/qb_px_12"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/user_dfh"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/qb_px_25"
+                    android:layout_height="27dp"
+                    android:src="@mipmap/wode_daifahuo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/to_be_shipped"
+                    android:layout_marginTop="@dimen/qb_px_5"
+                    android:textSize="@dimen/qb_px_12"/>
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/user_dsh"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/qb_px_25"
+                    android:layout_height="@dimen/qb_px_25"
+                    android:src="@mipmap/wode_daishouhuo"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/to_be_received"
+                    android:layout_marginTop="@dimen/qb_px_5"
+                    android:textSize="@dimen/qb_px_12"/>
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/user_ywc"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/qb_px_25"
+                    android:layout_height="@dimen/qb_px_25"
+                    android:src="@mipmap/wode_yiwancheng"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/completed"
+                    android:layout_marginTop="@dimen/qb_px_5"
+                    android:textSize="@dimen/qb_px_12"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/shop_center_apply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_50"
+        app:sLeftIconHeight="@dimen/qb_px_20"
+        app:sLeftIconWidth="@dimen/qb_px_20"
+        app:sLeftIconRes="@mipmap/shenqing"
+        app:sLeftTextString="@string/shop_wallet"
+        app:sRightIconRes="@mipmap/more"
+        android:layout_marginTop="@dimen/qb_px_10"
+        android:visibility="visible"/>
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/shop_center_release"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_50"
+        app:sLeftIconHeight="@dimen/qb_px_20"
+        app:sLeftIconWidth="@dimen/qb_px_20"
+        app:sLeftIconRes="@mipmap/fabu"
+        app:sLeftTextString="@string/shop_relese"
+        app:sRightIconRes="@mipmap/more"
+        />
+    <com.allen.library.SuperTextView
+        android:id="@+id/shop_center_edit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_50"
+        app:sLeftIconHeight="@dimen/qb_px_20"
+        app:sLeftIconWidth="@dimen/qb_px_20"
+        app:sLeftIconRes="@mipmap/fabuliebiao"
+        app:sLeftTextString="@string/shop_relese_list"
+        app:sRightIconRes="@mipmap/more"
+        />
+</LinearLayout>

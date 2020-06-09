@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/qb_px_1">
+        <com.hlnwl.auction.view.widget.ClearEditText
+            android:id="@+id/comment_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_200"
+            android:background="@null"
+            android:padding="@dimen/qb_px_10"
+            android:hint="@string/comment_hint"
+            android:textSize="@dimen/qb_px_13"
+            android:gravity="top"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/qb_px_1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/qb_px_100"
+            android:layout_height="@dimen/qb_px_50"
+            android:paddingLeft="@dimen/qb_px_15"
+            android:gravity="center_vertical"
+            android:text="@string/comment_pic"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nine_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_50"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/qb_px_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shop_comment"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:textSize="@dimen/qb_px_14"/>
+
+        <com.willy.ratingbar.ScaleRatingBar
+            android:id="@+id/comment_RatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            app:srb_numStars="5"
+            app:srb_minimumStars="1"
+            app:srb_rating="2"
+            app:srb_starWidth="@dimen/qb_px_20"
+            app:srb_starHeight="@dimen/qb_px_20"
+            app:srb_starPadding="@dimen/qb_px_3"
+            app:srb_stepSize="0.5"
+            app:srb_isIndicator="false"
+            app:srb_clickable="true"
+            app:srb_scrollable="true"
+            app:srb_clearRatingEnabled="true"
+            app:srb_drawableEmpty="@mipmap/xing_kong"
+            app:srb_drawableFilled="@mipmap/xing"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

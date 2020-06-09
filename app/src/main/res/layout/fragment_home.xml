@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/title_tb"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_50"
+        app:backButton="false"
+        app:barStyle="transparent"
+        android:background="@color/main"
+        app:titleSize="@dimen/qb_px_16"
+        app:titleColor="@color/black" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:id="@+id/home_selet_language"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/dp_10">
+
+                <TextView
+                    android:id="@+id/home_language_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="@string/setting_simplified_chinese"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/xiala"
+                    android:layout_marginLeft="@dimen/qb_px_3"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/home_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/qb_px_16"
+                android:visibility="visible"/>
+
+            <com.allen.library.SuperButton
+                android:id="@+id/home_search"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_35"
+                android:layout_marginLeft="@dimen/qb_px_120"
+                android:layout_marginRight="@dimen/qb_px_30"
+                android:drawableLeft="@mipmap/search_main"
+                android:gravity="left"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/qb_px_20"
+                android:text="@string/search_hint"
+                android:textColor="@color/main"
+                android:textStyle="bold"
+                app:sCornersRadius="@dimen/qb_px_20"
+                app:sUseSelector="true"
+                app:sSelectorNormalColor="@color/white"
+                android:visibility="gone"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+
+
+    </com.hjq.bar.TitleBar>
+
+    <include layout="@layout/fragment_list"/>
+
+
+
+</LinearLayout>

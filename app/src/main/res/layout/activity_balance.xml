@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_150"
+        android:background="@mipmap/yuer_beijing">
+
+        <TextView
+            android:id="@+id/balance_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/qb_px_22"
+            android:layout_centerInParent="true"
+            android:text="0.00"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:id="@+id/balance_bond"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_50"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/qb_px_15"
+            android:gravity="right|center_vertical">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bond"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:layout_width="@dimen/qb_px_18"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/baozhengjin" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/balance_chose"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_50"
+        app:sLeftTextString="@string/widtdraw_where"
+        app:sRightIconRes="@mipmap/more"
+        app:sLeftTextSize="@dimen/qb_px_15" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/qb_px_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qb_px_10"
+            android:layout_marginLeft="@dimen/qb_px_10"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/qb_px_10"
+                android:text="@string/danwei"
+                android:textColor="#ff393939"
+                android:textSize="@dimen/qb_px_20" />
+
+            <com.hlnwl.auction.view.widget.ClearEditText
+                android:id="@+id/withdrawal_num"
+                style="@style/MyEditText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:layout_marginRight="@dimen/dp_10"
+                android:inputType="numberDecimal"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_30"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cash_withdrawals"
+                android:layout_marginLeft="@dimen/qb_px_10"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/qb_px_1"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/cash_withdrawals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginRight="@dimen/qb_px_10"
+                android:textColor="@color/main"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_30"
+            android:layout_marginBottom="@dimen/qb_px_10"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/arrival_time"
+                android:layout_marginLeft="@dimen/qb_px_10"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/qb_px_1"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/arrival_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginRight="@dimen/qb_px_10"
+                android:textColor="@color/main"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.flod.loadingbutton.LoadingButton
+        android:id="@+id/withdrawal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="@dimen/qb_px_50"
+        android:layout_marginLeft="@dimen/qb_px_30"
+        android:layout_marginRight="@dimen/qb_px_30"
+        android:background="@drawable/selector_btn"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:minHeight="45dp"
+        android:padding="8dp"
+        android:text="@string/withdrawal"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:enableShrink="false"
+        app:endCompleteDrawable="@drawable/ic_successful"
+        app:endFailDrawable="@drawable/ic_fail"
+        app:loadingDrawablePosition="Start" />
+
+</LinearLayout>

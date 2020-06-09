@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/qb_px_5">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/qb_px_50"
+            android:gravity="center_vertical"
+            android:text="@string/name"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+        <com.hlnwl.auction.view.widget.ClearEditText
+            android:id="@+id/add_address_name"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/address_name"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:layout_marginRight="@dimen/qb_px_10"
+            android:textSize="@dimen/qb_px_13"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/qb_px_1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/qb_px_50"
+            android:gravity="center_vertical"
+            android:text="@string/phone"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+        <com.hlnwl.auction.view.widget.ClearEditText
+            android:id="@+id/add_address_phone"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/qb_px_10"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/input_phone"
+            android:inputType="number"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="@dimen/qb_px_13"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/qb_px_1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/qb_px_50"
+            android:gravity="center_vertical"
+            android:text="@string/region"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+        <com.hlnwl.auction.view.widget.ClearEditText
+            android:id="@+id/add_address_region"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/qb_px_10"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/input_dizhi"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="@dimen/qb_px_13"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/add_address_region"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="3.7"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginLeft="@dimen/dp_10"-->
+<!--            android:background="@null"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:text="@string/selet"-->
+<!--            android:maxLines="1"-->
+<!--            android:singleLine="true" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@mipmap/more"/>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/qb_px_1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/qb_px_50"
+            android:gravity="center_vertical"
+            android:text="@string/address_detail"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+        <com.hlnwl.auction.view.widget.ClearEditText
+            android:id="@+id/add_address_detail"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/input_detail_address"
+            android:maxLines="1"
+            android:layout_marginRight="@dimen/qb_px_10"
+            android:singleLine="true"
+            android:textSize="@dimen/qb_px_13"/>
+
+    </LinearLayout>
+
+    <com.flod.loadingbutton.LoadingButton
+        android:id="@+id/add_address_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="@dimen/qb_px_50"
+        android:layout_marginLeft="@dimen/qb_px_30"
+        android:layout_marginRight="@dimen/qb_px_30"
+        android:background="@drawable/selector_btn"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:minHeight="45dp"
+        android:padding="8dp"
+        android:text="@string/confirm"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:enableShrink="false"
+        app:endCompleteDrawable="@drawable/ic_successful"
+        app:endFailDrawable="@drawable/ic_fail"
+        app:loadingDrawablePosition="Start" />
+
+
+
+</LinearLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <declare-styleable name="SwitchButton" tools:ignore="ResourceName">
+        <!-- 是否选中 -->
+        <attr name="android:checked" />
+        <!-- 是否禁用 -->
+        <attr name="android:enabled" />
+    </declare-styleable>
+    <declare-styleable name="LoopView">
+        <attr name="lineColor" format="color"/>
+        <attr name="topBottomTextColor" format="color"/>
+        <attr name="centerTextColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="canLoop" format="boolean"/>
+        <attr name="initPosition" format="integer"/>
+        <attr name="drawItemCount" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircularProgressDrawable">
+        <attr name="cpd_padding" format="reference|dimension"/>
+        <attr name="cpd_initialAngle" format="reference|integer"/>
+        <attr name="cpd_maxSweepAngle" format="reference|integer"/>
+        <attr name="cpd_minSweepAngle" format="reference|integer"/>
+        <attr name="cpd_strokeSize" format="reference|dimension"/>
+        <attr name="cpd_strokeColor" format="reference|color"/>
+        <attr name="cpd_strokeSecondaryColor" format="reference|color"/>
+        <attr name="cpd_strokeColors" format="reference"/>
+        <attr name="cpd_reverse" format="boolean"/>
+        <attr name="cpd_rotateDuration" format="reference|integer"/>
+        <attr name="cpd_transformDuration" format="reference|integer"/>
+        <attr name="cpd_keepDuration" format="reference|integer"/>
+        <attr name="cpd_transformInterpolator" format="reference"/>
+        <attr name="cpd_inAnimDuration" format="reference|integer"/>
+        <attr name="cpd_outAnimDuration" format="reference|integer"/>
+        <attr name="cpd_inStepColors" format="reference"/>
+        <attr name="cpd_inStepPercent" format="float"/>
+        <attr name="pv_progressMode"/>
+    </declare-styleable>
+
+    <!--支付密码-->
+    <declare-styleable name="CodeView">
+        <attr name="length" format="integer" />
+        <attr name="borderColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="dividerColor" format="color" />
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="code" format="string" />
+        <attr name="codeColor" format="color" />
+        <attr name="pointRadius" format="dimension" />
+        <attr name="size" format="dimension" />
+        <attr name="showType" format="enum">
+            <enum name="word" value="1" />
+            <enum name="password" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="NestedRadioGroup">
+        <attr name="checkedButton" format="reference" />
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BaseRadioLayout">
+        <attr name="checked" format="boolean" />
+    </declare-styleable>
+
+    <!-- 自定义数字进度条 -->
+    <declare-styleable name="NumberProgressBar" tools:ignore="ResourceName">
+        <attr name="pb_progress" format="integer"/>
+        <attr name="pb_maxProgress" format="integer"/>
+
+        <attr name="pb_textSize" format="dimension"/>
+        <attr name="pb_textColor" format="color"/>
+
+        <attr name="pb_textOffset" format="dimension"/>
+
+        <attr name="pb_unreachedColor" format="color"/>
+        <attr name="pb_reachedColor" format="color"/>
+
+        <attr name="pb_reachedHeight" format="dimension"/>
+        <attr name="pb_unreachedHeight" format="dimension"/>
+
+    </declare-styleable>
+
+    <!-- 缩放的 ImageView -->
+    <declare-styleable name="ScaleImageView">
+        <!-- 缩放比例 -->
+        <attr name="scaleRatio" format="float" />
+    </declare-styleable>
+
+</resources>

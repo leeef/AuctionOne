@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/qb_px_5">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_60"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/white">
+
+        <com.allen.library.CircleImageView
+            android:id="@+id/item_shop_comment_top_img"
+            android:layout_width="@dimen/qb_px_40"
+            android:layout_height="@dimen/qb_px_40"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:layout_marginRight="@dimen/qb_px_15"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_shop_comment_top_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/item_shop_comment_top_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/qb_px_5"
+                android:textSize="@dimen/qb_px_10"
+                android:textColor="@color/font_gray_light"/>
+
+
+        </LinearLayout>
+
+        <com.willy.ratingbar.ScaleRatingBar
+            android:id="@+id/item_shop_comment_top_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            app:srb_numStars="5"
+            app:srb_minimumStars="1"
+            app:srb_rating="2"
+            app:srb_starWidth="@dimen/qb_px_12"
+            app:srb_starHeight="@dimen/qb_px_12"
+            app:srb_starPadding="@dimen/qb_px_1"
+            app:srb_stepSize="0.5"
+            app:srb_isIndicator="false"
+            app:srb_clickable="false"
+            app:srb_scrollable="false"
+            app:srb_clearRatingEnabled="false"
+            app:srb_drawableEmpty="@mipmap/xing_kong"
+            app:srb_drawableFilled="@mipmap/xing"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_shop_comment_top_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:lineSpacingMultiplier="1.3"
+        android:paddingLeft="@dimen/qb_px_15"
+        android:paddingRight="@dimen/qb_px_15"
+        android:paddingTop="@dimen/qb_px_10"
+        android:paddingBottom="@dimen/qb_px_10"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_120"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:paddingTop="@dimen/qb_px_10"
+        android:paddingBottom="@dimen/qb_px_10">
+
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:layout_marginRight="@dimen/qb_px_7"
+            android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/qb_px_7"
+            android:layout_marginRight="@dimen/qb_px_7"
+            android:scaleType="centerCrop"/>
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/qb_px_7"
+            android:layout_marginRight="@dimen/qb_px_15"
+            android:scaleType="centerCrop"/>
+
+    </LinearLayout>
+
+</LinearLayout>
