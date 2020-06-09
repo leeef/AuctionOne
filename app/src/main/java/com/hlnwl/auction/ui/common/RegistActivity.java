@@ -1,6 +1,5 @@
 package com.hlnwl.auction.ui.common;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -15,6 +14,8 @@ import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.BaseDialog;
 import com.hlnwl.auction.base.MyActivity;
 import com.hlnwl.auction.bean.NoDataBean;
+import com.hlnwl.auction.bean.user.LoginBean;
+import com.hlnwl.auction.message.LoginMessage;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.my.PhoneUtil;
@@ -23,8 +24,9 @@ import com.hlnwl.auction.view.dialog.WaitDialog;
 import com.hlnwl.auction.view.timecount.TimeCount;
 import com.hlnwl.auction.view.widget.ClearEditText;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -147,7 +149,7 @@ public class RegistActivity extends MyActivity {
 
     private void getCode(String phone) {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .getVerCode(SPUtils.getLanguage(),phone, "0"), this)
+                .getVerCode(SPUtils.getLanguage(), phone, "0"), this)
                 .subscribe(new ApiObserver<NoDataBean>() {
                                @Override
                                protected void success(NoDataBean data) {
@@ -175,7 +177,7 @@ public class RegistActivity extends MyActivity {
      * */
     private void getRegist(String phone, String ver_code, String pwd, String pwd_sure) {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .regist(SPUtils.getLanguage(),phone, ver_code, pwd, pwd_sure), this)
+                .regist(SPUtils.getLanguage(), phone, ver_code, pwd, pwd_sure), this)
                 .subscribe(new ApiObserver<NoDataBean>() {
                                @Override
                                protected void success(NoDataBean data) {
@@ -193,9 +195,54 @@ public class RegistActivity extends MyActivity {
                                    getHandler().postDelayed(new Runnable() {
                                        @Override
                                        public void run() {
+                                           toast(data.getMsg());
+                                           dialog.dismiss();
+                                           //自动登录
+                                           sign(phone, pwd);
+                                       }
+                                   }, 1000);
+                               }
+
+                               @Override
+                               public void onError(Throwable t) {
+                                   super.onError(t);
+                                   mRegistButton.fail();
+                                   toast(t.getMessage());
+                               }
+                           }
+                );
+    }
+
+    private void sign(String account, String pwd) {
+        RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
+                .login(SPUtils.getLanguage(), account, pwd), this)
+                .subscribe(new ApiObserver<LoginBean>() {
+                               @Override
+                               protected void success(LoginBean data) {
+                                   boolean isSuccess = MessageUtils.setCode(getActivity(),
+                                           data.getStatus(), data.getMsg());
+                                   if (!isSuccess) {
+                                       mRegistButton.fail();
+                                       toast(getResources().getString(R.string.login_fail));
+                                       finish();
+                                       return;
+                                   }
+                                   SPUtils.setLogin("login");
+                                   SPUtils.setToken(data.getData().get(0).getToken());
+                                   SPUtils.setUserId(data.getData().get(0).getId());
+                                   SPUtils.setChant(StringUtils.null2Length0(data.getData().get(0).getChant()));
+                                   EventBus.getDefault().post(new LoginMessage("update"));
+                                   final BaseDialog dialog = new WaitDialog.Builder(getActivity())
+                                           .setMessage(getResources().getString(R.string.logining)) // 消息文本可以不用填写
+                                           .show();
+
+                                   getHandler().postDelayed(new Runnable() {
+                                       @Override
+                                       public void run() {
                                            mRegistButton.complete();
                                            toast(data.getMsg());
                                            dialog.dismiss();
+                                           setResult(100);
                                            finish();
                                        }
                                    }, 1000);
@@ -206,6 +253,7 @@ public class RegistActivity extends MyActivity {
                                    super.onError(t);
                                    mRegistButton.fail();
                                    toast(t.getMessage());
+                                   finish();
                                }
                            }
                 );

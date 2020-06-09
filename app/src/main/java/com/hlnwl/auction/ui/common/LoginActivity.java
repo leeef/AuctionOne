@@ -1,7 +1,9 @@
 package com.hlnwl.auction.ui.common;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.bakerj.rxretrohttp.RxRetroHttp;
 import com.bakerj.rxretrohttp.subscriber.ApiObserver;
@@ -23,7 +25,6 @@ import com.hlnwl.auction.view.widget.ClearEditText;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -80,10 +81,10 @@ public class LoginActivity extends MyActivity {
                     return;
                 }
                 mSignInButton.start();
-                sign(mLoginAccount.getText().toString().trim(),mLoginPwd.getText().toString().trim());
+                sign(mLoginAccount.getText().toString().trim(), mLoginPwd.getText().toString().trim());
                 break;
             case R.id.login_register:
-                startActivity(RegistActivity.class);
+                startActivityForResult(new Intent(this, RegistActivity.class), 100);
                 break;
             case R.id.login_forget_pwd:
                 startActivity(ForgetPwdActivity.class);
@@ -91,9 +92,17 @@ public class LoginActivity extends MyActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == 100) {
+            finish();
+        }
+    }
+
     private void sign(String account, String pwd) {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .login(SPUtils.getLanguage(),account, pwd), this)
+                .login(SPUtils.getLanguage(), account, pwd), this)
                 .subscribe(new ApiObserver<LoginBean>() {
                                @Override
                                protected void success(LoginBean data) {

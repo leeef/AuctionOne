@@ -20,10 +20,7 @@ import android.widget.RadioGroup;
 import com.alipay.sdk.app.PayTask;
 import com.allen.library.CircleImageView;
 import com.bakerj.rxretrohttp.RxRetroHttp;
-import com.bakerj.rxretrohttp.interfaces.IBaseApiAction;
 import com.bakerj.rxretrohttp.subscriber.ApiObserver;
-import com.blankj.utilcode.util.AppUtils;
-import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.flod.loadingbutton.LoadingButton;
@@ -35,16 +32,12 @@ import com.hlnwl.auction.R;
 import com.hlnwl.auction.app.MyApplication;
 import com.hlnwl.auction.base.BaseDialog;
 import com.hlnwl.auction.base.MyActivity;
-import com.hlnwl.auction.bean.NoDataBean;
 import com.hlnwl.auction.bean.pay.AuthResult;
-
 import com.hlnwl.auction.bean.pay.WeiXinPay;
 import com.hlnwl.auction.bean.user.shop.JoinBean;
 import com.hlnwl.auction.message.LoginMessage;
 import com.hlnwl.auction.message.WeChatMessage;
 import com.hlnwl.auction.ui.common.CommonWebActivity;
-import com.hlnwl.auction.ui.home.QuestionnaireActivity;
-import com.hlnwl.auction.ui.user.bid.BidOrderActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.my.PhoneUtil;
@@ -57,7 +50,6 @@ import com.hlnwl.auction.view.dialog.PayDialog;
 import com.hlnwl.auction.view.dialog.WaitDialog;
 import com.hlnwl.auction.view.widget.ClearEditText;
 import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelpay.PayReq;
@@ -126,7 +118,7 @@ public class ShopJoinActivity extends MyActivity {
     private Bitmap dianpu;
     private String genre = "1";
 
-    private String idzheng = "",idfan = "";
+    private String idzheng = "", idfan = "";
 
     private IWXAPI wxAPI;
     private static final int SDK_PAY_FLAG = 1;
@@ -221,7 +213,7 @@ public class ShopJoinActivity extends MyActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 switch (checkedId) {
                     case R.id.shop_join_jp:
-                       // mShopJoinPay.setText(StringsUtils.getString(R.string.shop_join_pay) + "  " + SPUtils.getJing() + StringsUtils.getString(R.string.money_unit));
+                        // mShopJoinPay.setText(StringsUtils.getString(R.string.shop_join_pay) + "  " + SPUtils.getJing() + StringsUtils.getString(R.string.money_unit));
                         break;
                     case R.id.shop_join_jl:
                         //mShopJoinPay.setText(StringsUtils.getString(R.string.shop_join_pay) + "  " + SPUtils.getLou() + StringsUtils.getString(R.string.money_unit));
@@ -421,8 +413,6 @@ public class ShopJoinActivity extends MyActivity {
             case R.id.shop_join_pay:
 
 
-
-
                 if (StringUtils.isEmpty(mShopJoinName.getText().toString().trim())) {
                     ToastUtils.showShort(StringUtils.getString(R.string.name_null));
                     return;
@@ -479,11 +469,8 @@ public class ShopJoinActivity extends MyActivity {
                         .show();
 
 
-
-
-
                 Join("1");
-               // goPayForJoin();
+                // goPayForJoin();
                 break;
         }
     }
@@ -512,12 +499,11 @@ public class ShopJoinActivity extends MyActivity {
                                         if (position == 0) {
 
 
-
-                                            PictureUtile.addPic(ShopJoinActivity.this,datas,1);
+                                            PictureUtile.addPic(ShopJoinActivity.this, datas, 1, mode);
                                         } else if (position == 1) {
 
 
-                                            PictureUtile.getCamera(ShopJoinActivity.this,datas);
+                                            PictureUtile.getCamera(ShopJoinActivity.this, datas, mode);
                                         }
                                     }
 

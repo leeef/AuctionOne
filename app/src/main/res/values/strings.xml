@@ -141,12 +141,6 @@
     <string name="second">秒</string>
 
 
-
-
-
-
-
-
     <string name="home_title">竞拍商城</string>
     <string name="notice">通知:</string>
     <string name="null_data">暂无数据</string>
@@ -377,5 +371,6 @@
     <string name="pay_fail">支付失败</string>
     <string name="photo_all">所有图片</string>
     <string name="photo_title">图片选择</string>
+    <string name="login_fail">登陆失败</string>
 
 </resources>

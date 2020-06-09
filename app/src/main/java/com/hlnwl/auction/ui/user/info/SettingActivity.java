@@ -206,7 +206,7 @@ public class SettingActivity extends MyActivity {
                                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  //注意本行的FLAG设置
                                 startActivity(intent);
-                                ActivityUtils.finishToActivity(IndexActivity.class, true);
+//                                ActivityUtils.finishToActivity(IndexActivity.class, true);
                             }
 
                             @Override

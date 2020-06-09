@@ -1,11 +1,13 @@
 package com.hlnwl.auction.base;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 
 import com.gyf.barlibrary.ImmersionBar;
+import com.hjq.language.LanguagesManager;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
@@ -78,6 +80,12 @@ public abstract class UIActivity extends BaseActivity
         mSwipeBackHelper.setSwipeBackThreshold(0.3f);
         // 设置底部导航条是否悬浮在内容上，默认值为 false
         mSwipeBackHelper.setIsNavigationBarOverlap(false);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        // 国际化适配（绑定语种）
+        super.attachBaseContext(LanguagesManager.attach(newBase));
     }
 
     /**

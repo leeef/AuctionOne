@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,21 +12,19 @@ import android.view.ViewGroup;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.bakerj.rxretrohttp.interfaces.IBaseApiAction;
 import com.trello.rxlifecycle3.LifecycleTransformer;
 import com.trello.rxlifecycle3.android.FragmentEvent;
 import com.trello.rxlifecycle3.components.support.RxFragment;
 
-import java.lang.reflect.Field;
 import java.util.Random;
 
 /**
- *    author : Android 轮子哥
- *    github : https://github.com/getActivity/AndroidProject
- *    time   : 2018/10/18
- *    desc   : Fragment 懒加载基类
+ * author : Android 轮子哥
+ * github : https://github.com/getActivity/AndroidProject
+ * time   : 2018/10/18
+ * desc   : Fragment 懒加载基类
  */
 public abstract class BaseLazyFragment<A extends BaseActivity> extends RxFragment implements IBaseApiAction {
 
@@ -100,7 +97,7 @@ public abstract class BaseLazyFragment<A extends BaseActivity> extends RxFragmen
             if (isFragmentVisible) {
                 initLazyLoad();
             }
-        }else {
+        } else {
             initLazyLoad();
         }
     }
@@ -114,7 +111,7 @@ public abstract class BaseLazyFragment<A extends BaseActivity> extends RxFragmen
         if (isVisibleToUser && mRootView != null) {
             if (!isLazyLoad) {
                 initLazyLoad();
-            }else {
+            } else {
                 // 从不可见到可见
                 onRestart();
             }
@@ -134,9 +131,10 @@ public abstract class BaseLazyFragment<A extends BaseActivity> extends RxFragmen
     /**
      * 从可见的状态变成不可见状态，再从不可见状态变成可见状态时回调
      */
-    protected void onRestart() {}
+    protected void onRestart() {
+    }
 
-    @Override
+/*    @Override
     public void onDetach() {
         super.onDetach();
         // 解决java.lang.IllegalStateException: Activity has been destroyed 的错误
@@ -148,8 +146,10 @@ public abstract class BaseLazyFragment<A extends BaseActivity> extends RxFragmen
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
+    }*/
 
     protected void initFragment() {
         initView();
@@ -218,7 +218,7 @@ public abstract class BaseLazyFragment<A extends BaseActivity> extends RxFragmen
             // 随机生成请求码，这个请求码在 0 - 255 之间
             mActivityRequestCode = new Random().nextInt(255);
             startActivityForResult(intent, mActivityRequestCode, options);
-        }else {
+        } else {
             // 回调还没有结束，所以不能再次调用此方法，这个方法只适合一对一回调，其他需求请使用原生的方法实现
             throw new IllegalArgumentException("Error, The callback is not over yet");
         }
