@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title" />
+
+    <LinearLayout
+        android:id="@+id/shop_join_chose"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_50"
+        android:layout_marginTop="@dimen/qb_px_1"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="@dimen/qb_px_110"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/qb_px_15"
+            android:text="@string/shop_type" />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/type_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/qb_px_1"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="@dimen/qb_px_110"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/qb_px_15"
+            android:text="@string/shop_price" />
+
+        <TextView
+            android:id="@+id/shop_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.21￥" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/qb_px_1"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="@dimen/qb_px_110"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/qb_px_15"
+            android:text="@string/pay_type1" />
+    </LinearLayout>
+
+    <com.hlnwl.auction.view.radiogrouplib.NestedRadioGroup
+        android:id="@+id/pay_dialog_nestedGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_1"
+                android:layout_marginLeft="@dimen/qb_px_15"
+                android:layout_marginRight="@dimen/qb_px_15"
+                android:background="@color/line" />
+
+
+            <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
+                android:id="@+id/pay_dialog_alipay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_45"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/qb_px_20"
+                        android:src="@mipmap/zhifubao" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/qb_px_10"
+                        android:gravity="center_vertical"
+                        android:text="@string/alipay_pay"
+                        android:textColor="@color/selector_pay"
+                        android:textSize="@dimen/qb_px_15" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/qb_px_20"
+                        android:layout_marginRight="@dimen/qb_px_20"
+                        android:background="@drawable/checkbox_pay" />
+                </LinearLayout>
+            </com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_1"
+                android:layout_marginLeft="@dimen/qb_px_15"
+                android:layout_marginRight="@dimen/qb_px_15"
+                android:background="@color/line" />
+
+            <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
+                android:id="@+id/pay_dialog_wechat"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_50"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/qb_px_20"
+                        android:src="@mipmap/weixin" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/qb_px_10"
+                        android:gravity="center_vertical"
+                        android:text="@string/wechatpay_pay"
+                        android:textColor="@color/selector_pay"
+                        android:textSize="@dimen/qb_px_15" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/qb_px_20"
+                        android:layout_marginRight="@dimen/qb_px_20"
+                        android:background="@drawable/checkbox_pay" />
+
+                </LinearLayout>
+
+            </com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout>
+
+
+        </LinearLayout>
+
+
+    </com.hlnwl.auction.view.radiogrouplib.NestedRadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_1"
+        android:background="@color/line" />
+
+
+    <com.flod.loadingbutton.LoadingButton
+        android:id="@+id/shop_join_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_margin="@dimen/qb_px_30"
+        android:background="@drawable/selector_btn"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:minHeight="45dp"
+        android:padding="8dp"
+        android:text="@string/sure_pay"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:enableShrink="false"
+        app:endCompleteDrawable="@drawable/ic_successful"
+        app:endFailDrawable="@drawable/ic_fail"
+        app:loadingDrawablePosition="Start" />
+
+
+</LinearLayout>

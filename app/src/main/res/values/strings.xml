@@ -163,11 +163,11 @@
     <string name="withdrawal">提现</string>
     <string name="customer_text">我们将全心全意为您提供满意周到的咨询服务\n也希望您能支持和监督我们的服务</string>
     <string name="call">拨打</string>
-    <string name="goods_title">产品标题</string>
-    <string name="input_goods_title">请输入产品标题</string>
-    <string name="goods_specification">产品规格</string>
-    <string name="goods_description">产品描述</string>
-    <string name="input_goods_description">请输入产品描述</string>
+    <string name="goods_title">藏品标题</string>
+    <string name="input_goods_title">请输入藏品标题</string>
+    <string name="goods_specification">藏品规格</string>
+    <string name="goods_description">藏品描述</string>
+    <string name="input_goods_description">请输入藏品描述</string>
     <string name="weight">重量</string>
     <string name="input_weighte">请输入产品重量</string>
     <string name="place_of_origin">产地</string>
@@ -222,7 +222,7 @@
     <string name="spec_name">规格拟词</string>
     <string name="spec_content">规格内容</string>
     <string name="spec_null">请完善规格信息或删除多余规格</string>
-    <string name="good_category">产品分类</string>
+    <string name="good_category">藏品分类</string>
     <string name="sel_category">选择分类</string>
     <string name="cate_null">暂未选择二级分类</string>
     <string name="joining">入驻中...</string>
@@ -308,6 +308,7 @@
     <string name="order_detail">订单详情</string>
     <string name="order_sn">订单编号:</string>
     <string name="pay_type">支付方式:</string>
+    <string name="pay_type1">支付方式</string>
     <string name="add_time">创建时间:</string>
     <string name="pay_time">支付时间:</string>
     <string name="send_time">发货时间:</string>
@@ -318,7 +319,7 @@
 
     <string name="release_comment">发表评论</string>
     <string name="comment_null">意见与建议不能为空</string>
-    <string name="goods_pic">产品图片</string>
+    <string name="goods_pic">藏品图片</string>
     <string name="comment_pic">评论图片</string>
     <string name="paizhao">拍照</string>
     <string name="querenfahuo">确认发货</string>
@@ -372,5 +373,9 @@
     <string name="photo_all">所有图片</string>
     <string name="photo_title">图片选择</string>
     <string name="login_fail">登陆失败</string>
+    <string name="shop_to_choose">店铺选择</string>
+    <string name="shop_type">店铺分类</string>
+    <string name="shop_price">店铺价格:</string>
+    <string name="chose_pay_type_sign">您暂未选择支付方式</string>
 
 </resources>

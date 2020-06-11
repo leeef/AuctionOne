@@ -2,7 +2,6 @@ package com.hlnwl.auction.app;
 
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.bakerj.rxretrohttp.RxRetroHttp;
-
 import com.blankj.utilcode.util.StringUtils;
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -23,34 +21,41 @@ import com.fengchen.uistatus.controller.IUiStatusController;
 import com.fengchen.uistatus.listener.OnCompatRetryListener;
 import com.fengchen.uistatus.listener.OnRetryListener;
 import com.hjq.language.LanguagesManager;
+import com.hlnwl.auction.BuildConfig;
 import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.UIApplication;
-import com.hlnwl.auction.utils.http.MyApiResult;
+import com.hlnwl.auction.utils.http.JsonUtil;
+import com.hlnwl.auction.utils.http.LogUtils;
 import com.hlnwl.auction.utils.sp.SPUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 
-import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Locale;
 
 import okhttp3.HttpUrl;
-import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+import okio.Buffer;
 
 /**
  * 版权：hlnwl 版权所有
  *
  * @author yougui
- *         版本：1.0
- *         创建日期：2019
- *         描述：
+ * 版本：1.0
+ * 创建日期：2019
+ * 描述：
  */
 
 public class MyApplication extends UIApplication {
-    public static MyApplication   mContext;
-    public static String BaseUrl="http://www.yicang123.com";
-//public static String BaseUrl="http:/192.168.0.9:8060";
+    public static MyApplication mContext;
+    public static String BaseUrl = "http://www.yicang123.com";
+
+    public static String TAG = "LogInterceptor";
+
+    //public static String BaseUrl="http:/192.168.0.9:8060";
     @Override
     public void onCreate() {
         super.onCreate();
@@ -70,6 +75,7 @@ public class MyApplication extends UIApplication {
         LanguagesManager.init(this);
         CrashReport.initCrashReport(getApplicationContext(), "546a6019bf", false);
     }
+
     @Override
     protected void attachBaseContext(Context base) {
         // 国际化适配（绑定语种）
@@ -77,49 +83,66 @@ public class MyApplication extends UIApplication {
     }
 
     private void initHttp() {
-//        RxRetroHttp.init(this)
-////                .setApiResultClass(MyApiResult.class)
-//                .setBaseUrl(BaseUrl+"/index/")
-//                .setDefaultErrMsg("服务器开小差了")
-//                .generateRetroClient();
 
-        RxRetroHttp.init(this)
-//                .setApiResultClass(MyApiResult.class)
-
-                .setBaseUrl(BaseUrl+"/index/")
+        RxRetroHttp.init(this, BuildConfig.DEBUG)
+                .setBaseUrl(BaseUrl + "/index/")
                 .setDefaultErrMsg("服务器开小差了");
 
 
         String selectedLanguage = StringUtils.null2Length0(SPUtils.getLanguage());
-        if (selectedLanguage.length()==0){
-            String languageName=mContext.getCurrentLauguageUseResources() ;
-            if (languageName.equals("zh")){
-                selectedLanguage="1";
+        if (selectedLanguage.length() == 0) {
+            String languageName = mContext.getCurrentLauguageUseResources();
+            if (languageName.equals("zh")) {
+                selectedLanguage = "1";
                 SPUtils.setLanguage("1");
-            }else {
-                selectedLanguage="2";
+            } else {
+                selectedLanguage = "2";
                 SPUtils.setLanguage("2");
             }
         }
         OkHttpClient.Builder client = RxRetroHttp.getOkHttpClientBuilder();
 
         String finalSelectedLanguage = selectedLanguage;
-        client.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request originalRequest = chain.request();
-                HttpUrl originalHttpUrl = originalRequest.url();
+        client.addInterceptor(chain -> {
 
-                HttpUrl url = originalHttpUrl.newBuilder()
-                        .addQueryParameter("lang", finalSelectedLanguage)
-                        .build();
-                Request request = originalRequest.newBuilder()
-                        .url(url)
-                        .method(originalRequest.method(), originalRequest.body())
-                        .build();
+            Request originalRequest = chain.request();
+            long startTime = System.currentTimeMillis();
+            HttpUrl originalHttpUrl = originalRequest.url();
+            HttpUrl url = originalHttpUrl.newBuilder()
+                    .addQueryParameter("lang", finalSelectedLanguage)
+                    .build();
+            Request request = originalRequest.newBuilder()
+                    .url(url)
+                    .method(originalRequest.method(), originalRequest.body())
+                    .build();
 
-                return chain.proceed(request);
+            Response response = chain.proceed(request);
+            MediaType mediaType = response.body().contentType();
+            long endTime = System.currentTimeMillis();
+            long duration = endTime - startTime;
+            StringBuilder content = new StringBuilder();
+            content.append(response.body().string());
+            LogUtils.logi(TAG, "\n");
+            LogUtils.logi(TAG, "----------Start----------------");
+            LogUtils.logi(TAG, "| " + request.url());
+            StringBuilder body = new StringBuilder();
+            RequestBody requestBody = request.body();
+            if (requestBody != null) {
+                Buffer buffer = new Buffer();
+                requestBody.writeTo(buffer);
+                Charset charset = Charset.forName("UTF-8");
+                MediaType contentType = requestBody.contentType();
+                if (contentType != null) {
+                    charset = contentType.charset(Charset.forName("UTF-8"));
+                }
+                body.append(buffer.readString(charset));
             }
+            LogUtils.logi(TAG, "| Request:\n" + JsonUtil.formatJson(body.toString()));
+            LogUtils.logi(TAG, "| Response:\n" + JsonUtil.formatJson(JsonUtil.decodeUnicode(content.toString())));
+            LogUtils.logi(TAG, "----------End:" + duration + "毫秒----------");
+            return response.newBuilder()
+                    .body(okhttp3.ResponseBody.create(mediaType, content.toString()))
+                    .build();
         });
         RxRetroHttp.getInstance().generateRetroClient();
 
@@ -248,7 +271,7 @@ public class MyApplication extends UIApplication {
         return mContext;
     }
 
-    private String getCurrentLauguageUseResources(){
+    private String getCurrentLauguageUseResources() {
         /**
          * 获得当前系统语言
          */

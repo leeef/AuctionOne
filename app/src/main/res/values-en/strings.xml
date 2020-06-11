@@ -167,11 +167,11 @@
     <string name="withdrawal">Withdraw</string>
     <string name="customer_text">We will wholeheartedly provide you with personalized service of consulting services Also hope you can support and supervision of our service</string>
     <string name="call">Call</string>
-    <string name="goods_title">Product Title</string>
-    <string name="input_goods_title">Please enter the product title.</string>
-    <string name="goods_specification">Product Specification</string>
-    <string name="goods_description">Product Description</string>
-    <string name="input_goods_description">Please enter the product description</string>
+    <string name="goods_title">Collection Title</string>
+    <string name="input_goods_title">Please enter the collection title.</string>
+    <string name="goods_specification">Collection Specification</string>
+    <string name="goods_description">Collection Description</string>
+    <string name="input_goods_description">Please enter the collection description</string>
     <string name="weight">weight</string>
     <string name="input_weighte">Please enter the weight of the product.</string>
     <string name="place_of_origin">Place of Origin</string>
@@ -225,8 +225,8 @@
     <string name="input_spec_content">please enter the specifications</string>
     <string name="spec_name">SpecificationWord</string>
     <string name="spec_content">specificationContent</string>
-    <string name="spec_null">Please improve specifications or delete redundant specifications</string>
-    <string name="good_category">productClassification</string>
+    <string name="spec_null">Please imcprove specifications or delete redundant specifications</string>
+    <string name="good_category">collectionClassification</string>
     <string name="sel_category">selectiveClassification</string>
     <string name="cate_null">no secondary classification has been selected yet</string>
     <string name="joining">entry...</string>
@@ -300,6 +300,7 @@
     <string name="order_detail">order details</string>
     <string name="order_sn">order number:</string>
     <string name="pay_type">payment method:</string>
+    <string name="pay_type1">payment method</string>
     <string name="add_time">creation time:</string>
     <string name="pay_time">payment time:</string>
     <string name="send_time">delivery time:</string>
@@ -310,7 +311,7 @@
 
     <string name="release_comment">comments</string>
     <string name="comment_null">opinions and suggestions should not be empty</string>
-    <string name="goods_pic">product pictures</string>
+    <string name="goods_pic">collection pictures</string>
     <string name="comment_pic">comment-pictures</string>
     <string name="paizhao">photograph</string>
     <string name="querenfahuo">confirmation of delivery</string>
@@ -378,4 +379,9 @@
     <string name="photo_all">All images</string>
     <string name="photo_title">Pictures to choose</string>
     <string name="login_fail">login failed</string>
+
+    <string name="shop_to_choose">Shop to choose</string>
+    <string name="shop_type">Store classification</string>
+    <string name="shop_price">The store price:</string>
+    <string name="chose_pay_type_sign">You have not yet chosen the mode of payment</string>
 </resources>

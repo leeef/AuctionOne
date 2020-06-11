@@ -11,9 +11,7 @@ import com.hjq.bar.TitleBar;
 import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.MyActivity;
 import com.hlnwl.auction.bean.QuestionListBean;
-import com.hlnwl.auction.bean.QuestionnairBean;
-import com.hlnwl.auction.bean.home.SpecialExhibitionBean;
-import com.hlnwl.auction.ui.user.shop.ShopJoinActivity;
+import com.hlnwl.auction.ui.user.shop.SelectShopTypeActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.sp.SPUtils;
@@ -110,7 +108,7 @@ public class QuestionnaireActivity extends MyActivity implements OnRefreshListen
     private void getData(String style) {
 
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .getQuestionList(SPUtils.getLanguage(),mPage, SPUtils.getUserId(),SPUtils.getToken()), this)
+                .getQuestionList(SPUtils.getLanguage(), mPage, SPUtils.getUserId(), SPUtils.getToken()), this)
                 .subscribe(new ApiObserver<QuestionListBean>() {
                                @Override
                                protected void success(QuestionListBean data) {
@@ -182,23 +180,22 @@ public class QuestionnaireActivity extends MyActivity implements OnRefreshListen
     @OnClick(R.id.submit)
     public void onViewClicked() {
 
-        for (int i = 0; i <mList.size() ; i++) {
+        for (int i = 0; i < mList.size(); i++) {
 
 
-            if(mAdapter.getMap().size() != mList.size()){
+            if (mAdapter.getMap().size() != mList.size()) {
                 toast("请选择答题");
                 return;
             }
-            if(mList.get(i).getCheck() != Integer.parseInt(mList.get(i).getType())){
+            if (mList.get(i).getCheck() != Integer.parseInt(mList.get(i).getType())) {
                 toast("答案有误请重新申请或者联系对应工作人员");
                 return;
             }
 
 
-
         }
 
-        startActivity(ShopJoinActivity.class);
+        startActivity(SelectShopTypeActivity.class);
         finish();
     }
 }

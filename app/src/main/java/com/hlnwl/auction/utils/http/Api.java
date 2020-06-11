@@ -12,11 +12,11 @@ import com.hlnwl.auction.bean.goods.OfferBean;
 import com.hlnwl.auction.bean.home.HomeBean;
 import com.hlnwl.auction.bean.home.NewHand;
 import com.hlnwl.auction.bean.home.NewsBean;
-
 import com.hlnwl.auction.bean.home.SpecialExhibitionBean;
 import com.hlnwl.auction.bean.shop.ShopGoodsBean;
 import com.hlnwl.auction.bean.shop.ShopListBean;
 import com.hlnwl.auction.bean.shop.ShopOrderBean;
+import com.hlnwl.auction.bean.shop.ShopTypeBean;
 import com.hlnwl.auction.bean.user.LoginBean;
 import com.hlnwl.auction.bean.user.MineBean;
 import com.hlnwl.auction.bean.user.bid.BidOrderBean;
@@ -31,15 +31,12 @@ import com.hlnwl.auction.bean.user.order.OrderDetailBean;
 import com.hlnwl.auction.bean.user.shop.GoodMsgBean;
 import com.hlnwl.auction.bean.user.shop.JoinBean;
 import com.hlnwl.auction.bean.user.shop.MyGoodsBean;
-import com.hlnwl.auction.utils.sp.SPUtils;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /**
@@ -55,7 +52,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("Interfun/getcode")
     Observable<NoDataBean> getVerCode(@Field("lang") String lang,
-                                    @Field("mobile") String mobile,
+                                      @Field("mobile") String mobile,
                                       @Field("type") String type);
 
     @FormUrlEncoded
@@ -86,6 +83,7 @@ public interface Api {
                                       @Field("userid") String userid,
                                       @Field("token") String token,
                                       @Field("img") String img);
+
     @FormUrlEncoded
     @POST("usercenter/up_info")
     Observable<NoDataBean> modifyNickName(@Field("lang") String lang,
@@ -280,7 +278,6 @@ public interface Api {
                                          @Field("keystr") String keystr);
 
 
-
     // 展销专场
     @FormUrlEncoded
     @POST("goods/excate")
@@ -288,15 +285,13 @@ public interface Api {
                                                                @Field("page") int page);
 
 
-
     // 展销专场 商品列表
     @FormUrlEncoded
     @POST("goods/exlist")
     Observable<GoodsListBean> getGoodsList1(@Field("lang") String lang,
-                                           @Field("page") int page,
-                                           @Field("cid") String cid
-                                          );
-
+                                            @Field("page") int page,
+                                            @Field("cid") String cid
+    );
 
 
     // 问卷调查
@@ -307,6 +302,11 @@ public interface Api {
                                                  @Field("userid") String userid,
                                                  @Field("token") String token);
 
+
+    // 店铺分类
+    @FormUrlEncoded
+    @POST("merchant/shopselect")
+    Observable<ShopTypeBean> getShopType(@Field("userid") String id, @Field("token") String token);
 
 
     @FormUrlEncoded
@@ -421,9 +421,9 @@ public interface Api {
     @FormUrlEncoded
     @POST("merchant/gdel")
     Observable<NoDataBean> delGoods(@Field("lang") String lang,
-                                      @Field("userid") String userid,
-                                      @Field("token") String token,
-                                      @Field("id") String id);
+                                    @Field("userid") String userid,
+                                    @Field("token") String token,
+                                    @Field("id") String id);
 
     @FormUrlEncoded
     @POST("merchant/gedit")
@@ -435,22 +435,20 @@ public interface Api {
     @FormUrlEncoded
     @POST("merchant/edit_good")
     Observable<NoDataBean> editGood(@Field("lang") String lang,
-                                   @Field("userid") String userid,
-                                   @Field("token") String token,
+                                    @Field("userid") String userid,
+                                    @Field("token") String token,
                                     @Field("id") String id,
-                                   @Field("is_bid") String is_bid,
-                                   @Field("name") String name,
-                                   @Field("cid") String cid,
-                                   @Field("price") String price,
-                                   @Field("low_price") String low_price,
-                                   @Field("bid_price") String bid_price,
-                                   @Field("content") String content,
-                                   @Field("speci") String speci,
-                                   @Field("pic") String pic,
+                                    @Field("is_bid") String is_bid,
+                                    @Field("name") String name,
+                                    @Field("cid") String cid,
+                                    @Field("price") String price,
+                                    @Field("low_price") String low_price,
+                                    @Field("bid_price") String bid_price,
+                                    @Field("content") String content,
+                                    @Field("speci") String speci,
+                                    @Field("pic") String pic,
                                     @Field("new_pic") String new_pic,
-                                   @Field("endtime") String endtime);
-
-
+                                    @Field("endtime") String endtime);
 
 
     @GET("index/novice")

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hlnwl.auction">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <!-- 写sd卡 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -13,20 +13,21 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
 
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:name="com.hlnwl.auction.app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:resizeableActivity="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:resizeableActivity="true"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:replace="label,allowBackup"
-        android:networkSecurityConfig="@xml/network_security_config">
+        tools:replace="label,allowBackup">
 
         <meta-data
             android:name="android.max_aspect"
@@ -41,7 +42,8 @@
             android:name="notch.config"
             android:value="portrait|landscape" />
 
-        <activity android:name=".ui.common.SplashActivity"
+        <activity
+            android:name=".ui.common.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,54 +51,58 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.common.IndexActivity"/>
-        <activity android:name=".ui.common.LoginActivity"/>
-        <activity android:name=".ui.common.RegistActivity"/>
-        <activity android:name=".ui.common.ForgetPwdActivity"/>
-        <activity android:name=".ui.user.info.SettingActivity"/>
-        <activity android:name=".ui.user.shop.ShopJoinActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".ui.release.ReleaseActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".ui.user.shop.ShopCenterActivity"/>
-        <activity android:name=".ui.user.info.AddressActivity"/>
-        <activity android:name=".ui.user.info.AddAddressActivity"/>
-        <activity android:name=".ui.shop.ShopListActivity"/>
-        <activity android:name=".ui.shop.ShopHomeAcitivity"/>
-        <activity android:name=".ui.goods.GoodsDetailActivity"/>
-        <activity android:name=".ui.user.info.BalanceActivity"/>
-        <activity android:name=".ui.release.GoodsSpecificationActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".ui.goods.GoodsCategoryAcitivity"/>
-        <activity android:name=".ui.goods.OfferRecordActivity"/>
-        <activity android:name=".ui.user.shop.ShopJoinStatusActivity"/>
-        <activity android:name=".ui.release.CateSelActivity"/>
-        <activity android:name=".ui.user.info.WithdrawalMsgActivity"/>
-        <activity android:name=".ui.user.info.EditAliPayMsgActivity"/>
-        <activity android:name=".ui.user.info.EditBankMsgActivity"/>
-        <activity android:name=".ui.user.bid.BidRecordActivity"/>
-        <activity android:name=".ui.user.info.MoneyDetailActivity"/>
-        <activity android:name=".ui.user.bid.BidOrderActivity"/>
-        <activity android:name=".ui.user.order.OrderActivity"/>
-        <activity android:name=".ui.user.order.OrderDetailActivity"/>
-        <activity android:name=".ui.user.order.CommentActivity"/>
-        <activity android:name=".ui.user.shop.ShopOrderActivity"/>
-        <activity android:name=".ui.goods.GoodsListActivity"/>
-        <activity android:name=".ui.category.SearchActivity"/>
-        <activity android:name=".ui.user.NoticeActivity"/>
-        <activity android:name=".ui.common.CommonWebActivity"/>
-        <activity android:name=".ui.common.ImagePagerActivity"/>
-        <activity android:name=".ui.user.shop.GoodsEditActivity"/>
-        <activity android:name=".ui.user.shop.EditGoodActivity"/>
-        <activity android:name=".ui.category.SearchResultActivity"/>
-        <activity android:name=".ui.home.SpecialExhibitionActivity"/>
-        <activity android:name=".ui.home.QuestionnaireActivity"/>
+        <activity android:name=".ui.common.IndexActivity" />
+        <activity android:name=".ui.common.LoginActivity" />
+        <activity android:name=".ui.common.RegistActivity" />
+        <activity android:name=".ui.common.ForgetPwdActivity" />
+        <activity android:name=".ui.user.info.SettingActivity" />
         <activity
-            android:exported="true"
-            android:name="com.hlnwl.auction.wxapi.WXEntryActivity"/>
+            android:name=".ui.user.shop.ShopJoinActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:exported="true"
-            android:name="com.hlnwl.auction.wxapi.WXPayEntryActivity"/>
+            android:name=".ui.release.ReleaseActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.user.shop.ShopCenterActivity" />
+        <activity android:name=".ui.user.info.AddressActivity" />
+        <activity android:name=".ui.user.info.AddAddressActivity" />
+        <activity android:name=".ui.shop.ShopListActivity" />
+        <activity android:name=".ui.shop.ShopHomeAcitivity" />
+        <activity android:name=".ui.goods.GoodsDetailActivity" />
+        <activity android:name=".ui.user.info.BalanceActivity" />
+        <activity
+            android:name=".ui.release.GoodsSpecificationActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.goods.GoodsCategoryAcitivity" />
+        <activity android:name=".ui.goods.OfferRecordActivity" />
+        <activity android:name=".ui.user.shop.ShopJoinStatusActivity" />
+        <activity android:name=".ui.release.CateSelActivity" />
+        <activity android:name=".ui.user.info.WithdrawalMsgActivity" />
+        <activity android:name=".ui.user.info.EditAliPayMsgActivity" />
+        <activity android:name=".ui.user.info.EditBankMsgActivity" />
+        <activity android:name=".ui.user.bid.BidRecordActivity" />
+        <activity android:name=".ui.user.info.MoneyDetailActivity" />
+        <activity android:name=".ui.user.bid.BidOrderActivity" />
+        <activity android:name=".ui.user.order.OrderActivity" />
+        <activity android:name=".ui.user.order.OrderDetailActivity" />
+        <activity android:name=".ui.user.order.CommentActivity" />
+        <activity android:name=".ui.user.shop.ShopOrderActivity" />
+        <activity android:name=".ui.goods.GoodsListActivity" />
+        <activity android:name=".ui.category.SearchActivity" />
+        <activity android:name=".ui.user.NoticeActivity" />
+        <activity android:name=".ui.common.CommonWebActivity" />
+        <activity android:name=".ui.common.ImagePagerActivity" />
+        <activity android:name=".ui.user.shop.GoodsEditActivity" />
+        <activity android:name=".ui.user.shop.EditGoodActivity" />
+        <activity android:name=".ui.category.SearchResultActivity" />
+        <activity android:name=".ui.home.SpecialExhibitionActivity" />
+        <activity android:name=".ui.home.QuestionnaireActivity" />
+        <activity
+            android:name="com.hlnwl.auction.wxapi.WXEntryActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.hlnwl.auction.wxapi.WXPayEntryActivity"
+            android:exported="true" />
+        <activity android:name=".ui.user.shop.SelectShopTypeActivity" />
 
 
         <receiver android:name="com.hlnwl.auction.utils.networkstatus.NetStateReceiver">
