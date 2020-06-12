@@ -94,18 +94,10 @@ public class ShopJoinActivity extends MyActivity {
     ClearEditText mShopJoinShopName;
     @BindView(R.id.shop_join_shop_img)
     CircleImageView mShopJoinShopImg;
-    @BindView(R.id.shop_type)
-    RadioGroup mShopType;
-    @BindView(R.id.shop_join_jp)
-    RadioButton mShopJoinJp;
-    @BindView(R.id.shop_join_jl)
-    RadioButton mShopJoinJl;
     @BindView(R.id.shop_join_pay)
     LoadingButton mShopJoinPay;
     @BindView(R.id.shop_join_xieyi)
     CheckBox mShopJoinXieyi;
-    @BindView(R.id.shop_join_chose)
-    LinearLayout chose;
 
     private List<LocalMedia> selectListPositive = new ArrayList<>();
     private List<LocalMedia> selectListNegative = new ArrayList<>();
@@ -191,37 +183,7 @@ public class ShopJoinActivity extends MyActivity {
     protected void initView() {
         mTitleTb.setTitle(getResources().getString(R.string.shop_join));
 
-        if (SPUtils.getLanguage() == null) {
-            String languageName = getCurrentLauguageUseResources();
 
-            if (languageName.equals("zh")) {
-                chose.setVisibility(View.VISIBLE);
-            } else {
-                chose.setVisibility(View.GONE);
-            }
-        } else {
-            String selectedLanguage = SPUtils.getLanguage();
-            if (selectedLanguage.equals("1")) {
-                chose.setVisibility(View.VISIBLE);
-            } else {
-                chose.setVisibility(View.GONE);
-            }
-        }
-        //mShopJoinPay.setText(StringsUtils.getString(R.string.shop_join_pay) + "  " + SPUtils.getJing() + StringsUtils.getString(R.string.money_unit));
-        mShopType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                switch (checkedId) {
-                    case R.id.shop_join_jp:
-                        // mShopJoinPay.setText(StringsUtils.getString(R.string.shop_join_pay) + "  " + SPUtils.getJing() + StringsUtils.getString(R.string.money_unit));
-                        break;
-                    case R.id.shop_join_jl:
-                        //mShopJoinPay.setText(StringsUtils.getString(R.string.shop_join_pay) + "  " + SPUtils.getLou() + StringsUtils.getString(R.string.money_unit));
-                        break;
-                }
-
-            }
-        });
     }
 
     private String getCurrentLauguageUseResources() {
@@ -457,11 +419,6 @@ public class ShopJoinActivity extends MyActivity {
                 if (!mShopJoinXieyi.isChecked()) {
                     ToastUtils.showShort(getResources().getString(R.string.regist_join));
                     return;
-                }
-                if (mShopJoinJp.isChecked()) {
-                    genre = "1";
-                } else {
-                    genre = "2";
                 }
                 mShopJoinPay.start();
                 mDialog = new WaitDialog.Builder(ShopJoinActivity.this)

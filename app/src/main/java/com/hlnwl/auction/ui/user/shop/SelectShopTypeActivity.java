@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,17 +23,21 @@ import com.hlnwl.auction.base.MyActivity;
 import com.hlnwl.auction.bean.pay.AuthResult;
 import com.hlnwl.auction.bean.pay.WeiXinPay;
 import com.hlnwl.auction.bean.shop.ShopTypeBean;
+import com.hlnwl.auction.bean.user.shop.JoinBean;
 import com.hlnwl.auction.message.LoginMessage;
+import com.hlnwl.auction.message.WeChatMessage;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.pay.Constant;
 import com.hlnwl.auction.utils.sp.SPUtils;
 import com.hlnwl.auction.view.radiogrouplib.NestedRadioGroup;
 import com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -160,28 +165,37 @@ public class SelectShopTypeActivity extends MyActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.shop_join_pay:
+                shopJoinPay.start();
                 if (payType.equals("")) {
                     ToastUtils.showShort(R.string.chose_pay_type_sign);
                     return;
                 } else if (payType.equals("weChat")) {
-                    weChatPay("");
+                    getPayInfo(2);
                 } else if (payType.equals("alipay")) {
-                    Runnable payRunnable = () -> {
-                        PayTask alipay = new PayTask(getActivity());
-                        Map<String, String> result = alipay.payV2("", true);
-                        Message msg = new Message();
-                        msg.what = SDK_PAY_FLAG;
-                        msg.obj = result;
-                        mHandler.sendMessage(msg);
-                    };
-                    // 必须异步调用
-                    Thread payThread = new Thread(payRunnable);
-                    payThread.start();
+                    getPayInfo(1);
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    public void getPayInfo(int type) {
+        ShopTypeBean.DataBean.ShopBean item = shopTypeAdapter.getItem(shopTypeAdapter.selectIndex);
+        RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
+                .payShop(SPUtils.getUserId(), SPUtils.getToken()
+                        , item.getId()
+                        , item.getValue(), type), this)
+                .subscribe(new ApiObserver<JoinBean>() {
+                    @Override
+                    protected void success(JoinBean data) {
+                        if (type == 1) {
+                            aliPay(data.getData().get(0).getStr());
+                        } else if (type == 2) {
+                            weChatPay(data.getData().get(0).getStr());
+                        }
+                    }
+                });
     }
 
 
@@ -219,6 +233,37 @@ public class SelectShopTypeActivity extends MyActivity {
         wxAPI.sendReq(req);
     }
 
+    private void aliPay(String payInfo) {
+        Runnable payRunnable = () -> {
+            PayTask alipay = new PayTask(getActivity());
+            Map<String, String> result = alipay.payV2(payInfo, true);
+            Message msg = new Message();
+            msg.what = SDK_PAY_FLAG;
+            msg.obj = result;
+            mHandler.sendMessage(msg);
+        };
+        // 必须异步调用
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
+    }
+
+    @Subscribe
+    public void onEventMainThread(WeChatMessage weiXin) {
+        if (weiXin.getType() == 3) {//微信支付
+            if (weiXin.getErrCode() == BaseResp.ErrCode.ERR_OK) {//成功
+                Log.e("ansen", "微信支付成功.....");
+                shopJoinPay.complete();
+                EventBus.getDefault().post(new LoginMessage("update"));
+                ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
+                startActivity(ShopJoinActivity.class);
+                finish();
+            } else {
+                shopJoinPay.fail();
+                ToastUtils.showShort(StringUtils.getString(R.string.pay_fail));
+            }
+        }
+    }
+
     @Override
     protected void initData() {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
@@ -239,6 +284,13 @@ public class SelectShopTypeActivity extends MyActivity {
                             shopTypeAdapter.notifyDataSetChanged();
                         });
 
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        super.onError(t);
+                        shopJoinPay.fail();
+                        toast(t.getMessage());
                     }
                 });
     }

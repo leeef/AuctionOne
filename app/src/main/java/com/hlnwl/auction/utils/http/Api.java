@@ -308,6 +308,16 @@ public interface Api {
     @POST("merchant/shopselect")
     Observable<ShopTypeBean> getShopType(@Field("userid") String id, @Field("token") String token);
 
+    // 商铺付款信息
+    @FormUrlEncoded
+    @POST("merchant/shoppay")
+    Observable<JoinBean> payShop(@Field("userid") String id,
+                               @Field("token") String token,
+                               @Field("shopid") String shopId,
+                               @Field("price") String price,
+                               //支付类型 1支付宝 2微信
+                               @Field("paytype") int type);
+
 
     @FormUrlEncoded
     @POST("goods/shoplist")
