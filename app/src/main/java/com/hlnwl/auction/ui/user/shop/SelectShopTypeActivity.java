@@ -275,12 +275,12 @@ public class SelectShopTypeActivity extends MyActivity {
                         for (int i = 0; i < data.getData().get(0).getShop().size(); i++) {
                             ShopTypeBean.DataBean.ShopBean shopBean = data.getData().get(0).getShop().get(i);
                             if (i == 0) {
-                                shopPrice.setText(shopBean.getValue() + "￥");
+                                shopPrice.setText("￥" + shopBean.getValue());
                             }
                         }
                         shopTypeAdapter.setOnItemClickListener((adapter, view, position) -> {
                             shopTypeAdapter.selectIndex = position;
-                            shopPrice.setText(data.getData().get(0).getShop().get(position).getValue() + "￥");
+                            shopPrice.setText("￥" + data.getData().get(0).getShop().get(position).getValue());
                             shopTypeAdapter.notifyDataSetChanged();
                         });
 

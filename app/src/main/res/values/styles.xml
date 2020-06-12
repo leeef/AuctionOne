@@ -26,8 +26,8 @@
 
     <!-- 解决启动页白屏的问题 -->
     <style name="SplashTheme" parent="AppTheme">
-<!--        <item name="android:windowIsTranslucent">true</item>-->
-<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+        <!--        <item name="android:windowIsTranslucent">true</item>-->
+        <!--        <item name="android:windowBackground">@android:color/transparent</item>-->
         <item name="android:windowBackground">@color/white</item>
         <item name="android:windowFullscreen">true</item>
     </style>
@@ -137,19 +137,20 @@
 
     <declare-styleable name="DragScrollDetailsLayout">
         <!-- float value for indicate the moment of switch panel-->
-        <attr name="percent" format="float"/>
+        <attr name="percent" format="float" />
         <!-- how long the animation keep-->
-        <attr name="duration" format="integer"/>
+        <attr name="duration" format="integer" />
         <!-- default panel to show after init-->
         <attr name="default_panel" format="enum">
-            <enum name="front" value="0"/>
-            <enum name="behind" value="1"/>
+            <enum name="front" value="0" />
+            <enum name="behind" value="1" />
         </attr>
     </declare-styleable>
 
     <style name="MyEditText" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">@color/main</item>
-        <item name="colorControlActivated">@color/main</item> </style>
+        <item name="colorControlActivated">@color/main</item>
+    </style>
 
 
     <style name="Radiobutton_select" parent="@android:style/Widget.CompoundButton.CheckBox">

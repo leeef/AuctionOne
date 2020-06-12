@@ -36,7 +36,10 @@
         <attr name="cpd_outAnimDuration" format="reference|integer"/>
         <attr name="cpd_inStepColors" format="reference"/>
         <attr name="cpd_inStepPercent" format="float"/>
-        <attr name="pv_progressMode"/>
+        <attr name="pv_progressMode" format="enum">
+            <enum name="indeterminate" value="1" />
+            <enum name="determinate" value="0" />
+        </attr>
     </declare-styleable>
 
     <!--支付密码-->
