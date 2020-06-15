@@ -9,9 +9,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -44,6 +44,7 @@
 
         <activity
             android:name=".ui.common.SplashActivity"
+            android:screenOrientation="userPortrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,58 +52,137 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.common.IndexActivity" />
-        <activity android:name=".ui.common.LoginActivity" />
-        <activity android:name=".ui.common.RegistActivity" />
-        <activity android:name=".ui.common.ForgetPwdActivity" />
-        <activity android:name=".ui.user.info.SettingActivity" />
+        <activity
+            android:name=".ui.common.IndexActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.common.LoginActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.common.RegistActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.common.ForgetPwdActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.info.SettingActivity"
+            android:screenOrientation="userPortrait" />
         <activity
             android:name=".ui.user.shop.ShopJoinActivity"
+            android:screenOrientation="userPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.release.ReleaseActivity"
+            android:screenOrientation="userPortrait"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.user.shop.ShopCenterActivity" />
-        <activity android:name=".ui.user.info.AddressActivity" />
-        <activity android:name=".ui.user.info.AddAddressActivity" />
-        <activity android:name=".ui.shop.ShopListActivity" />
-        <activity android:name=".ui.shop.ShopHomeAcitivity" />
-        <activity android:name=".ui.goods.GoodsDetailActivity" />
-        <activity android:name=".ui.user.info.BalanceActivity" />
+        <activity
+            android:name=".ui.user.shop.ShopCenterActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.info.AddressActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.info.AddAddressActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.shop.ShopListActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.shop.ShopHomeAcitivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.goods.GoodsDetailActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.info.BalanceActivity"
+            android:screenOrientation="userPortrait" />
         <activity
             android:name=".ui.release.GoodsSpecificationActivity"
+            android:screenOrientation="userPortrait"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.goods.GoodsCategoryAcitivity" />
-        <activity android:name=".ui.goods.OfferRecordActivity" />
-        <activity android:name=".ui.user.shop.ShopJoinStatusActivity" />
-        <activity android:name=".ui.release.CateSelActivity" />
-        <activity android:name=".ui.user.info.WithdrawalMsgActivity" />
-        <activity android:name=".ui.user.info.EditAliPayMsgActivity" />
-        <activity android:name=".ui.user.info.EditBankMsgActivity" />
-        <activity android:name=".ui.user.bid.BidRecordActivity" />
-        <activity android:name=".ui.user.info.MoneyDetailActivity" />
-        <activity android:name=".ui.user.bid.BidOrderActivity" />
-        <activity android:name=".ui.user.order.OrderActivity" />
-        <activity android:name=".ui.user.order.OrderDetailActivity" />
-        <activity android:name=".ui.user.order.CommentActivity" />
-        <activity android:name=".ui.user.shop.ShopOrderActivity" />
-        <activity android:name=".ui.goods.GoodsListActivity" />
-        <activity android:name=".ui.category.SearchActivity" />
-        <activity android:name=".ui.user.NoticeActivity" />
-        <activity android:name=".ui.common.CommonWebActivity" />
-        <activity android:name=".ui.common.ImagePagerActivity" />
-        <activity android:name=".ui.user.shop.GoodsEditActivity" />
-        <activity android:name=".ui.user.shop.EditGoodActivity" />
-        <activity android:name=".ui.category.SearchResultActivity" />
-        <activity android:name=".ui.home.SpecialExhibitionActivity" />
-        <activity android:name=".ui.home.QuestionnaireActivity" />
+        <activity
+            android:name=".ui.goods.GoodsCategoryAcitivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.goods.OfferRecordActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.shop.ShopJoinStatusActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.release.CateSelActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.info.WithdrawalMsgActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.info.EditAliPayMsgActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.info.EditBankMsgActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.bid.BidRecordActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.info.MoneyDetailActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.bid.BidOrderActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.order.OrderActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.order.OrderDetailActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.order.CommentActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.shop.ShopOrderActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.goods.GoodsListActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.category.SearchActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.NoticeActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.common.CommonWebActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.common.ImagePagerActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.shop.GoodsEditActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.shop.EditGoodActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.category.SearchResultActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.home.SpecialExhibitionActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.home.QuestionnaireActivity"
+            android:screenOrientation="userPortrait" />
         <activity
             android:name="com.hlnwl.auction.wxapi.WXEntryActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="userPortrait" />
         <activity
             android:name="com.hlnwl.auction.wxapi.WXPayEntryActivity"
-            android:exported="true" />
-        <activity android:name=".ui.user.shop.SelectShopTypeActivity" />
+            android:exported="true"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.user.shop.SelectShopTypeActivity"
+            android:screenOrientation="userPortrait" />
 
 
         <receiver android:name="com.hlnwl.auction.utils.networkstatus.NetStateReceiver">
