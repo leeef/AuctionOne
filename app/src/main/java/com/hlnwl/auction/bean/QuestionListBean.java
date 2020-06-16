@@ -51,9 +51,18 @@ public class QuestionListBean {
         private String title;
         private String eng_title;
         private String type;
+        private int shoppay;//1未支付  2已支付
 
         private boolean isCheck;
         private int check;
+
+        public int getShoppay() {
+            return shoppay;
+        }
+
+        public void setShoppay(int shoppay) {
+            this.shoppay = shoppay;
+        }
 
         public boolean isCheck() {
             return isCheck;

@@ -12,6 +12,7 @@ import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.MyActivity;
 import com.hlnwl.auction.bean.QuestionListBean;
 import com.hlnwl.auction.ui.user.shop.SelectShopTypeActivity;
+import com.hlnwl.auction.ui.user.shop.ShopJoinActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.sp.SPUtils;
@@ -195,7 +196,13 @@ public class QuestionnaireActivity extends MyActivity implements OnRefreshListen
 
         }
 
-        startActivity(SelectShopTypeActivity.class);
+        if (mAdapter.getData().get(0).getShoppay() == 2) {
+            startActivity(ShopJoinActivity.class);
+        } else {
+            startActivity(SelectShopTypeActivity.class);
+        }
+
+
         finish();
     }
 }
