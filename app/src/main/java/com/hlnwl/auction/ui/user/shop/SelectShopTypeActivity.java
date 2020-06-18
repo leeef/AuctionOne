@@ -195,6 +195,13 @@ public class SelectShopTypeActivity extends MyActivity {
                             weChatPay(data.getData().get(0).getStr());
                         }
                     }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        super.onError(t);
+                        toast(t.getMessage());
+                        shopJoinPay.fail();
+                    }
                 });
     }
 

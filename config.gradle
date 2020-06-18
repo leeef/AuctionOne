@@ -101,7 +101,7 @@ ext {
             "PageMenuLayout": "com.github.xiaohaibin:PageMenuLayout:0.3.0",
 
            //图片处理
-           "PictureSelector": "com.github.LuckSiege.PictureSelector:picture_library:v2.5.0",
+           "PictureSelector": "com.github.LuckSiege.PictureSelector:picture_library:v2.5.8",
            "glide": "com.github.bumptech.glide:glide:4.9.0",
            "glide-compiler": "com.github.bumptech.glide:compiler:4.9.0",
 //           implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -13,11 +14,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
-import com.alipay.sdk.app.PayTask;
 import com.allen.library.CircleImageView;
 import com.bakerj.rxretrohttp.RxRetroHttp;
 import com.bakerj.rxretrohttp.subscriber.ApiObserver;
@@ -492,8 +489,13 @@ public class ShopJoinActivity extends MyActivity {
                     selectListPositive.clear();
                     selectListPositive = PictureSelector.obtainMultipleResult(data);
                     if (selectListPositive != null) {
-                        zheng = BitmapFactory.decodeFile(selectListPositive.get(0).getPath());
-                        ImageLoaderUtils.display(this, mShopJoinZheng, selectListPositive.get(0).getPath());
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            zheng = BitmapFactory.decodeFile(selectListPositive.get(0).getAndroidQToPath());
+                            ImageLoaderUtils.display(this, mShopJoinZheng, selectListPositive.get(0).getAndroidQToPath());
+                        } else {
+                            zheng = BitmapFactory.decodeFile(selectListPositive.get(0).getPath());
+                            ImageLoaderUtils.display(this, mShopJoinZheng, selectListPositive.get(0).getPath());
+                        }
                         idzheng = Bitmap2StrByBase64(zheng);
 
                     }
@@ -502,8 +504,13 @@ public class ShopJoinActivity extends MyActivity {
                     selectListNegative.clear();
                     selectListNegative = PictureSelector.obtainMultipleResult(data);
                     if (selectListNegative != null) {
-                        fan = BitmapFactory.decodeFile(selectListNegative.get(0).getPath());
-                        ImageLoaderUtils.display(this, mShopJoinFan, selectListNegative.get(0).getPath());
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            fan = BitmapFactory.decodeFile(selectListNegative.get(0).getAndroidQToPath());
+                            ImageLoaderUtils.display(this, mShopJoinFan, selectListNegative.get(0).getAndroidQToPath());
+                        } else {
+                            fan = BitmapFactory.decodeFile(selectListNegative.get(0).getPath());
+                            ImageLoaderUtils.display(this, mShopJoinFan, selectListNegative.get(0).getPath());
+                        }
                         idfan = Bitmap2StrByBase64(fan);
                     }
                     break;
@@ -511,8 +518,13 @@ public class ShopJoinActivity extends MyActivity {
                     selectListDianPu.clear();
                     selectListDianPu = PictureSelector.obtainMultipleResult(data);
                     if (selectListDianPu != null) {
-                        dianpu = BitmapFactory.decodeFile(selectListDianPu.get(0).getPath());
-                        ImageLoaderUtils.display(this, mShopJoinShopImg, selectListDianPu.get(0).getPath());
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            dianpu = BitmapFactory.decodeFile(selectListDianPu.get(0).getAndroidQToPath());
+                            ImageLoaderUtils.display(this, mShopJoinShopImg, selectListDianPu.get(0).getAndroidQToPath());
+                        } else {
+                            dianpu = BitmapFactory.decodeFile(selectListDianPu.get(0).getPath());
+                            ImageLoaderUtils.display(this, mShopJoinShopImg, selectListDianPu.get(0).getPath());
+                        }
                     }
                     break;
             }
