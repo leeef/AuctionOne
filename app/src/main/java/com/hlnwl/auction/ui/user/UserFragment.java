@@ -1,6 +1,6 @@
 package com.hlnwl.auction.ui.user;
 
-import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
@@ -8,28 +8,32 @@ import android.widget.TextView;
 import com.allen.library.SuperTextView;
 import com.bakerj.rxretrohttp.RxRetroHttp;
 import com.bakerj.rxretrohttp.subscriber.ApiObserver;
-import com.blankj.utilcode.util.PhoneUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.flod.loadingbutton.LoadingButton;
 import com.hjq.bar.TitleBar;
 import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.MyLazyFragment;
 import com.hlnwl.auction.bean.user.MineBean;
 import com.hlnwl.auction.message.LoginMessage;
+import com.hlnwl.auction.message.QuitMessage;
+import com.hlnwl.auction.ui.common.LoginActivity;
 import com.hlnwl.auction.ui.home.QuestionnaireActivity;
+import com.hlnwl.auction.ui.store.TicketActivity;
 import com.hlnwl.auction.ui.user.bid.BidRecordActivity;
 import com.hlnwl.auction.ui.user.info.BalanceActivity;
 import com.hlnwl.auction.ui.user.info.SettingActivity;
 import com.hlnwl.auction.ui.user.order.OrderActivity;
 import com.hlnwl.auction.ui.user.shop.ShopCenterActivity;
-import com.hlnwl.auction.ui.user.shop.ShopJoinActivity;
 import com.hlnwl.auction.ui.user.shop.ShopJoinStatusActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.my.FrescoUtils;
 import com.hlnwl.auction.utils.my.PhoneUtil;
 import com.hlnwl.auction.utils.sp.SPUtils;
+import com.hlnwl.auction.view.dialog.MessageDialog;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -53,6 +57,8 @@ public class UserFragment extends MyLazyFragment {
     TextView mUserNick;
     @BindView(R.id.user_seller_center)
     SuperTextView mUserSellerCenter;
+    @BindView(R.id.quit)
+    LoadingButton mQuit;
 
     @Override
     protected int getLayoutId() {
@@ -73,13 +79,14 @@ public class UserFragment extends MyLazyFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden){
-            if ( SPUtils.getLogin() != null&&SPUtils.getLogin().length() >0){
+        if (!hidden) {
+            if (SPUtils.getLogin() != null && SPUtils.getLogin().length() > 0) {
                 getData();
             }
         }
 
     }
+
     @Override
     public boolean isStatusBarEnabled() {
         return true;
@@ -89,14 +96,16 @@ public class UserFragment extends MyLazyFragment {
     protected void initData() {
 
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void loginEventBus(LoginMessage update) {
-       getData();
+        getData();
 
     }
+
     private void getData() {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .getUserInfo(SPUtils.getLanguage(),SPUtils.getUserId(), SPUtils.getToken()), this)
+                .getUserInfo(SPUtils.getLanguage(), SPUtils.getUserId(), SPUtils.getToken()), this)
                 .subscribe(new ApiObserver<MineBean>() {
                                @Override
                                protected void success(MineBean data) {
@@ -132,12 +141,12 @@ public class UserFragment extends MyLazyFragment {
                                    } else {
                                        mUserNick.setText(SPUtils.getPhone());
                                    }
-                                   if (  SPUtils.getChant().equals("2")){
+                                   if (SPUtils.getChant().equals("2")) {
                                        mUserSellerCenter.setLeftString(StringUtils.getString(R.string.seller_center));
-                                   }else {
+                                   } else {
                                        mUserSellerCenter.setLeftString(StringUtils.getString(R.string.shop_join));
                                    }
-                                   FrescoUtils.showBasicPic(SPUtils.getHeadimg(),mUserImg);
+                                   FrescoUtils.showBasicPic(SPUtils.getHeadimg(), mUserImg);
 //                                   ImageLoaderUtils.display(getActivity(), mUserImg,  SPUtils.getHeadimg());
                                }
 
@@ -153,24 +162,24 @@ public class UserFragment extends MyLazyFragment {
     @OnClick({R.id.user_dfk, R.id.user_dfh, R.id.user_dsh, R.id.user_ywc,
             R.id.user_balance, R.id.user_share, R.id.user_modify_data,
             R.id.user_system_bulletin, R.id.user_customer,
-            R.id.user_bid_record, R.id.user_seller_center})
+            R.id.user_bid_record, R.id.user_seller_center, R.id.quit, R.id.my_ticket})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.user_dfk://评价
-                startActivity(new Intent(getActivity(),OrderActivity.class)
-                .putExtra("type","2"));
+                startActivity(new Intent(getActivity(), OrderActivity.class)
+                        .putExtra("type", "2"));
                 break;
             case R.id.user_dfh://代发货
                 startActivity(new Intent(getActivity(), OrderActivity.class)
-                        .putExtra("type","0"));
+                        .putExtra("type", "0"));
                 break;
             case R.id.user_dsh://待收货
-                startActivity(new Intent(getActivity(),OrderActivity.class)
-                        .putExtra("type","1"));
+                startActivity(new Intent(getActivity(), OrderActivity.class)
+                        .putExtra("type", "1"));
                 break;
             case R.id.user_ywc://已完成
-                startActivity(new Intent(getActivity(),OrderActivity.class)
-                        .putExtra("type","3"));
+                startActivity(new Intent(getActivity(), OrderActivity.class)
+                        .putExtra("type", "3"));
                 break;
             case R.id.user_balance://我的余额
                 startActivity(BalanceActivity.class);
@@ -184,23 +193,54 @@ public class UserFragment extends MyLazyFragment {
                 startActivity(NoticeActivity.class);
                 break;
             case R.id.user_customer://客服
-                PhoneUtil.callPhone(getActivity(),SPUtils.getCustomerPhone());
+                PhoneUtil.callPhone(getActivity(), SPUtils.getCustomerPhone());
                 break;
             case R.id.user_bid_record://出价记录
                 startActivity(BidRecordActivity.class);
                 break;
             case R.id.user_seller_center://卖家中心
-                if (SPUtils.getChant().equals("2")){
+                if (SPUtils.getChant().equals("2")) {
                     startActivity(ShopCenterActivity.class);
-                }else if (SPUtils.getChant().equals("0")){
+                } else if (SPUtils.getChant().equals("0")) {
                     startActivity(QuestionnaireActivity.class);
 
-                }else if (SPUtils.getChant().equals("1")){
+                } else if (SPUtils.getChant().equals("1")) {
                     startActivity(ShopJoinStatusActivity.class);
-                }else if (SPUtils.getChant().equals("3")){
+                } else if (SPUtils.getChant().equals("3")) {
                     toast(StringUtils.getString(R.string.shop_colse));
                 }
+                break;
+            case R.id.my_ticket://优惠券
+                startActivity(TicketActivity.class);
+                break;
+            case R.id.quit:
+                mQuit.start();
+                new MessageDialog.Builder(getActivity())
+                        .setTitle(getActivity().getResources().getString(R.string.quit_login)) // 标题可以不用填写
+                        .setMessage(getActivity().getResources().getString(R.string.sure_quit_login))
+                        .setConfirm(getActivity().getResources().getString(R.string.confirm))
+                        .setCancel(getActivity().getResources().getString(R.string.picture_cancel)) // 设置 null 表示不显示取消按钮
+                        //.setAutoDismiss(false) // 设置点击按钮后不关闭对话框
+                        .setListener(new MessageDialog.OnListener() {
 
+                            @Override
+                            public void onConfirm(Dialog dialog) {
+                                SPUtils.clear(getActivity());
+                                EventBus.getDefault().post(new QuitMessage("quit"));
+                                mQuit.complete();
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  //注意本行的FLAG设置
+                                startActivity(intent);
+//                                ActivityUtils.finishToActivity(IndexActivity.class, true);
+                            }
+
+                            @Override
+                            public void onCancel(Dialog dialog) {
+                                mQuit.fail();
+                                toast(getActivity().getResources().getString(R.string.picture_cancel));
+                            }
+                        })
+                        .show();
                 break;
         }
     }

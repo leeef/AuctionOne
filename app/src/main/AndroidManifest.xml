@@ -183,6 +183,13 @@
         <activity
             android:name=".ui.user.shop.SelectShopTypeActivity"
             android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.store.GoodListActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.store.OrderDetailActivity"
+            android:screenOrientation="userPortrait" />
+        <activity android:name=".ui.store.TicketActivity" />
 
 
         <receiver android:name="com.hlnwl.auction.utils.networkstatus.NetStateReceiver">

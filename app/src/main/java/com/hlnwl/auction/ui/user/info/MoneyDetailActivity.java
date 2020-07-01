@@ -9,7 +9,6 @@ import com.hjq.bar.TitleBar;
 import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.MyActivity;
 import com.hlnwl.auction.ui.shop.CommonPagerAdapter;
-import com.hlnwl.auction.ui.user.bid.BidFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +34,10 @@ public class MoneyDetailActivity extends MyActivity {
 
     private static final String[] CHANNELS = new String[]
             {StringUtils.getString(R.string.income),
-            StringUtils.getString(R.string.spending),
-            StringUtils.getString(R.string.withdrawal)};
+                    StringUtils.getString(R.string.spending),
+                    StringUtils.getString(R.string.withdrawal)};
     private List<Fragment> fragmentList = new ArrayList<>();
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_order;
@@ -53,6 +53,7 @@ public class MoneyDetailActivity extends MyActivity {
         mTitleTb.setTitle(StringUtils.getString(R.string.detail));
         initFragment();
     }
+
     private void initFragment() {
         fragmentList.add(new MoneyDetailFragment("0"));
         fragmentList.add(new MoneyDetailFragment("1"));

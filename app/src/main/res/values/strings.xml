@@ -377,5 +377,22 @@
     <string name="shop_type">店铺分类</string>
     <string name="shop_price">店铺价格:</string>
     <string name="chose_pay_type_sign">您暂未选择支付方式</string>
+    <string name="buy_it_now">立即购买</string>
+    <string name="ticket">优惠券</string>
+    <string-array name="ticket_title">
+        <item>未使用</item>
+        <item>已使用</item>
+        <item>已过期</item>
+    </string-array>
+    <string-array name="test">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+    </string-array>
 
 </resources>

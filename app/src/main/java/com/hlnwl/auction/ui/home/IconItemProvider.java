@@ -8,10 +8,9 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.provider.BaseItemProvider;
 import com.hlnwl.auction.R;
 import com.hlnwl.auction.bean.home.HomeMultipleItem;
-import com.hlnwl.auction.ui.common.CommonWebActivity;
 import com.hlnwl.auction.ui.goods.GoodsCategoryAcitivity;
 import com.hlnwl.auction.ui.shop.ShopListActivity;
-import com.hlnwl.auction.utils.networkstatus.Constants;
+import com.hlnwl.auction.ui.store.GoodListActivity;
 import com.hlnwl.auction.utils.sp.SPUtils;
 
 import java.util.Locale;
@@ -37,68 +36,68 @@ public class IconItemProvider extends BaseItemProvider<HomeMultipleItem, BaseVie
 
     @Override
     public void convert(BaseViewHolder helper, HomeMultipleItem data, int position) {
-        LinearLayout shop_list=helper.getView(R.id.item_home_icons_shop);
-        LinearLayout designer_frames=helper.getView(R.id.item_home_icons_designer_frames);
-        LinearLayout leak_hunting_area=helper.getView(R.id.item_home_icons_leak_hunting_area);
-        LinearLayout new_user_on_road=helper.getView(R.id.item_home_icons_new_user_on_road);
+        LinearLayout shop_list = helper.getView(R.id.item_home_icons_shop);
+        LinearLayout designer_frames = helper.getView(R.id.item_home_icons_designer_frames);
+        LinearLayout leak_hunting_area = helper.getView(R.id.item_home_icons_leak_hunting_area);
+        LinearLayout new_user_on_road = helper.getView(R.id.item_home_icons_new_user_on_road);
         LinearLayout website = helper.getView(R.id.item_home_icons_website);
-        if (SPUtils.getLanguage()==null){
-            String languageName=getCurrentLauguageUseResources() ;
+        if (SPUtils.getLanguage() == null) {
+            String languageName = getCurrentLauguageUseResources();
 
-            if (languageName.equals("zh")){
+            if (languageName.equals("zh")) {
                 leak_hunting_area.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 leak_hunting_area.setVisibility(View.GONE);
             }
-        }else {
+        } else {
             String selectedLanguage = SPUtils.getLanguage();
-            if (selectedLanguage.equals("1")){
+            if (selectedLanguage.equals("1")) {
                 leak_hunting_area.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 leak_hunting_area.setVisibility(View.GONE);
             }
         }
 
 
-
         shop_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext,ShopListActivity.class));
+                mContext.startActivity(new Intent(mContext, ShopListActivity.class));
             }
         });
         designer_frames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mContext.startActivity(new Intent(mContext, GoodsCategoryAcitivity.class)
-                .putExtra("category","jingpin"));
+                        .putExtra("category", "jingpin"));
             }
         });
         leak_hunting_area.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mContext.startActivity(new Intent(mContext, GoodsCategoryAcitivity.class)
-                        .putExtra("category","jianlou"));
+                        .putExtra("category", "jianlou"));
             }
         });
 
         new_user_on_road.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext,SpecialExhibitionActivity.class));
+                mContext.startActivity(new Intent(mContext, SpecialExhibitionActivity.class));
             }
         });
 
         website.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CommonWebActivity.runActivity(mContext, mContext.getString(R.string.website),
-                        Constants.URL);
+//                CommonWebActivity.runActivity(mContext, mContext.getString(R.string.website),
+//                        Constants.URL);
+                mContext.startActivity(new Intent(mContext, GoodListActivity.class));
             }
         });
     }
 
-    private String getCurrentLauguageUseResources(){
+    private String getCurrentLauguageUseResources() {
         /**
          * 获得当前系统语言
          */

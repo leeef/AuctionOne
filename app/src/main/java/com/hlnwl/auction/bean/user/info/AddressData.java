@@ -1,5 +1,7 @@
 package com.hlnwl.auction.bean.user.info;
 
+import java.io.Serializable;
+
 /**
  * 版权：hlnwl 版权所有
  *
@@ -8,7 +10,7 @@ package com.hlnwl.auction.bean.user.info;
  * 创建日期：2019/9/25 15:23
  * 描述：
  */
-public class AddressData {
+public class AddressData implements Serializable {
 
     /**
      * id : 25

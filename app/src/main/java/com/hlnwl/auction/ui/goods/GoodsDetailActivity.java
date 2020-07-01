@@ -29,6 +29,7 @@ import com.hlnwl.auction.message.LoginMessage;
 import com.hlnwl.auction.ui.common.ImagePagerActivity;
 import com.hlnwl.auction.ui.common.LoginActivity;
 import com.hlnwl.auction.ui.shop.ShopHomeAcitivity;
+import com.hlnwl.auction.ui.store.OrderDetailActivity;
 import com.hlnwl.auction.ui.user.bid.BidRecordActivity;
 import com.hlnwl.auction.utils.CountdownUtils;
 import com.hlnwl.auction.utils.StringsUtils;
@@ -126,6 +127,10 @@ public class GoodsDetailActivity extends MyActivity {
     LinearLayout goodsDetailLike;
     @BindView(R.id.tv_exhibition)
     TextView tvExhibition;
+    @BindView(R.id.goods_detail_normal)
+    LinearLayout goodsDetailNormal;
+    @BindView(R.id.buy_layout)
+    LinearLayout buyLayout;
 
 
     private String good_id = "";
@@ -176,6 +181,10 @@ public class GoodsDetailActivity extends MyActivity {
             tvExhibition.setText(getResources().getString(R.string.exhibition1));
             mGoodsDetailMakePrice.setText(getResources().getString(R.string.display1));
             mTimeCount.setText(getResources().getString(R.string.call_customer1));
+        } else if (getIntent().getIntExtra("tag", 0) == 2) {
+            llCount.setVisibility(View.GONE);
+            goodsDetailNormal.setVisibility(View.GONE);
+            buyLayout.setVisibility(View.VISIBLE);
         } else {
             llCount.setVisibility(View.GONE);
             llPrice.setVisibility(View.VISIBLE);
@@ -330,6 +339,11 @@ public class GoodsDetailActivity extends MyActivity {
         mSeeNum.setText(mGoodsDetailData.getViews());
         getOfferList();
         showComplete();
+
+
+        buyLayout.setOnClickListener(v ->
+                startActivity(new Intent(getActivity(), OrderDetailActivity.class)
+                        .putExtra("id", good_id)));
     }
 
     private void setTimer() {

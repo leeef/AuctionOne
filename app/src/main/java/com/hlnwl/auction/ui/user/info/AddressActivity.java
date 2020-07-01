@@ -159,7 +159,7 @@ public class AddressActivity extends MyActivity implements OnRefreshListener, Ba
         if (getIntent().getStringExtra("type") != null
                 && getIntent().getStringExtra("type").equals("1")) {
             Intent intent = new Intent();
-//            intent.putExtra("address", datas.get(position));
+            intent.putExtra("address", datas.get(position));
             setResult(10, intent);
             finish();
         }

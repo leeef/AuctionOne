@@ -8,14 +8,7 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.hjq.bar.TitleBar;
 import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.MyActivity;
-import com.hlnwl.auction.message.LoginMessage;
-import com.hlnwl.auction.message.OrderMessage;
 import com.hlnwl.auction.ui.shop.CommonPagerAdapter;
-import com.hlnwl.auction.ui.user.bid.BidFragment;
-import com.hlnwl.auction.utils.sp.SPUtils;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +65,7 @@ public class OrderActivity extends MyActivity {
         mMyTl.setCurrentTab(Integer.parseInt(getIntent().getStringExtra("type")));
 
     }
+
     @Override
     protected void initData() {
 
