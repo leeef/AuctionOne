@@ -139,7 +139,7 @@
             <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
                 android:id="@+id/pay_dialog_wechat"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/qb_px_50"
+                android:layout_height="@dimen/qb_px_45"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -189,11 +189,59 @@
 
     </com.hlnwl.auction.view.radiogrouplib.NestedRadioGroup>
 
+
+    <LinearLayout
+        android:id="@+id/ticket_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_1"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:layout_marginRight="@dimen/qb_px_15"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_45"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/space_50"
+                android:gravity="center_vertical"
+                android:text="@string/ticket"
+                android:textColor="@color/selector_pay"
+                android:textSize="@dimen/qb_px_15" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/ticket_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/qb_px_20"
+                android:layout_marginRight="@dimen/qb_px_20"
+                android:src="@mipmap/kuang" />
+
+        </LinearLayout>
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/qb_px_1"
         android:background="@color/line" />
-
 
     <com.flod.loadingbutton.LoadingButton
         android:id="@+id/shop_join_pay"

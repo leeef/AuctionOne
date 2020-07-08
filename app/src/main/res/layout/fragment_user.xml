@@ -191,7 +191,7 @@
                 android:layout_height="@dimen/qb_px_50"
                 android:layout_marginTop="@dimen/qb_px_10"
                 app:sLeftIconHeight="@dimen/qb_px_16"
-                app:sLeftIconRes="@mipmap/wode_yuer"
+                app:sLeftIconRes="@mipmap/ticket_icon"
                 app:sLeftIconWidth="@dimen/qb_px_16"
                 app:sLeftTextString="@string/ticket"
                 app:sRightIconRes="@mipmap/more" />

@@ -129,7 +129,7 @@
         <ImageView
             android:layout_width="@dimen/qb_px_40"
             android:layout_height="@dimen/qb_px_40"
-            android:src="@mipmap/ic_website"
+            android:src="@mipmap/good_list"
              />
 
         <TextView
@@ -138,7 +138,7 @@
             android:layout_height="wrap_content"
             android:textColor="#A86767"
             android:layout_marginTop="@dimen/qb_px_5"
-            android:text="@string/website"
+            android:text="@string/goods_list"
             />
 
     </LinearLayout>

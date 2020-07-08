@@ -6,6 +6,7 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -68,6 +69,11 @@ public class SelectShopTypeActivity extends MyActivity {
 
     @BindView(R.id.type_list)
     RecyclerView typeList;
+
+    @BindView(R.id.ticket_select)
+    ImageView ticketSelect;
+
+    private boolean selectTicket;
 
     private String payType = "alipay";
     private IWXAPI wxAPI;
@@ -161,7 +167,7 @@ public class SelectShopTypeActivity extends MyActivity {
         });
     }
 
-    @OnClick({R.id.shop_join_pay})
+    @OnClick({R.id.shop_join_pay, R.id.ticket_layout})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.shop_join_pay:
@@ -173,6 +179,15 @@ public class SelectShopTypeActivity extends MyActivity {
                     getPayInfo(2);
                 } else if (payType.equals("alipay")) {
                     getPayInfo(1);
+                }
+                break;
+            case R.id.ticket_layout:
+                if (selectTicket) {
+                    selectTicket = false;
+                    ticketSelect.setImageResource(R.mipmap.kuang);
+                } else {
+                    selectTicket = true;
+                    ticketSelect.setImageResource(R.mipmap.kuang_xz);
                 }
                 break;
             default:
