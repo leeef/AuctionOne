@@ -1,21 +1,23 @@
 package com.hlnwl.auction.ui.store;
 
 import android.content.Intent;
-import android.view.View;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.bakerj.rxretrohttp.RxRetroHttp;
+import com.bakerj.rxretrohttp.subscriber.ApiObserver;
 import com.hjq.bar.TitleBar;
 import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.MyActivity;
+import com.hlnwl.auction.bean.goods.GoodListBean;
 import com.hlnwl.auction.ui.goods.GoodsDetailActivity;
+import com.hlnwl.auction.utils.http.Api;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -35,6 +37,7 @@ public class GoodListActivity extends MyActivity {
     TitleBar mTitleTb;
 
     private GoodListAdapter goodListAdapter;
+    private int page = 1;
 
     @Override
     protected int getLayoutId() {
@@ -58,14 +61,47 @@ public class GoodListActivity extends MyActivity {
     @Override
     protected void initData() {
         list.setLayoutManager(new GridLayoutManager(this, 2));
-        goodListAdapter = new GoodListAdapter(Arrays.asList(getResources().getStringArray(R.array.test)));
+        goodListAdapter = new GoodListAdapter(new ArrayList<>());
         list.setAdapter(goodListAdapter);
-        goodListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(GoodListActivity.this, GoodsDetailActivity.class)
-                        .putExtra("id", "5119").putExtra("tag", 2));
-            }
+        goodListAdapter.setOnItemClickListener((adapter, view, position) -> {
+                    GoodListBean.DataBean goodListBean = goodListAdapter.getItem(position);
+                    startActivity(new Intent(GoodListActivity.this, GoodsDetailActivity.class)
+                            .putExtra("id", goodListBean.getId()).putExtra("tag", 2));
+                }
+        );
+        srlListCommon.setOnRefreshListener(refreshLayout -> {
+            page = 1;
+            getData();
         });
+        srlListCommon.setOnLoadMoreListener(refreshLayout -> {
+            page++;
+            getData();
+        });
+        getData();
+    }
+
+    private void getData() {
+        RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
+                .getGoodList(page), this)
+                .subscribe(new ApiObserver<GoodListBean>() {
+                    @Override
+                    protected void success(GoodListBean data) {
+                        if (page == 1) {
+                            srlListCommon.finishRefresh();
+                            goodListAdapter.getData().clear();
+                        } else {
+                            srlListCommon.finishLoadMore();
+                        }
+                        goodListAdapter.addData(data.getData());
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        super.onError(t);
+
+                        showError();
+                        toast(t.getMessage());
+                    }
+                });
     }
 }

@@ -5,6 +5,7 @@ import com.hlnwl.auction.bean.PhoneBean;
 import com.hlnwl.auction.bean.QuestionListBean;
 import com.hlnwl.auction.bean.category.CategoryBean;
 import com.hlnwl.auction.bean.category.CategoryErjiBean;
+import com.hlnwl.auction.bean.goods.GoodListBean;
 import com.hlnwl.auction.bean.goods.GoodsCategoryBean;
 import com.hlnwl.auction.bean.goods.GoodsDetailBean;
 import com.hlnwl.auction.bean.goods.GoodsListBean;
@@ -101,6 +102,11 @@ public interface Api {
     Observable<GoodsDetailBean> getGoodsData(@Field("lang") String lang,
                                              @Field("id") String id,
                                              @Field("userid") String userid);
+
+    @FormUrlEncoded
+    @POST("Goods/shopgoodsdetail")
+    Observable<GoodsDetailBean> getGoodsData2(@Field("id") String id,
+                                              @Field("userid") String userid);
 
     @FormUrlEncoded
     @POST("order/single")
@@ -312,11 +318,11 @@ public interface Api {
     @FormUrlEncoded
     @POST("merchant/shoppay")
     Observable<JoinBean> payShop(@Field("userid") String id,
-                               @Field("token") String token,
-                               @Field("shopid") String shopId,
-                               @Field("price") String price,
-                               //支付类型 1支付宝 2微信
-                               @Field("paytype") int type);
+                                 @Field("token") String token,
+                                 @Field("shopid") String shopId,
+                                 @Field("price") String price,
+                                 //支付类型 1支付宝 2微信
+                                 @Field("paytype") int type);
 
 
     @FormUrlEncoded
@@ -463,4 +469,8 @@ public interface Api {
 
     @GET("index/novice")
     Observable<NewHand> getNewHand();
+
+    @FormUrlEncoded
+    @POST("Goods/shopgoods")
+    Observable<GoodListBean> getGoodList(@Field("page") int page);
 }

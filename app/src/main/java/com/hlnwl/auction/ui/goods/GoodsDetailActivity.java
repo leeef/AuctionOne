@@ -194,31 +194,59 @@ public class GoodsDetailActivity extends MyActivity {
     }
 
     private void getData() {
-        RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .getGoodsData(SPUtils.getLanguage(), good_id, StringUtils.null2Length0(SPUtils.getUserId())), this)
-                .subscribe(new ApiObserver<GoodsDetailBean>() {
-                               @Override
-                               protected void success(GoodsDetailBean data) {
-                                   boolean isSuccess = MessageUtils.setCode(getActivity(),
-                                           data.getStatus() + "", data.getMsg());
-                                   if (!isSuccess) {
-                                       showError();
-                                       return;
+        if (getIntent().getIntExtra("tag", 0) == 2) {
+            RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
+                    .getGoodsData2(good_id, StringUtils.null2Length0(SPUtils.getUserId())), this)
+                    .subscribe(new ApiObserver<GoodsDetailBean>() {
+                                   @Override
+                                   protected void success(GoodsDetailBean data) {
+                                       boolean isSuccess = MessageUtils.setCode(getActivity(),
+                                               data.getStatus() + "", data.getMsg());
+                                       if (!isSuccess) {
+                                           showError();
+                                           return;
+                                       }
+                                       if (data.getData().get(0) != null) {
+                                           mGoodsDetailData = data.getData().get(0);
+                                           initUI(data.getData().get(0));
+                                       }
                                    }
-                                   if (data.getData().get(0) != null) {
-                                       mGoodsDetailData = data.getData().get(0);
-                                       initUI(data.getData().get(0));
-                                   }
-                               }
 
-                               @Override
-                               public void onError(Throwable t) {
-                                   super.onError(t);
-                                   showError();
-                                   toast(t.getMessage());
+                                   @Override
+                                   public void onError(Throwable t) {
+                                       super.onError(t);
+                                       showError();
+                                       toast(t.getMessage());
+                                   }
                                }
-                           }
-                );
+                    );
+        } else {
+            RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
+                    .getGoodsData(SPUtils.getLanguage(), good_id, StringUtils.null2Length0(SPUtils.getUserId())), this)
+                    .subscribe(new ApiObserver<GoodsDetailBean>() {
+                                   @Override
+                                   protected void success(GoodsDetailBean data) {
+                                       boolean isSuccess = MessageUtils.setCode(getActivity(),
+                                               data.getStatus() + "", data.getMsg());
+                                       if (!isSuccess) {
+                                           showError();
+                                           return;
+                                       }
+                                       if (data.getData().get(0) != null) {
+                                           mGoodsDetailData = data.getData().get(0);
+                                           initUI(data.getData().get(0));
+                                       }
+                                   }
+
+                                   @Override
+                                   public void onError(Throwable t) {
+                                       super.onError(t);
+                                       showError();
+                                       toast(t.getMessage());
+                                   }
+                               }
+                    );
+        }
     }
 
     private void initUI(GoodsDetailBean.DataBean dataBean) {
@@ -258,7 +286,7 @@ public class GoodsDetailActivity extends MyActivity {
         //banner设置方法全部调用完毕时最后调用
         mBanner.start();
         log(mGoodsDetailData.getStatus());
-        if (mGoodsDetailData.getIs_bid().equals("1")) {
+        if (!StringUtils.isEmpty(mGoodsDetailData.getIs_bid()) && mGoodsDetailData.getIs_bid().equals("1")) {
             mPriceStart.setVisibility(View.VISIBLE);
             mAddOnce.setVisibility(View.VISIBLE);
             mPriceStart.setText(getResources().getString(R.string.price_start)

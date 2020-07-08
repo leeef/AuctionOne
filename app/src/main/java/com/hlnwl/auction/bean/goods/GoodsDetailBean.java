@@ -87,6 +87,29 @@ public class GoodsDetailBean {
         private String is_bid;
         private String status;
         private String give;
+        /**
+         * cid : 14
+         * money : 588.00
+         * keywords :
+         * images :
+         * sold_count : 0
+         * is_on : 1
+         * sort : 0
+         * lang : 0
+         * addtime : 1593517032
+         * pertime : 0
+         */
+
+        private String cid;
+        private String money;
+        private String keywords;
+        private String images;
+        private String sold_count;
+        private String is_on;
+        private String sort;
+        private String lang;
+        private String addtime;
+        private String pertime;
 
 
         public String getGive() {
@@ -255,6 +278,86 @@ public class GoodsDetailBean {
 
         public void setSpeci(List<GoodsAttr> speci) {
             this.speci = speci;
+        }
+
+        public String getCid() {
+            return cid;
+        }
+
+        public void setCid(String cid) {
+            this.cid = cid;
+        }
+
+        public String getMoney() {
+            return money;
+        }
+
+        public void setMoney(String money) {
+            this.money = money;
+        }
+
+        public String getKeywords() {
+            return keywords;
+        }
+
+        public void setKeywords(String keywords) {
+            this.keywords = keywords;
+        }
+
+        public String getImages() {
+            return images;
+        }
+
+        public void setImages(String images) {
+            this.images = images;
+        }
+
+        public String getSold_count() {
+            return sold_count;
+        }
+
+        public void setSold_count(String sold_count) {
+            this.sold_count = sold_count;
+        }
+
+        public String getIs_on() {
+            return is_on;
+        }
+
+        public void setIs_on(String is_on) {
+            this.is_on = is_on;
+        }
+
+        public String getSort() {
+            return sort;
+        }
+
+        public void setSort(String sort) {
+            this.sort = sort;
+        }
+
+        public String getLang() {
+            return lang;
+        }
+
+        public void setLang(String lang) {
+            this.lang = lang;
+        }
+
+        public String getAddtime() {
+            return addtime;
+        }
+
+        public void setAddtime(String addtime) {
+            this.addtime = addtime;
+        }
+
+        public String getPertime() {
+            return pertime;
+        }
+
+        public void setPertime(String pertime) {
+            this.pertime = pertime;
         }
 
         public static class GoodsAttr {

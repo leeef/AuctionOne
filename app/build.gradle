@@ -26,14 +26,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-//    signingConfigs {
-//        debug {
-//            keyAlias "hlnwlkey"
-//            keyPassword "123456"
-//            storeFile file('E:/worlplace/key/hlnwl.jks')
-//            storePassword "123456"
-//        }
-//    }
+    signingConfigs {
+        debug {
+            keyAlias "hlnwlkey"
+            keyPassword "123456"
+            storeFile file('/hlnwl.jks')
+            storePassword "123456"
+        }
+    }
     buildTypes {
         release {
             // 不显示Log
