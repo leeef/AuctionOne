@@ -121,7 +121,7 @@ public class OrderDetailActivity extends MyActivity {
             mOrderDetailShPhone.setText(data.getAddr_phone());
             ImageLoaderUtils.display(this, mOrderDetailGoodImg, data.getGpic());
             mOrderDetailGoodName.setText(data.getGname());
-            mOrderDetailPrice.setText(StringUtils.getString(R.string.chujia) + "  " + data.getPrice());
+            mOrderDetailPrice.setText(StringUtils.getString(R.string.danwei) + "  " + data.getPrice());
             mOrderDetailSn.setText(StringUtils.getString(R.string.order_sn) + " " + data.getOrder_sn());
             mOrderDetailPayType.setText(StringUtils.getString(R.string.pay_type) + " " + data.getPaytype());
             mOrderDetailAddTime.setText(StringUtils.getString(R.string.add_time) + " " + data.getAddtime());

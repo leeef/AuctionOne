@@ -149,6 +149,10 @@ public class GoodsDetailBean {
             pertime = in.readString();
         }
 
+        public DataBean() {
+
+        }
+
         public static final Creator<DataBean> CREATOR = new Creator<DataBean>() {
             @Override
             public DataBean createFromParcel(Parcel in) {

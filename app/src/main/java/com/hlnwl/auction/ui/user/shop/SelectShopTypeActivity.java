@@ -1,6 +1,7 @@
 package com.hlnwl.auction.ui.user.shop;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -105,17 +106,14 @@ public class SelectShopTypeActivity extends MyActivity {
                                     /**
                                      * 要执行的操作
                                      */
-                                    getActivity().runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            shopJoinPay.complete();
-                                            EventBus.getDefault().post(new LoginMessage("update"));
-                                            ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
-                                            startActivity(ShopJoinActivity.class);
-                                            finish();
-                                        }
-
-
+                                    getActivity().runOnUiThread(() -> {
+                                        shopJoinPay.complete();
+                                        EventBus.getDefault().post(new LoginMessage("update"));
+                                        ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
+                                        ShopTypeBean.DataBean.ShopBean item = shopTypeAdapter.getItem(shopTypeAdapter.selectIndex);
+                                        startActivity(new Intent(SelectShopTypeActivity.this, ShopJoinActivity.class).putExtra("shopId"
+                                                , item.getId()));
+                                        finish();
                                     });
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
@@ -277,7 +275,10 @@ public class SelectShopTypeActivity extends MyActivity {
                 shopJoinPay.complete();
                 EventBus.getDefault().post(new LoginMessage("update"));
                 ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
-                startActivity(ShopJoinActivity.class);
+
+                ShopTypeBean.DataBean.ShopBean item = shopTypeAdapter.getItem(shopTypeAdapter.selectIndex);
+                startActivity(new Intent(SelectShopTypeActivity.this, ShopJoinActivity.class).putExtra("shopId"
+                        , item.getId()));
                 finish();
             } else {
                 shopJoinPay.fail();

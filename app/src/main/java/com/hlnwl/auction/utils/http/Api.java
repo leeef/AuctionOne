@@ -217,7 +217,8 @@ public interface Api {
                                   @Field("name") String name,
                                   @Field("pic") String pic,
                                   @Field("genre") String genre,
-                                  @Field("paytype") String paytype);
+                                  @Field("paytype") String paytype,
+                                  @Field("type") String type);
 
     @FormUrlEncoded
     @POST("merchant/add_good")
@@ -418,10 +419,10 @@ public interface Api {
                                         @Field("id") String id);
 
     @FormUrlEncoded
-    @POST("order/set_over")
+    @POST("Order/shoporderover")
     Observable<NoDataBean> confirmOrder2(@Field("userid") String userid,
                                          @Field("token") String token,
-                                         @Field("id") String id);
+                                         @Field("oid") String id);
 
     @FormUrlEncoded
     @POST("order/set_over")

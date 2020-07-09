@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
@@ -29,7 +26,6 @@ import com.hlnwl.auction.R;
 import com.hlnwl.auction.app.MyApplication;
 import com.hlnwl.auction.base.BaseDialog;
 import com.hlnwl.auction.base.MyActivity;
-import com.hlnwl.auction.bean.pay.AuthResult;
 import com.hlnwl.auction.bean.pay.WeiXinPay;
 import com.hlnwl.auction.bean.user.shop.JoinBean;
 import com.hlnwl.auction.message.LoginMessage;
@@ -61,7 +57,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -112,58 +107,7 @@ public class ShopJoinActivity extends MyActivity {
     private IWXAPI wxAPI;
     private static final int SDK_PAY_FLAG = 1;
 
-    private Handler mHandler = new Handler() {
-        @SuppressWarnings("unused")
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case SDK_PAY_FLAG: {
-                    @SuppressWarnings("unchecked")
-                    AuthResult authResult = new AuthResult((Map<String, String>) msg.obj, true);
-                    String resultStatus = authResult.getResultStatus();
-
-                    // 判断resultStatus 为“9000”且result_code
-                    // 为“200”则代表授权成功，具体状态码代表含义可参考授权接口文档
-                    if (TextUtils.equals(resultStatus, "9000")) {
-                        // 获取alipay_open_id，调支付时作为参数extern_token 的value
-                        // 传入，则支付账户为该授权账户
-                        new Thread() {
-                            @Override
-                            public void run() {
-                                super.run();
-                                try {
-                                    Thread.sleep(1000);//休眠3秒
-                                    /**
-                                     * 要执行的操作
-                                     */
-                                    getActivity().runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            mShopJoinPay.complete();
-                                            EventBus.getDefault().post(new LoginMessage("update"));
-                                            ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
-                                            startActivity(ShopJoinStatusActivity.class);
-                                            finish();
-                                        }
-
-
-                                    });
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }.start();
-
-                    } else {
-                        mShopJoinPay.fail();
-                        toast(StringUtils.getString(R.string.cancel_pay));
-                    }
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
-    };
+    private String shopId;
     private BaseDialog mDialog;
 
     @Override
@@ -179,7 +123,7 @@ public class ShopJoinActivity extends MyActivity {
     @Override
     protected void initView() {
         mTitleTb.setTitle(getResources().getString(R.string.shop_join));
-
+        shopId = getIntent().getStringExtra("shopId");
 
     }
 
@@ -209,7 +153,7 @@ public class ShopJoinActivity extends MyActivity {
                         idfan,
                         mShopJoinShopName.getText().toString().trim(),
                         Bitmap2StrByBase64(dianpu),
-                        genre, paystyle
+                        genre, paystyle, shopId
                 ), this)
                 .subscribe(new ApiObserver<JoinBean>() {
                                @Override

@@ -31,6 +31,7 @@ public class OrderAdapter extends BaseQuickAdapter<OrderBean.DataBean, BaseViewH
         LinearLayout bottom = helper.getView(R.id.item_order_yfh);
         SuperButton ckwl = helper.getView(R.id.item_order_yfh_see);
         SuperButton qrsh = helper.getView(R.id.item_order_qrsh);
+        SuperButton pay = helper.getView(R.id.pay);
         SuperButton pingjia = helper.getView(R.id.item_order_comment);
         SuperButton shanchudingdan = helper.getView(R.id.item_order_cancel);
 
@@ -42,7 +43,13 @@ public class OrderAdapter extends BaseQuickAdapter<OrderBean.DataBean, BaseViewH
 
         if (item.getStatus().equals("0")) {
             helper.setText(R.id.item_order_status, StringUtils.getString(R.string.to_be_payment));
-//            bottom.setVisibility(View.GONE);
+            bottom.setVisibility(View.VISIBLE);
+            ckwl.setVisibility(View.GONE);
+            qrsh.setVisibility(View.GONE);
+            pingjia.setVisibility(View.GONE);
+            shanchudingdan.setVisibility(View.GONE);
+            pay.setVisibility(View.VISIBLE);
+            helper.addOnClickListener(R.id.pay);
         } else if (item.getStatus().equals("1")) {
             helper.setText(R.id.item_order_status, StringUtils.getString(R.string.to_be_shipped));
             bottom.setVisibility(View.GONE);
@@ -53,7 +60,7 @@ public class OrderAdapter extends BaseQuickAdapter<OrderBean.DataBean, BaseViewH
             bottom.setVisibility(View.VISIBLE);
             if (item.getStatus().equals("2")) {
                 helper.setText(R.id.item_order_status, StringUtils.getString(R.string.to_be_received));
-                ckwl.setVisibility(View.VISIBLE);
+                ckwl.setVisibility(View.GONE);
                 qrsh.setVisibility(View.VISIBLE);
                 pingjia.setVisibility(View.GONE);
                 shanchudingdan.setVisibility(View.GONE);

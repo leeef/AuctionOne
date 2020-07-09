@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.BaseDialog;
 import com.hlnwl.auction.base.MyLazyFragment;
 import com.hlnwl.auction.bean.NoDataBean;
+import com.hlnwl.auction.bean.goods.GoodsDetailBean;
 import com.hlnwl.auction.bean.user.order.OrderBean;
 import com.hlnwl.auction.message.OrderMessage;
 import com.hlnwl.auction.ui.goods.ShopDetailActivity;
@@ -195,12 +197,13 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         switch (view.getId()) {
             case R.id.item_order_good:
-                startActivity(new Intent(getActivity(), ShopDetailActivity.class)
-                        .putExtra("id", datas.get(position).getGid()));
-                break;
-            case R.id.item_order_yfh_see:
-                startActivity(new Intent(getActivity(), OrderDetailActivity.class)
-                        .putExtra("id", datas.get(position).getId()));
+                if (type.equals("0")) {
+                    startActivity(new Intent(getActivity(), ShopDetailActivity.class)
+                            .putExtra("id", datas.get(position).getGid()));
+                } else {
+                    startActivity(new Intent(getActivity(), OrderDetailActivity.class)
+                            .putExtra("id", datas.get(position).getId()));
+                }
                 break;
             case R.id.item_order_qrsh:
                 new MessageDialog.Builder(getActivity())
@@ -226,6 +229,17 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
             case R.id.item_order_comment:
                 startActivity(new Intent(getActivity(), CommentActivity.class)
                         .putExtra("id", datas.get(position).getId()));
+                break;
+            case R.id.pay:
+                GoodsDetailBean.DataBean mGoodsDetailData = new GoodsDetailBean.DataBean();
+                mGoodsDetailData.setId(datas.get(position).getGid());
+                mGoodsDetailData.setName(datas.get(position).getGname());
+                mGoodsDetailData.setPrice(datas.get(position).getTotal());
+                ArrayList<String> pic = new ArrayList<>();
+                pic.add(datas.get(position).getGpic());
+                mGoodsDetailData.setPic(pic);
+                startActivity(new Intent(getActivity(), com.hlnwl.auction.ui.store.OrderDetailActivity.class)
+                        .putExtra("data", (Parcelable) mGoodsDetailData));
                 break;
         }
     }
