@@ -11,7 +11,7 @@ import com.hjq.bar.TitleBar;
 import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.MyActivity;
 import com.hlnwl.auction.bean.goods.GoodListBean;
-import com.hlnwl.auction.ui.goods.GoodsDetailActivity;
+import com.hlnwl.auction.ui.goods.ShopDetailActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
@@ -65,8 +65,8 @@ public class GoodListActivity extends MyActivity {
         list.setAdapter(goodListAdapter);
         goodListAdapter.setOnItemClickListener((adapter, view, position) -> {
                     GoodListBean.DataBean goodListBean = goodListAdapter.getItem(position);
-                    startActivity(new Intent(GoodListActivity.this, GoodsDetailActivity.class)
-                            .putExtra("id", goodListBean.getId()).putExtra("tag", 2));
+                    startActivity(new Intent(GoodListActivity.this, ShopDetailActivity.class)
+                            .putExtra("id", goodListBean.getId()));
                 }
         );
         srlListCommon.setOnRefreshListener(refreshLayout -> {

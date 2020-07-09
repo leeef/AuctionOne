@@ -20,6 +20,7 @@ import com.hlnwl.auction.bean.shop.ShopOrderBean;
 import com.hlnwl.auction.bean.shop.ShopTypeBean;
 import com.hlnwl.auction.bean.user.LoginBean;
 import com.hlnwl.auction.bean.user.MineBean;
+import com.hlnwl.auction.bean.user.TicketListBean;
 import com.hlnwl.auction.bean.user.bid.BidOrderBean;
 import com.hlnwl.auction.bean.user.bid.BidRecordBean;
 import com.hlnwl.auction.bean.user.info.ALiPayMsgBean;
@@ -404,11 +405,23 @@ public interface Api {
                                                @Field("id") String id);
 
     @FormUrlEncoded
+    @POST("Order/shoporderdeta")
+    Observable<OrderDetailBean> getOrderDetail2(@Field("userid") String userid,
+                                                @Field("token") String token,
+                                                @Field("id") String id);
+
+    @FormUrlEncoded
     @POST("order/set_over")
     Observable<NoDataBean> confirmOrder(@Field("lang") String lang,
                                         @Field("userid") String userid,
                                         @Field("token") String token,
                                         @Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("order/set_over")
+    Observable<NoDataBean> confirmOrder2(@Field("userid") String userid,
+                                         @Field("token") String token,
+                                         @Field("id") String id);
 
     @FormUrlEncoded
     @POST("order/set_over")
@@ -426,6 +439,16 @@ public interface Api {
                                    @Field("score") String score,
                                    @Field("content") String content,
                                    @Field("icon") String icon);
+
+    @FormUrlEncoded
+    @POST("Order/shoporderment")
+    Observable<NoDataBean> comment2(@Field("userid") String userid,
+                                    @Field("token") String token,
+                                    @Field("id") String id,
+                                    @Field("score") String score,
+                                    @Field("content") String content,
+                                    @Field("icon") String icon,
+                                    @Field("type") String type);
 
     @FormUrlEncoded
     @POST("merchant/sgoods")
@@ -473,4 +496,30 @@ public interface Api {
     @FormUrlEncoded
     @POST("Goods/shopgoods")
     Observable<GoodListBean> getGoodList(@Field("page") int page);
+
+    //自营商城提交订单
+    @FormUrlEncoded
+    @POST("Merchant/buyshoporder")
+    Observable<JoinBean> shopOrder(@Field("userid") String userid,
+                                   @Field("token") String token,
+                                   @Field("gid") String gid,
+                                   @Field("aid") String aid,
+                                   @Field("num") String num,
+                                   @Field("paytype") String paytype);
+
+    //用户优惠券列表
+    @FormUrlEncoded
+    @POST("Usercenter/couponlist")
+    Observable<TicketListBean> ticketList(@Field("userid") String userid,
+                                          @Field("token") String token,
+                                          @Field("status") int status);
+
+    //订单列表
+    //订单类型type 0-待付款 1-已付款 2-已发货3-等待评论 4-完成
+    @FormUrlEncoded
+    @POST("Order/shoporderlist")
+    Observable<OrderBean> orderList(@Field("userid") String userid,
+                                    @Field("token") String token,
+                                    @Field("type") String type,
+                                    @Field("page") int page);
 }

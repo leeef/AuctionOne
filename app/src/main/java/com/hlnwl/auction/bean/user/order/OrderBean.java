@@ -70,6 +70,17 @@ public class OrderBean {
         private String name;
         private String pic;
         private String genre;
+        /**
+         * money : 588.00
+         * total : 388.00
+         * num : 1
+         * addtime : 1594261699
+         */
+
+        private String money;
+        private String total;
+        private String num;
+        private String addtime;
 
         public String getId() {
             return id;
@@ -149,6 +160,38 @@ public class OrderBean {
 
         public void setGenre(String genre) {
             this.genre = genre;
+        }
+
+        public String getMoney() {
+            return money;
+        }
+
+        public void setMoney(String money) {
+            this.money = money;
+        }
+
+        public String getTotal() {
+            return total;
+        }
+
+        public void setTotal(String total) {
+            this.total = total;
+        }
+
+        public String getNum() {
+            return num;
+        }
+
+        public void setNum(String num) {
+            this.num = num;
+        }
+
+        public String getAddtime() {
+            return addtime;
+        }
+
+        public void setAddtime(String addtime) {
+            this.addtime = addtime;
         }
     }
 }

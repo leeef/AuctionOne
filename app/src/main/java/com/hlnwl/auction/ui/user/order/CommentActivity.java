@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Gravity;
@@ -19,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bakerj.rxretrohttp.RxRetroHttp;
 import com.bakerj.rxretrohttp.subscriber.ApiObserver;
-import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -33,13 +31,8 @@ import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.BaseDialog;
 import com.hlnwl.auction.base.MyActivity;
 import com.hlnwl.auction.bean.NoDataBean;
-import com.hlnwl.auction.bean.category.CategoryData;
-import com.hlnwl.auction.bean.category.CategoryErji;
 import com.hlnwl.auction.message.OrderMessage;
-import com.hlnwl.auction.ui.release.GridAdapter;
 import com.hlnwl.auction.ui.release.NineGridAdapter;
-import com.hlnwl.auction.ui.release.ReleaseActivity;
-import com.hlnwl.auction.ui.user.shop.ShopJoinActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.photo.PictureUtile;
@@ -49,7 +42,6 @@ import com.hlnwl.auction.view.dialog.WaitDialog;
 import com.hlnwl.auction.view.widget.ClearEditText;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.willy.ratingbar.ScaleRatingBar;
 
@@ -60,7 +52,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 版权：hlnwl 版权所有
@@ -86,6 +77,7 @@ public class CommentActivity extends MyActivity implements BaseQuickAdapter.OnIt
     private List<String> paths = new ArrayList<>();
     private List<String> up_imgs = new ArrayList<>();
     private String commit_imgs = "";
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_comment;
@@ -173,10 +165,10 @@ public class CommentActivity extends MyActivity implements BaseQuickAdapter.OnIt
 //                                                                .maxSelectNum(3)
 //                                                                .selectionMedia(selectList)
 //                                                                .forResult(PictureConfig.CHOOSE_REQUEST);
-                                                        PictureUtile.addPic(CommentActivity.this,selectList,3);
+                                                        PictureUtile.addPic(CommentActivity.this, selectList, 3);
                                                     } else if (position == 1) {
 
-                                                        PictureUtile.getCamera(CommentActivity.this,selectList);
+                                                        PictureUtile.getCamera(CommentActivity.this, selectList);
                                                     }
                                                 }
 
@@ -214,11 +206,11 @@ public class CommentActivity extends MyActivity implements BaseQuickAdapter.OnIt
         }
 
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .comment(SPUtils.getLanguage(),SPUtils.getUserId(), SPUtils.getToken(),
+                .comment2(SPUtils.getUserId(), SPUtils.getToken(),
                         getIntent().getStringExtra("id"),
                         Math.round(mCommentRatingBar.getRating()) + "",
                         mCommentContent.getText().toString().trim(),
-                        commit_imgs), this)
+                        commit_imgs, "1"), this)
                 .subscribe(new ApiObserver<NoDataBean>() {
                                @Override
                                protected void success(NoDataBean data) {
@@ -281,7 +273,7 @@ public class CommentActivity extends MyActivity implements BaseQuickAdapter.OnIt
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null) {
-             if (resultCode == RESULT_OK) {
+            if (resultCode == RESULT_OK) {
                 switch (requestCode) {
                     case PictureConfig.CHOOSE_REQUEST:
                         // 图片、视频、音频选择结果回调

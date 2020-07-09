@@ -3,9 +3,11 @@ package com.hlnwl.auction.ui.goods;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -28,15 +30,11 @@ import com.hlnwl.auction.bean.goods.OfferBean;
 import com.hlnwl.auction.message.LoginMessage;
 import com.hlnwl.auction.ui.common.ImagePagerActivity;
 import com.hlnwl.auction.ui.common.LoginActivity;
-import com.hlnwl.auction.ui.shop.ShopHomeAcitivity;
+import com.hlnwl.auction.ui.store.OrderDetailActivity;
 import com.hlnwl.auction.ui.user.bid.BidRecordActivity;
-import com.hlnwl.auction.utils.CountdownUtils;
-import com.hlnwl.auction.utils.StringsUtils;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.my.MyLinearLayoutManager;
-import com.hlnwl.auction.utils.my.PhoneUtil;
-import com.hlnwl.auction.utils.photo.ImageLoaderUtils;
 import com.hlnwl.auction.utils.sp.SPUtils;
 import com.hlnwl.auction.view.banner.GlideImageLoader;
 import com.hlnwl.auction.view.dialog.BidRecordDialog;
@@ -53,23 +51,18 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.iwgang.countdownview.CountdownView;
 
 /**
- * 版权：hlnwl 版权所有
- *
- * @author yougui
- * 版本：1.0
- * 创建日期：2019/9/19 13:59
- * 描述：
+ * @Description:
+ * @Author: leeeef
+ * @CreateDate: 2020/7/9 9:16
  */
-public class GoodsDetailActivity extends MyActivity {
+public class ShopDetailActivity extends MyActivity {
     @BindView(R.id.goods_detail_banner)
     Banner mBanner;
     @BindView(R.id.goods_detail_price_start)
@@ -112,10 +105,6 @@ public class GoodsDetailActivity extends MyActivity {
     TextView mGoodsDetailMakePrice;
     @BindView(R.id.chujia_liebiao)
     LinearLayout liebiao;
-    @BindView(R.id.countdownView1)
-    CountdownView countdownView1;
-    @BindView(R.id.ll_count)
-    LinearLayout llCount;
     @BindView(R.id.ll_price)
     LinearLayout llPrice;
     @BindView(R.id.goods_detail_shop_in)
@@ -143,7 +132,7 @@ public class GoodsDetailActivity extends MyActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_goods_detail;
+        return R.layout.activity_shop_detail;
     }
 
     @Override
@@ -163,7 +152,7 @@ public class GoodsDetailActivity extends MyActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void loginEventBus(LoginMessage update) {
         getData();
-        setTimer();
+//        setTimer();
     }
 
     @Override
@@ -171,203 +160,125 @@ public class GoodsDetailActivity extends MyActivity {
         good_id = getIntent().getStringExtra("id");
         showLoading();
         getData();
-        setTimer();
+//        setTimer();
 
-        if (getIntent().getIntExtra("tag", 0) == 1) {
-            llCount.setVisibility(View.VISIBLE);
-            llPrice.setVisibility(View.GONE);
-            llShop.setVisibility(View.GONE);
-            tvExhibition.setText(getResources().getString(R.string.exhibition1));
-            mGoodsDetailMakePrice.setText(getResources().getString(R.string.display1));
-            mTimeCount.setText(getResources().getString(R.string.call_customer1));
-        } else if (getIntent().getIntExtra("tag", 0) == 2) {
-            llCount.setVisibility(View.GONE);
-            goodsDetailNormal.setVisibility(View.GONE);
-            buyLayout.setVisibility(View.VISIBLE);
-        } else {
-            llCount.setVisibility(View.GONE);
-            llPrice.setVisibility(View.VISIBLE);
-        }
-
-
+        llShop.setVisibility(View.GONE);
+        goodsDetailNormal.setVisibility(View.GONE);
+        buyLayout.setVisibility(View.VISIBLE);
+        mTimeCount.setVisibility(View.GONE);
     }
 
     private void getData() {
-        if (getIntent().getIntExtra("tag", 0) == 2) {
-            RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                    .getGoodsData2(good_id, StringUtils.null2Length0(SPUtils.getUserId())), this)
-                    .subscribe(new ApiObserver<GoodsDetailBean>() {
-                                   @Override
-                                   protected void success(GoodsDetailBean data) {
-                                       boolean isSuccess = MessageUtils.setCode(getActivity(),
-                                               data.getStatus() + "", data.getMsg());
-                                       if (!isSuccess) {
-                                           showError();
-                                           return;
-                                       }
-                                       if (data.getData().get(0) != null) {
-                                           mGoodsDetailData = data.getData().get(0);
-                                           initUI(data.getData().get(0));
-                                       }
-                                   }
-
-                                   @Override
-                                   public void onError(Throwable t) {
-                                       super.onError(t);
+        RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
+                .getGoodsData2(good_id, StringUtils.null2Length0(SPUtils.getUserId())), this)
+                .subscribe(new ApiObserver<GoodsDetailBean>() {
+                               @Override
+                               protected void success(GoodsDetailBean data) {
+                                   boolean isSuccess = MessageUtils.setCode(getActivity(),
+                                           data.getStatus() + "", data.getMsg());
+                                   if (!isSuccess) {
                                        showError();
-                                       toast(t.getMessage());
+                                       return;
+                                   }
+                                   if (data.getData().get(0) != null) {
+                                       mGoodsDetailData = data.getData().get(0);
+                                       initUI(data.getData().get(0));
+
                                    }
                                }
-                    );
-        } else {
-            RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                    .getGoodsData(SPUtils.getLanguage(), good_id, StringUtils.null2Length0(SPUtils.getUserId())), this)
-                    .subscribe(new ApiObserver<GoodsDetailBean>() {
-                                   @Override
-                                   protected void success(GoodsDetailBean data) {
-                                       boolean isSuccess = MessageUtils.setCode(getActivity(),
-                                               data.getStatus() + "", data.getMsg());
-                                       if (!isSuccess) {
-                                           showError();
-                                           return;
-                                       }
-                                       if (data.getData().get(0) != null) {
-                                           mGoodsDetailData = data.getData().get(0);
-                                           initUI(data.getData().get(0));
-                                       }
-                                   }
 
-                                   @Override
-                                   public void onError(Throwable t) {
-                                       super.onError(t);
-                                       showError();
-                                       toast(t.getMessage());
-                                   }
+                               @Override
+                               public void onError(Throwable t) {
+                                   super.onError(t);
+                                   showError();
+                                   toast(t.getMessage());
                                }
-                    );
-        }
+                           }
+                );
+
     }
 
     private void initUI(GoodsDetailBean.DataBean dataBean) {
 
 
         // 倒计时
-        CountdownUtils.getCounDown(countdownView1,
-                StringsUtils.getStrTime(String.valueOf(dataBean.getEndtime())));
+//        CountdownUtils.getCounDown(countdownView1,
+//                StringsUtils.getStrTime(String.valueOf(dataBean.getEndtime())));
 
-
-        mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
-        //设置图片加载器
-        mBanner.setImageLoader(new GlideImageLoader());
-        //设置图片集合
-        mBanner.setImages(dataBean.getPic());
-        //设置banner动画效果
-        mBanner.setBannerAnimation(Transformer.Default);
-        //设置标题集合（当banner样式有显示title时）
+        try {
+            mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+            //设置图片加载器
+            mBanner.setImageLoader(new GlideImageLoader());
+            //设置图片集合
+            mBanner.setImages(dataBean.getPic());
+            //设置banner动画效果
+            mBanner.setBannerAnimation(Transformer.Default);
+            //设置标题集合（当banner样式有显示title时）
 //                banner.setBannerTitles(titles);
-        //设置自动轮播，默认为true
-        mBanner.isAutoPlay(true);
-        //设置轮播时间
-        mBanner.setDelayTime(3500);
-        //设置指示器位置（当banner模式中有指示器时）
-        mBanner.setIndicatorGravity(BannerConfig.CENTER);
-        ArrayList<String> imgUrls = new ArrayList<>();
-        imgUrls.addAll(dataBean.getPic());
-        mBanner.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void OnBannerClick(int position) {
-                Intent intent = new Intent(GoodsDetailActivity.this, ImagePagerActivity.class);
-                intent.putStringArrayListExtra("imageUrls", imgUrls);
-                intent.putExtra("position", position + "");
-                startActivity(intent);
-            }
-        });
-        //banner设置方法全部调用完毕时最后调用
-        mBanner.start();
-        log(mGoodsDetailData.getStatus());
-        if (!StringUtils.isEmpty(mGoodsDetailData.getIs_bid()) && mGoodsDetailData.getIs_bid().equals("1")) {
-            mPriceStart.setVisibility(View.VISIBLE);
-            mAddOnce.setVisibility(View.VISIBLE);
-            mPriceStart.setText(getResources().getString(R.string.price_start)
-                    + getResources().getString(R.string.money) +
-                    dataBean.getLow_price());
-            mAddOnce.setText(getResources().getString(R.string.add_once)
-                    + getResources().getString(R.string.money) +
-                    dataBean.getBid_price());
-            if (mGoodsDetailData.getStatus().equals("0")) {
-                Date date = new Date();
-                long timestamp = date.getTime();    //时间戳
-                long midTime = mGoodsDetailData.getEndtime() * 1000 - timestamp;
-
-//        long mytime=TimeUtils.getMillisByNow(mGoodsDetailData.getEndtime(),);
-                if (midTime > 0) {
-                    log(midTime + "");
-//                    time = new TimeCount(this, midTime, 1000, mTimeCount);
-//                    time.start();
+            //设置自动轮播，默认为true
+            mBanner.isAutoPlay(true);
+            //设置轮播时间
+            mBanner.setDelayTime(3500);
+            //设置指示器位置（当banner模式中有指示器时）
+            mBanner.setIndicatorGravity(BannerConfig.CENTER);
+            ArrayList<String> imgUrls = new ArrayList<>();
+            imgUrls.addAll(dataBean.getPic());
+            mBanner.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int position) {
+                    Intent intent = new Intent(ShopDetailActivity.this, ImagePagerActivity.class);
+                    intent.putStringArrayListExtra("imageUrls", imgUrls);
+                    intent.putExtra("position", position + "");
+                    startActivity(intent);
                 }
-                //mGoodsDetailMakePrice.setBackgroundColor(ColorUtils.getColor(R.color.main));
-            } else {
-                // mGoodsDetailMakePrice.setBackgroundColor(ColorUtils.getColor(R.color.gray));
-                // mTimeCount.setText(StringsUtils.getString(R.string.auction_over));
+            });
+            //banner设置方法全部调用完毕时最后调用
+            mBanner.start();
 
-            }
-            liebiao.setVisibility(View.VISIBLE);
-        } else {
-            mPriceStart.setVisibility(View.INVISIBLE);
-            mAddOnce.setVisibility(View.INVISIBLE);
-            // mTimeCount.setText(StringsUtils.getString(R.string.goods_zhanshi));
-            // mGoodsDetailMakePrice.setBackgroundColor(ColorUtils.getColor(R.color.gray));
-            //mGoodsDetailMakePrice.setText(StringsUtils.getString(R.string.zhanshi));
+            mPriceStart.setText(getResources().getString(R.string.money) + mGoodsDetailData.getPrice());
+            mAddOnce.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+            mAddOnce.setText(getResources().getString(R.string.money) + mGoodsDetailData.getMoney());
             liebiao.setVisibility(View.GONE);
+
+
+            mTitle.setText(dataBean.getName());
+            mWeb.loadDataWithBaseURL("file://", dataBean.getContent(),
+                    "text/html", "utf-8", "about:blank");
+            if (dataBean.getSpeci() != null && dataBean.getSpeci().size() > 0) {
+                log(dataBean.getSpeci().get(0).toString());
+                mGoodsDetailAttribute.setLayoutManager(new LinearLayoutManager(getActivity()));
+                mAttrAdapter = new GoodsAttrAdapter();
+                mAttrAdapter.setNewData(dataBean.getSpeci());
+                mGoodsDetailAttribute.setAdapter(mAttrAdapter);
+            }
+//        ImageLoaderUtils.display(this, mShopImg, dataBean.getSpic());
+//        mShopName.setText(dataBean.getSname());
+//        mPhone.setText(getResources().getString(R.string.hotline) + " " + dataBean.getSphone());
+            if (!StringUtils.isEmpty(dataBean.getGenre()) && dataBean.getGenre().equals("1")) {
+                mIsJp.setVisibility(View.VISIBLE);
+            } else {
+                mIsJp.setVisibility(View.GONE);
+            }
+
+            if (!StringUtils.isEmpty(mGoodsDetailData.getGive()) && mGoodsDetailData.getGive().equals("0")) {
+                shineButton.setChecked(false);
+            } else {
+                shineButton.setChecked(true);
+            }
+            mLikeNum.setText(mGoodsDetailData.getBang());
+            mSeeNum.setText(mGoodsDetailData.getViews());
+//        getOfferList();
+            showComplete();
+
+
+            buyLayout.setOnClickListener(v ->
+                    startActivity(new Intent(getActivity(), OrderDetailActivity.class)
+                            .putExtra("data", (Parcelable) mGoodsDetailData))
+            );
+        } catch (Exception e) {
+            showComplete();
+            e.printStackTrace();
         }
-
-
-        mTitle.setText(dataBean.getName());
-//        String css = "<style type=\"text/css\"> img {" +
-//                "width:100%;" +
-//                "height:auto;" +
-//                "}" +
-//                "body {" +
-//                "margin-right:15px;" +
-//                "margin-left:15px;" +
-//                "margin-top:15px;" +
-//                "font-size:15px;" +
-//                "}" +
-//                "</style>";
-//        String url = goodsDetailData.getGoods_content();
-//        url = url.replaceAll("<img src=\"", "<img src=\"" + CONFIG.URL);
-//        String html = "<html><header>" + css + "</header><body>" + url + "</body></html>";
-//        goodsWeb.loadDataWithBaseURL("file://", html, "text/html", "UTF-8", "about:blank");
-        mWeb.loadDataWithBaseURL("file://", dataBean.getContent(),
-                "text/html", "utf-8", "about:blank");
-        if (dataBean.getSpeci().size() > 0) {
-            log(dataBean.getSpeci().get(0).toString());
-            mGoodsDetailAttribute.setLayoutManager(new LinearLayoutManager(getActivity()));
-            mAttrAdapter = new GoodsAttrAdapter();
-            mAttrAdapter.setNewData(dataBean.getSpeci());
-            mGoodsDetailAttribute.setAdapter(mAttrAdapter);
-        }
-        ImageLoaderUtils.display(this, mShopImg, dataBean.getSpic());
-        mShopName.setText(dataBean.getSname());
-        mPhone.setText(getResources().getString(R.string.hotline) + " " + dataBean.getSphone());
-        if (dataBean.getGenre().equals("1")) {
-            mIsJp.setVisibility(View.VISIBLE);
-        } else {
-            mIsJp.setVisibility(View.GONE);
-        }
-
-        log(mGoodsDetailData.getStatus() + "    " + mGoodsDetailData.getIs_bid());
-        if (mGoodsDetailData.getGive().equals("0")) {
-            shineButton.setChecked(false);
-        } else {
-            shineButton.setChecked(true);
-        }
-        mLikeNum.setText(mGoodsDetailData.getBang());
-        mSeeNum.setText(mGoodsDetailData.getViews());
-        getOfferList();
-        showComplete();
-
-
     }
 
     private void setTimer() {
@@ -450,7 +361,7 @@ public class GoodsDetailActivity extends MyActivity {
             mOfferMessage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(GoodsDetailActivity.this, OfferRecordActivity.class)
+                    startActivity(new Intent(ShopDetailActivity.this, OfferRecordActivity.class)
                             .putExtra("good_id", good_id));
                 }
             });
@@ -472,20 +383,20 @@ public class GoodsDetailActivity extends MyActivity {
         flag = false;
     }
 
-    @OnClick({R.id.goods_detail_back, R.id.goods_detail_shop_in,
+    @OnClick({R.id.goods_detail_back,
             R.id.goods_detail_like,
-            R.id.goods_detail_make_price, R.id.goods_detail_phone})
+            R.id.goods_detail_make_price})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.goods_detail_back:
                 finish();
                 break;
-            case R.id.goods_detail_shop_in:
-                startActivity(new Intent(this, ShopHomeAcitivity.class)
-                        .putExtra("name", mGoodsDetailData.getSname())
-                        .putExtra("pic", mGoodsDetailData.getSpic())
-                        .putExtra("id", mGoodsDetailData.getSid()));
-                break;
+//            case R.id.goods_detail_shop_in:
+//                startActivity(new Intent(this, ShopHomeAcitivity.class)
+//                        .putExtra("name", mGoodsDetailData.getSname())
+//                        .putExtra("pic", mGoodsDetailData.getSpic())
+//                        .putExtra("id", mGoodsDetailData.getSid()));
+//                break;
             case R.id.goods_detail_like:
                 if (SPUtils.getLogin().length() == 0 || SPUtils.getLogin() == null) {
                     startActivity(LoginActivity.class);
@@ -514,9 +425,9 @@ public class GoodsDetailActivity extends MyActivity {
                 }
 
                 break;
-            case R.id.goods_detail_phone:
-                PhoneUtil.callPhone(this, mGoodsDetailData.getSphone());
-                break;
+//            case R.id.goods_detail_phone:
+//                PhoneUtil.callPhone(this, mGoodsDetailData.getSphone());
+//                break;
         }
     }
 
@@ -526,7 +437,7 @@ public class GoodsDetailActivity extends MyActivity {
                 .subscribe(new ApiObserver<NoDataBean>() {
                                @Override
                                protected void success(NoDataBean data) {
-                                   boolean isSuccess = MessageUtils.setCode(GoodsDetailActivity.this,
+                                   boolean isSuccess = MessageUtils.setCode(ShopDetailActivity.this,
                                            data.getStatus(), data.getMsg());
                                    if (!isSuccess) {
                                        return;
@@ -551,7 +462,7 @@ public class GoodsDetailActivity extends MyActivity {
     }
 
     private BaseDialog payOffer() {
-        return new PayDialog.Builder(GoodsDetailActivity.this, "pay")
+        return new PayDialog.Builder(ShopDetailActivity.this, "pay")
                 .setPrice(StringUtils.getString(R.string.chujia) + "   " +
                         price + StringUtils.getString(R.string.money_unit))
                 .setListener(new PayDialog.OnPayListener() {
@@ -603,7 +514,7 @@ public class GoodsDetailActivity extends MyActivity {
     }
 
     private BaseDialog getBidRecord() {
-        return new BidRecordDialog.Builder(GoodsDetailActivity.this)
+        return new BidRecordDialog.Builder(ShopDetailActivity.this)
                 .setListener(new BidRecordDialog.OnClickListener() {
                     @Override
                     public void setOnClick(View v) {
@@ -627,7 +538,7 @@ public class GoodsDetailActivity extends MyActivity {
                                    if (data.getData().get(0) != null) {
                                        log(data.getData().get(0).getOffer());
                                        if (data.getData().get(0).getOffer().equals("0")) {
-                                           new BondDialog.Builder(GoodsDetailActivity.this,
+                                           new BondDialog.Builder(ShopDetailActivity.this,
                                                    data.getData().get(0).getPrice())
                                                    .setListener(new BondDialog.OnClickListener() {
                                                        @Override
@@ -723,5 +634,3 @@ public class GoodsDetailActivity extends MyActivity {
         stopTimer();
     }
 }
-
-

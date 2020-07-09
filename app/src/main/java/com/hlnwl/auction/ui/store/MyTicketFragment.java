@@ -7,8 +7,6 @@ import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.MyLazyFragment;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 
 /**
@@ -39,7 +37,6 @@ public class MyTicketFragment extends MyLazyFragment {
     @Override
     protected void initView() {
         list.setLayoutManager(new LinearLayoutManager(getContext()));
-        ticketAdapter = new TicketAdapter(new ArrayList<>());
         list.setAdapter(ticketAdapter);
     }
 

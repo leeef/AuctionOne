@@ -159,27 +159,31 @@ public class UserFragment extends MyLazyFragment {
                 );
     }
 
-    @OnClick({R.id.user_dfk, R.id.user_dfh, R.id.user_dsh, R.id.user_ywc,
+    @OnClick({R.id.user_dfk, R.id.going_pay, R.id.user_dfh, R.id.user_dsh, R.id.user_ywc,
             R.id.user_balance, R.id.user_share, R.id.user_modify_data,
             R.id.user_system_bulletin, R.id.user_customer,
             R.id.user_bid_record, R.id.user_seller_center, R.id.quit, R.id.my_ticket})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.user_dfk://评价
-                startActivity(new Intent(getActivity(), OrderActivity.class)
-                        .putExtra("type", "2"));
-                break;
-            case R.id.user_dfh://代发货
+            case R.id.going_pay://代付款
                 startActivity(new Intent(getActivity(), OrderActivity.class)
                         .putExtra("type", "0"));
                 break;
-            case R.id.user_dsh://待收货
+            case R.id.user_dfh://代发货
                 startActivity(new Intent(getActivity(), OrderActivity.class)
                         .putExtra("type", "1"));
                 break;
-            case R.id.user_ywc://已完成
+            case R.id.user_dsh://待收货
+                startActivity(new Intent(getActivity(), OrderActivity.class)
+                        .putExtra("type", "2"));
+                break;
+            case R.id.user_dfk://评价
                 startActivity(new Intent(getActivity(), OrderActivity.class)
                         .putExtra("type", "3"));
+                break;
+            case R.id.user_ywc://已完成
+                startActivity(new Intent(getActivity(), OrderActivity.class)
+                        .putExtra("type", "4"));
                 break;
             case R.id.user_balance://我的余额
                 startActivity(BalanceActivity.class);

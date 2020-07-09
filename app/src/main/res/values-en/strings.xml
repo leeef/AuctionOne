@@ -385,10 +385,14 @@
     <string name="shop_price">The store price:</string>
     <string name="chose_pay_type_sign">You have not yet chosen the mode of payment</string>
     <string name="buy_it_now">buy it now</string>
-    <string name="ticket">ticket</string>
+    <string name="my_ticket">my ticket</string>
+    <string name="ticket"> ticket</string>
     <string-array name="ticket_title">
         <item>Not Used</item>
         <item>Has Been Used</item>
         <item>Out Of Date</item>
     </string-array>
+
+    <string name="proprietary_mall">proprietary mall</string>
+    <string name="expiration_time">expiration time：</string>
 </resources>

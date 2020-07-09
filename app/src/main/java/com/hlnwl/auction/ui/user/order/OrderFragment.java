@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,11 +18,9 @@ import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.BaseDialog;
 import com.hlnwl.auction.base.MyLazyFragment;
 import com.hlnwl.auction.bean.NoDataBean;
-import com.hlnwl.auction.bean.user.bid.BidRecordBean;
 import com.hlnwl.auction.bean.user.order.OrderBean;
 import com.hlnwl.auction.message.OrderMessage;
-import com.hlnwl.auction.ui.goods.GoodsDetailActivity;
-import com.hlnwl.auction.ui.user.bid.BidRecordAdapter;
+import com.hlnwl.auction.ui.goods.ShopDetailActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.sp.SPUtils;
@@ -38,7 +35,6 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.w3c.dom.Comment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,15 +57,17 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
     @BindView(R.id.srl_list_common)
     SmartRefreshLayout mSrlListCommon;
 
-    private String type="";
+    private String type = "";
     private static final int PAGE_SIZE = 16;//每页数据条目
     private int mPage = 1;
     private OrderAdapter mAdapter;
-    private List<OrderBean.DataBean> datas=new ArrayList<>();
+    private List<OrderBean.DataBean> datas = new ArrayList<>();
+
     @SuppressLint("ValidFragment")
     public OrderFragment(String type) {
         this.type = type;
     }
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_list;
@@ -84,6 +82,7 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
     public void refreshEventBus(OrderMessage update) {
         onRefresh(mSrlListCommon);
     }
+
     @Override
     protected void initView() {
         mSrlListCommon.autoRefresh();
@@ -109,6 +108,7 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
     protected void initData() {
 
     }
+
     @Override
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
 
@@ -124,11 +124,10 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
 
     private void getDatas(String style) {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .getOrder(SPUtils.getLanguage(),mPage, SPUtils.getUserId(),SPUtils.getToken(),type), this)
+                .orderList(SPUtils.getUserId(), SPUtils.getToken(), type, mPage), this)
                 .subscribe(new ApiObserver<OrderBean>() {
                                @Override
-                               protected void success(OrderBean
-                                                              data) {
+                               protected void success(OrderBean data) {
                                    boolean isSuccess = MessageUtils.setCode(getActivity(),
                                            data.getStatus() + "", data.getMsg());
                                    if (!isSuccess) {
@@ -194,14 +193,14 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.item_order_good:
-                startActivity(new Intent(getActivity(), GoodsDetailActivity.class)
-                        .putExtra("id",datas.get(position).getGid()));
+                startActivity(new Intent(getActivity(), ShopDetailActivity.class)
+                        .putExtra("id", datas.get(position).getGid()));
                 break;
             case R.id.item_order_yfh_see:
-                startActivity(new Intent(getActivity(),OrderDetailActivity.class)
-                        .putExtra("id",datas.get(position).getId()));
+                startActivity(new Intent(getActivity(), OrderDetailActivity.class)
+                        .putExtra("id", datas.get(position).getId()));
                 break;
             case R.id.item_order_qrsh:
                 new MessageDialog.Builder(getActivity())
@@ -226,14 +225,14 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
                 break;
             case R.id.item_order_comment:
                 startActivity(new Intent(getActivity(), CommentActivity.class)
-                        .putExtra("id",datas.get(position).getId()));
+                        .putExtra("id", datas.get(position).getId()));
                 break;
         }
     }
 
     private void sureOrder(String id) {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .confirmOrder(SPUtils.getLanguage(),SPUtils.getUserId(), SPUtils.getToken(), id), this)
+                .confirmOrder2(SPUtils.getUserId(), SPUtils.getToken(), id), this)
                 .subscribe(new ApiObserver<NoDataBean>() {
                                @Override
                                protected void success(NoDataBean data) {
@@ -267,7 +266,7 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        startActivity(new Intent(getActivity(),OrderDetailActivity.class)
-        .putExtra("id",datas.get(position).getId()));
+        startActivity(new Intent(getActivity(), OrderDetailActivity.class)
+                .putExtra("id", datas.get(position).getId()));
     }
 }

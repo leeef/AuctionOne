@@ -29,9 +29,9 @@ public class GoodListAdapter extends BaseQuickAdapter<GoodListBean.DataBean, Bas
         SimpleDraweeView cover = helper.getView(R.id.cover);
         FrescoUtils.showBasicPic(item.getPic(), cover);
         helper.setText(R.id.name, item.getName());
-        helper.setText(R.id.sell_price, "￥" + item.getPrice());
+        helper.setText(R.id.sell_price, mContext.getResources().getString(R.string.money) + item.getPrice());
         TextView marketPrice = helper.getView(R.id.market_price);
         marketPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
-        marketPrice.setText("￥" + item.getMoney());
+        marketPrice.setText(mContext.getResources().getString(R.string.money) + item.getMoney());
     }
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:gravity="center"
+    android:orientation="horizontal"
     android:paddingTop="@dimen/dp_10"
     android:paddingBottom="@dimen/dp_10">
 
@@ -13,24 +13,23 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
-
-    <ImageView
-        android:layout_width="@dimen/qb_px_40"
-        android:layout_height="@dimen/qb_px_40"
-        android:src="@mipmap/ic_shop"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#A86767"
-        android:layout_marginTop="@dimen/qb_px_5"
-        android:text="@string/shop"
         android:gravity="center"
+        android:orientation="vertical">
 
-        />
+        <ImageView
+            android:layout_width="@dimen/qb_px_40"
+            android:layout_height="@dimen/qb_px_40"
+            android:src="@mipmap/ic_shop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qb_px_5"
+            android:gravity="center"
+            android:text="@string/shop"
+            android:textColor="#A86767"
+
+            />
 
     </LinearLayout>
 
@@ -39,28 +38,24 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
-
-
+        android:gravity="center"
+        android:orientation="vertical">
 
 
         <ImageView
-            android:gravity="center"
             android:layout_width="@dimen/qb_px_40"
             android:layout_height="@dimen/qb_px_40"
-            android:src="@mipmap/ic_gloab"
-            />
+            android:gravity="center"
+            android:src="@mipmap/ic_gloab" />
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/qb_px_5"
-            android:text="@string/designer_frames"
             android:gravity="center"
-            android:textColor="#A86767"
-           />
+            android:text="@string/designer_frames"
+            android:textColor="#A86767" />
 
     </LinearLayout>
 
@@ -69,24 +64,23 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="@dimen/qb_px_40"
             android:layout_height="@dimen/qb_px_40"
-            android:src="@mipmap/ic_china_image"
             android:background="@color/white"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_china_image" />
 
         <TextView
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#A86767"
             android:layout_marginTop="@dimen/qb_px_5"
+            android:gravity="center"
             android:text="@string/leak_hunting_area"
-            />
+            android:textColor="#A86767" />
 
     </LinearLayout>
 
@@ -95,23 +89,21 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="@dimen/qb_px_40"
             android:layout_height="@dimen/qb_px_40"
-            android:src="@mipmap/ic_zhanxaio"
-            />
+            android:src="@mipmap/ic_zhanxaio" />
 
         <TextView
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#A86767"
             android:layout_marginTop="@dimen/qb_px_5"
+            android:gravity="center"
             android:text="@string/special_exhibition"
-            />
+            android:textColor="#A86767" />
 
     </LinearLayout>
 
@@ -120,26 +112,22 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
-
-
+        android:gravity="center"
+        android:orientation="vertical">
 
 
         <ImageView
             android:layout_width="@dimen/qb_px_40"
             android:layout_height="@dimen/qb_px_40"
-            android:src="@mipmap/good_list"
-             />
+            android:src="@mipmap/good_list" />
 
         <TextView
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#A86767"
             android:layout_marginTop="@dimen/qb_px_5"
-            android:text="@string/goods_list"
-            />
+            android:gravity="center"
+            android:text="@string/proprietary_mall"
+            android:textColor="#A86767" />
 
     </LinearLayout>
 

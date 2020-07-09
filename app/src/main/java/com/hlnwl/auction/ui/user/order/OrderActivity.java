@@ -31,7 +31,8 @@ public class OrderActivity extends MyActivity {
     @BindView(R.id.my_vp)
     ViewPager mMyVp;
 
-    private static final String[] CHANNELS = new String[]{StringUtils.getString(R.string.to_be_shipped),
+    private static final String[] CHANNELS = new String[]{StringUtils.getString(R.string.to_be_payment),
+            StringUtils.getString(R.string.to_be_shipped),
             StringUtils.getString(R.string.to_be_received),
             StringUtils.getString(R.string.to_be_comment),
             StringUtils.getString(R.string.completed)};
@@ -54,6 +55,7 @@ public class OrderActivity extends MyActivity {
     }
 
     private void initFragment() {
+        fragmentList.add(new OrderFragment("0"));
         fragmentList.add(new OrderFragment("1"));
         fragmentList.add(new OrderFragment("2"));
         fragmentList.add(new OrderFragment("3"));

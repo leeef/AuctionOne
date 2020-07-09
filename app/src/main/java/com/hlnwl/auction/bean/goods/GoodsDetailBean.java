@@ -1,5 +1,9 @@
 package com.hlnwl.auction.bean.goods;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -47,7 +51,7 @@ public class GoodsDetailBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable, Parcelable {
         /**
          * id : 1
          * name : 欧阳中石原稿手写真迹 并 权威机构鉴定
@@ -111,6 +115,51 @@ public class GoodsDetailBean {
         private String addtime;
         private String pertime;
 
+
+        protected DataBean(Parcel in) {
+            id = in.readString();
+            name = in.readString();
+            genre = in.readString();
+            price = in.readString();
+            low_price = in.readString();
+            bid_price = in.readString();
+            content = in.readString();
+            endtime = in.readLong();
+            sid = in.readString();
+            sname = in.readString();
+            spic = in.readString();
+            sphone = in.readString();
+            sgenre = in.readString();
+            offer = in.readString();
+            pic = in.createStringArrayList();
+            views = in.readString();
+            bang = in.readString();
+            is_bid = in.readString();
+            status = in.readString();
+            give = in.readString();
+            cid = in.readString();
+            money = in.readString();
+            keywords = in.readString();
+            images = in.readString();
+            sold_count = in.readString();
+            is_on = in.readString();
+            sort = in.readString();
+            lang = in.readString();
+            addtime = in.readString();
+            pertime = in.readString();
+        }
+
+        public static final Creator<DataBean> CREATOR = new Creator<DataBean>() {
+            @Override
+            public DataBean createFromParcel(Parcel in) {
+                return new DataBean(in);
+            }
+
+            @Override
+            public DataBean[] newArray(int size) {
+                return new DataBean[size];
+            }
+        };
 
         public String getGive() {
             return give;
@@ -358,6 +407,45 @@ public class GoodsDetailBean {
 
         public void setPertime(String pertime) {
             this.pertime = pertime;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(id);
+            dest.writeString(name);
+            dest.writeString(genre);
+            dest.writeString(price);
+            dest.writeString(low_price);
+            dest.writeString(bid_price);
+            dest.writeString(content);
+            dest.writeLong(endtime);
+            dest.writeString(sid);
+            dest.writeString(sname);
+            dest.writeString(spic);
+            dest.writeString(sphone);
+            dest.writeString(sgenre);
+            dest.writeString(offer);
+            dest.writeStringList(pic);
+            dest.writeString(views);
+            dest.writeString(bang);
+            dest.writeString(is_bid);
+            dest.writeString(status);
+            dest.writeString(give);
+            dest.writeString(cid);
+            dest.writeString(money);
+            dest.writeString(keywords);
+            dest.writeString(images);
+            dest.writeString(sold_count);
+            dest.writeString(is_on);
+            dest.writeString(sort);
+            dest.writeString(lang);
+            dest.writeString(addtime);
+            dest.writeString(pertime);
         }
 
         public static class GoodsAttr {

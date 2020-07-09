@@ -89,6 +89,28 @@
 
 
                     <LinearLayout
+                        android:id="@+id/going_pay"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/qb_px_25"
+                            android:layout_height="@dimen/qb_px_25"  />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/qb_px_5"
+                            android:text="@string/to_be_payment"
+                            android:textSize="@dimen/qb_px_12" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/user_dfh"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"

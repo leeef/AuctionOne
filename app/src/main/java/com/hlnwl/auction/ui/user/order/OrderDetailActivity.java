@@ -3,7 +3,6 @@ package com.hlnwl.auction.ui.user.order;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,8 +20,6 @@ import com.hlnwl.auction.utils.photo.ImageLoaderUtils;
 import com.hlnwl.auction.utils.sp.SPUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * 版权：hlnwl 版权所有
@@ -91,7 +88,7 @@ public class OrderDetailActivity extends MyActivity {
 
     private void getData() {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .getOrderDetail(SPUtils.getLanguage(),SPUtils.getUserId(), SPUtils.getToken(),
+                .getOrderDetail2(SPUtils.getUserId(), SPUtils.getToken(),
                         getIntent().getStringExtra("id")), this)
                 .subscribe(new ApiObserver<OrderDetailBean>() {
                                @Override
@@ -117,38 +114,42 @@ public class OrderDetailActivity extends MyActivity {
     }
 
     private void initUI(OrderDetailBean.DataBean data) {
-        mOrderDetailStatus.setText(data.getStatus_text());
-        mOrderDetailShName.setText(data.getAddr_name());
-        mOrderDetailShAddress.setText(data.getAddress());
-        mOrderDetailShPhone.setText(data.getAddr_phone());
-        ImageLoaderUtils.display(this, mOrderDetailGoodImg, data.getGpic());
-        mOrderDetailGoodName.setText(data.getGname());
-        mOrderDetailPrice.setText(StringUtils.getString(R.string.chujia) + "  " + data.getPrice());
-        mOrderDetailSn.setText(StringUtils.getString(R.string.order_sn) + " " + data.getOrder_sn());
-        mOrderDetailPayType.setText(StringUtils.getString(R.string.pay_type) + " " + data.getPaytype());
-        mOrderDetailAddTime.setText(StringUtils.getString(R.string.add_time) + " " + data.getAddtime());
-        mOrderDetailPayTime.setText(StringUtils.getString(R.string.pay_time) + " " + data.getPaytime());
-        if (data.getStatus().equals("1")) {
-            mOrderDetailFhTime.setVisibility(View.GONE);
-        } else {
-            mOrderDetailFhTime.setVisibility(View.VISIBLE);
-            mOrderDetailFhTime.setText(StringUtils.getString(R.string.send_time) + " " + data.getSendtime());
-        }
-        mOrderDetailCopy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //获取剪贴板管理器：
-                ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-// 创建普通字符型ClipData
-                ClipData mClipData = ClipData.newPlainText("Label", data.getOrder_sn());
-// 将ClipData内容放到系统剪贴板里。
-                cm.setPrimaryClip(mClipData);
+        try {
+            mOrderDetailStatus.setText(data.getStatus_text());
+            mOrderDetailShName.setText(data.getAddr_name());
+            mOrderDetailShAddress.setText(data.getAddress());
+            mOrderDetailShPhone.setText(data.getAddr_phone());
+            ImageLoaderUtils.display(this, mOrderDetailGoodImg, data.getGpic());
+            mOrderDetailGoodName.setText(data.getGname());
+            mOrderDetailPrice.setText(StringUtils.getString(R.string.chujia) + "  " + data.getPrice());
+            mOrderDetailSn.setText(StringUtils.getString(R.string.order_sn) + " " + data.getOrder_sn());
+            mOrderDetailPayType.setText(StringUtils.getString(R.string.pay_type) + " " + data.getPaytype());
+            mOrderDetailAddTime.setText(StringUtils.getString(R.string.add_time) + " " + data.getAddtime());
+            mOrderDetailPayTime.setText(StringUtils.getString(R.string.pay_time) + " " + data.getPaytime());
+            if (data.getStatus().equals("1")) {
+                mOrderDetailFhTime.setVisibility(View.GONE);
+            } else {
+                mOrderDetailFhTime.setVisibility(View.VISIBLE);
+                mOrderDetailFhTime.setText(StringUtils.getString(R.string.send_time) + " " + data.getSendtime());
             }
-        });
-        showComplete();
+            mOrderDetailCopy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //获取剪贴板管理器：
+                    ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+// 创建普通字符型ClipData
+                    ClipData mClipData = ClipData.newPlainText("Label", data.getOrder_sn());
+// 将ClipData内容放到系统剪贴板里。
+                    cm.setPrimaryClip(mClipData);
+                }
+            });
+            showComplete();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
     }
-
 
 
 }

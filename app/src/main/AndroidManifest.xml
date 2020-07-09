@@ -188,7 +188,12 @@
         <activity
             android:name=".ui.store.OrderDetailActivity"
             android:screenOrientation="userPortrait" />
-        <activity android:name=".ui.store.TicketActivity" />
+        <activity
+            android:name=".ui.store.TicketActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".ui.goods.ShopDetailActivity"
+            android:screenOrientation="userPortrait" />
 
 
         <receiver android:name="com.hlnwl.auction.utils.networkstatus.NetStateReceiver">
