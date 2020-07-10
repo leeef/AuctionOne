@@ -522,4 +522,13 @@ public interface Api {
                                     @Field("token") String token,
                                     @Field("type") String type,
                                     @Field("page") int page);
+
+    //待支付
+    //支付类型1支付宝2微信
+    @FormUrlEncoded
+    @POST("Merchant/payment")
+    Observable<JoinBean> payNow(@Field("userid") String userid,
+                                @Field("token") String token,
+                                @Field("oid") String oid,
+                                @Field("paytype") String paytype);
 }
