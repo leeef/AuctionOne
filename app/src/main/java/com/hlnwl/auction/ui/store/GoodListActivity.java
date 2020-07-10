@@ -17,6 +17,10 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -56,6 +60,14 @@ public class GoodListActivity extends MyActivity {
         srlListCommon.setHeaderHeight(60);
         srlListCommon.setFooterHeight(60);
         mTitleTb.setTitle(R.string.goods_list);
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void quitEventBus(String update) {
+        if (update.equals("quit")) {
+            finish();
+        }
     }
 
     @Override

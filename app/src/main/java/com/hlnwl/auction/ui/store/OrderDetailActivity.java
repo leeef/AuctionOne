@@ -28,9 +28,10 @@ import com.hlnwl.auction.bean.user.bid.BidOrderBean;
 import com.hlnwl.auction.bean.user.info.AddressData;
 import com.hlnwl.auction.bean.user.shop.JoinBean;
 import com.hlnwl.auction.message.LoginMessage;
+import com.hlnwl.auction.message.QuitMessage;
 import com.hlnwl.auction.message.WeChatMessage;
 import com.hlnwl.auction.ui.user.info.AddressActivity;
-import com.hlnwl.auction.ui.user.shop.ShopJoinActivity;
+import com.hlnwl.auction.ui.user.order.OrderActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.pay.Constant;
@@ -155,11 +156,16 @@ public class OrderDetailActivity extends MyActivity {
                         .setListener(new PayDialog.OnPayListener() {
                             @Override
                             public void onSelected(Dialog dialog, String pay_style) {
-                                if (pay_style.equals("weChat")) {
-                                    offer("2");
-                                } else if (pay_style.equals("alipay")) {
-                                    offer("1");
-                                }
+//                                if (pay_style.equals("weChat")) {
+//                                    offer("2");
+//                                } else if (pay_style.equals("alipay")) {
+//                                    offer("1");
+//                                }
+
+                                startActivity(new Intent(getActivity(), OrderActivity.class)
+                                        .putExtra("type", "1"));
+                                EventBus.getDefault().post("quit");
+                                finish();
                             }
 
                             @Override
@@ -197,6 +203,9 @@ public class OrderDetailActivity extends MyActivity {
                                     getActivity().runOnUiThread(() -> {
                                         EventBus.getDefault().post(new LoginMessage("update"));
                                         ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
+                                        startActivity(new Intent(getActivity(), OrderActivity.class)
+                                                .putExtra("type", "1"));
+                                        EventBus.getDefault().post("quit");
                                         finish();
                                     });
                                 } catch (InterruptedException e) {
@@ -297,6 +306,9 @@ public class OrderDetailActivity extends MyActivity {
                 Log.e("ansen", "微信支付成功.....");
                 EventBus.getDefault().post(new LoginMessage("update"));
                 ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
+                startActivity(new Intent(getActivity(), OrderActivity.class)
+                        .putExtra("type", "1"));
+                EventBus.getDefault().post("quit");
                 finish();
             } else {
                 ToastUtils.showShort(StringUtils.getString(R.string.pay_fail));

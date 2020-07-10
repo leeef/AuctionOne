@@ -395,4 +395,5 @@
 
     <string name="proprietary_mall">proprietary mall</string>
     <string name="expiration_time">expiration time：</string>
+    <string name="wechat">wechat</string>
 </resources>

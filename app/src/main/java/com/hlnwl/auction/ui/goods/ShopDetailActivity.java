@@ -150,9 +150,15 @@ public class ShopDetailActivity extends MyActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void loginEventBus(LoginMessage update) {
-        getData();
-//        setTimer();
+    public void loginEventBus(Object object) {
+        if (object instanceof LoginMessage) {
+            getData();
+        } else if (object instanceof String) {
+            String busStr = (String) object;
+            if (busStr.equals("quit")) {
+                finish();
+            }
+        }
     }
 
     @Override

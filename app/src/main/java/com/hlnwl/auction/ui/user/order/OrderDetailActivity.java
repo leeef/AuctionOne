@@ -123,7 +123,8 @@ public class OrderDetailActivity extends MyActivity {
             mOrderDetailGoodName.setText(data.getGname());
             mOrderDetailPrice.setText(StringUtils.getString(R.string.danwei) + "  " + data.getPrice());
             mOrderDetailSn.setText(StringUtils.getString(R.string.order_sn) + " " + data.getOrder_sn());
-            mOrderDetailPayType.setText(StringUtils.getString(R.string.pay_type) + " " + data.getPaytype());
+            String payType = data.getPaytype().equals("1") ? StringUtils.getString(R.string.alipay) : StringUtils.getString(R.string.wechat);
+            mOrderDetailPayType.setText(StringUtils.getString(R.string.pay_type) + " " + payType);
             mOrderDetailAddTime.setText(StringUtils.getString(R.string.add_time) + " " + data.getAddtime());
             mOrderDetailPayTime.setText(StringUtils.getString(R.string.pay_time) + " " + data.getPaytime());
             if (data.getStatus().equals("1")) {
@@ -144,7 +145,7 @@ public class OrderDetailActivity extends MyActivity {
                 }
             });
             showComplete();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
