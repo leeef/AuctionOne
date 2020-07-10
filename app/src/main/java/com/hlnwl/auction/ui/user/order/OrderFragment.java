@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -19,10 +18,8 @@ import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.BaseDialog;
 import com.hlnwl.auction.base.MyLazyFragment;
 import com.hlnwl.auction.bean.NoDataBean;
-import com.hlnwl.auction.bean.goods.GoodsDetailBean;
 import com.hlnwl.auction.bean.user.order.OrderBean;
 import com.hlnwl.auction.message.OrderMessage;
-import com.hlnwl.auction.ui.goods.ShopDetailActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.sp.SPUtils;
@@ -197,10 +194,7 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
         switch (view.getId()) {
             case R.id.item_order_good:
-                if (type.equals("0")) {
-                    startActivity(new Intent(getActivity(), ShopDetailActivity.class)
-                            .putExtra("id", datas.get(position).getGid()));
-                } else {
+                if (!type.equals("0")) {
                     startActivity(new Intent(getActivity(), OrderDetailActivity.class)
                             .putExtra("id", datas.get(position).getId()));
                 }
@@ -231,15 +225,15 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
                         .putExtra("id", datas.get(position).getId()));
                 break;
             case R.id.pay:
-                GoodsDetailBean.DataBean mGoodsDetailData = new GoodsDetailBean.DataBean();
-                mGoodsDetailData.setId(datas.get(position).getGid());
-                mGoodsDetailData.setName(datas.get(position).getGname());
-                mGoodsDetailData.setPrice(datas.get(position).getTotal());
-                ArrayList<String> pic = new ArrayList<>();
-                pic.add(datas.get(position).getGpic());
-                mGoodsDetailData.setPic(pic);
-                startActivity(new Intent(getActivity(), com.hlnwl.auction.ui.store.OrderDetailActivity.class)
-                        .putExtra("data", (Parcelable) mGoodsDetailData));
+//                GoodsDetailBean.DataBean mGoodsDetailData = new GoodsDetailBean.DataBean();
+//                mGoodsDetailData.setId(datas.get(position).getGid());
+//                mGoodsDetailData.setName(datas.get(position).getGname());
+//                mGoodsDetailData.setPrice(datas.get(position).getTotal());
+//                ArrayList<String> pic = new ArrayList<>();
+//                pic.add(datas.get(position).getGpic());
+//                mGoodsDetailData.setPic(pic);
+//                startActivity(new Intent(getActivity(), com.hlnwl.auction.ui.store.OrderDetailActivity.class)
+//                        .putExtra("data", (Parcelable) mGoodsDetailData));
                 break;
         }
     }
@@ -255,7 +249,7 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
                                    if (!isSuccess) {
                                        return;
                                    }
-                                   onRefresh(mSrlListCommon);
+
                                    final BaseDialog dialog = new WaitDialog.Builder(getActivity())
                                            .setMessage(StringUtils.getString(R.string.sureing)) // 消息文本可以不用填写
                                            .show();
@@ -265,6 +259,7 @@ public class OrderFragment extends MyLazyFragment implements OnRefreshListener, 
                                        public void run() {
                                            toast(data.getMsg());
                                            dialog.dismiss();
+                                           onRefresh(mSrlListCommon);
                                        }
                                    }, 1000);
                                }

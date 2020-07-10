@@ -1,7 +1,6 @@
 package com.hlnwl.auction.ui.user.shop;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -111,8 +110,7 @@ public class SelectShopTypeActivity extends MyActivity {
                                         EventBus.getDefault().post(new LoginMessage("update"));
                                         ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
                                         ShopTypeBean.DataBean.ShopBean item = shopTypeAdapter.getItem(shopTypeAdapter.selectIndex);
-                                        startActivity(new Intent(SelectShopTypeActivity.this, ShopJoinActivity.class).putExtra("shopId"
-                                                , item.getId()));
+                                        startActivity(ShopJoinActivity.class);
                                         finish();
                                     });
                                 } catch (InterruptedException e) {
@@ -277,8 +275,7 @@ public class SelectShopTypeActivity extends MyActivity {
                 ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
 
                 ShopTypeBean.DataBean.ShopBean item = shopTypeAdapter.getItem(shopTypeAdapter.selectIndex);
-                startActivity(new Intent(SelectShopTypeActivity.this, ShopJoinActivity.class).putExtra("shopId"
-                        , item.getId()));
+                startActivity(ShopJoinActivity.class);
                 finish();
             } else {
                 shopJoinPay.fail();

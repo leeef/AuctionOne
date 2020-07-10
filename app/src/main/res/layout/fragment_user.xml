@@ -97,8 +97,9 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/qb_px_25"
-                            android:layout_height="@dimen/qb_px_25"  />
+                            android:layout_width="@dimen/qb_px_30"
+                            android:layout_height="@dimen/qb_px_30"
+                            android:src="@mipmap/to_be_pay" />
 
                         <TextView
                             android:layout_width="wrap_content"

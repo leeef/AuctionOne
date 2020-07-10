@@ -217,8 +217,7 @@ public interface Api {
                                   @Field("name") String name,
                                   @Field("pic") String pic,
                                   @Field("genre") String genre,
-                                  @Field("paytype") String paytype,
-                                  @Field("type") String type);
+                                  @Field("paytype") String paytype);
 
     @FormUrlEncoded
     @POST("merchant/add_good")

@@ -107,7 +107,6 @@ public class ShopJoinActivity extends MyActivity {
     private IWXAPI wxAPI;
     private static final int SDK_PAY_FLAG = 1;
 
-    private String shopId;
     private BaseDialog mDialog;
 
     @Override
@@ -123,7 +122,7 @@ public class ShopJoinActivity extends MyActivity {
     @Override
     protected void initView() {
         mTitleTb.setTitle(getResources().getString(R.string.shop_join));
-        shopId = getIntent().getStringExtra("shopId");
+
 
     }
 
@@ -153,7 +152,7 @@ public class ShopJoinActivity extends MyActivity {
                         idfan,
                         mShopJoinShopName.getText().toString().trim(),
                         Bitmap2StrByBase64(dianpu),
-                        genre, paystyle, shopId
+                        genre, paystyle
                 ), this)
                 .subscribe(new ApiObserver<JoinBean>() {
                                @Override

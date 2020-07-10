@@ -217,10 +217,9 @@ public class CommentActivity extends MyActivity implements BaseQuickAdapter.OnIt
                                    boolean isSuccess = MessageUtils.setCode(CommentActivity.this,
                                            data.getStatus(), data.getMsg());
                                    if (!isSuccess) {
-
                                        return;
                                    }
-                                   EventBus.getDefault().post(new OrderMessage("update"));
+
                                    final BaseDialog dialog = new WaitDialog.Builder(CommentActivity.this)
                                            .setMessage(StringUtils.getString(R.string.releaseing)) // 消息文本可以不用填写
                                            .show();
@@ -230,6 +229,7 @@ public class CommentActivity extends MyActivity implements BaseQuickAdapter.OnIt
                                        public void run() {
                                            toast(data.getMsg());
                                            dialog.dismiss();
+                                           EventBus.getDefault().post(new OrderMessage("update"));
                                            finish();
                                        }
                                    }, 1000);
