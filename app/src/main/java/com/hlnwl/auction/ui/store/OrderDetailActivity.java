@@ -156,16 +156,11 @@ public class OrderDetailActivity extends MyActivity {
                         .setListener(new PayDialog.OnPayListener() {
                             @Override
                             public void onSelected(Dialog dialog, String pay_style) {
-//                                if (pay_style.equals("weChat")) {
-//                                    offer("2");
-//                                } else if (pay_style.equals("alipay")) {
-//                                    offer("1");
-//                                }
-
-                                startActivity(new Intent(getActivity(), OrderActivity.class)
-                                        .putExtra("type", "1"));
-                                EventBus.getDefault().post("quit");
-                                finish();
+                                if (pay_style.equals("weChat")) {
+                                    offer("2");
+                                } else if (pay_style.equals("alipay")) {
+                                    offer("1");
+                                }
                             }
 
                             @Override
