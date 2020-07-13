@@ -66,6 +66,8 @@ public class SelectShopTypeActivity extends MyActivity {
     TitleBar mTitleTb;
     @BindView(R.id.shop_price)
     TextView shopPrice;
+    @BindView(R.id.integral)
+    TextView integral;
 
     @BindView(R.id.type_list)
     RecyclerView typeList;
@@ -73,7 +75,6 @@ public class SelectShopTypeActivity extends MyActivity {
     @BindView(R.id.ticket_select)
     ImageView ticketSelect;
 
-    private boolean selectTicket;
 
     private String payType = "alipay";
     private IWXAPI wxAPI;
@@ -109,7 +110,6 @@ public class SelectShopTypeActivity extends MyActivity {
                                         shopJoinPay.complete();
                                         EventBus.getDefault().post(new LoginMessage("update"));
                                         ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
-                                        ShopTypeBean.DataBean.ShopBean item = shopTypeAdapter.getItem(shopTypeAdapter.selectIndex);
                                         startActivity(ShopJoinActivity.class);
                                         finish();
                                     });
@@ -159,11 +159,14 @@ public class SelectShopTypeActivity extends MyActivity {
                 case R.id.pay_dialog_alipay:
                     payType = "alipay";
                     break;
+                case R.id.ticket_layout:
+                    payType = "jifen";
+                    break;
             }
         });
     }
 
-    @OnClick({R.id.shop_join_pay, R.id.ticket_layout})
+    @OnClick({R.id.shop_join_pay})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.shop_join_pay:
@@ -175,15 +178,8 @@ public class SelectShopTypeActivity extends MyActivity {
                     getPayInfo(2);
                 } else if (payType.equals("alipay")) {
                     getPayInfo(1);
-                }
-                break;
-            case R.id.ticket_layout:
-                if (selectTicket) {
-                    selectTicket = false;
-                    ticketSelect.setImageResource(R.mipmap.kuang);
-                } else {
-                    selectTicket = true;
-                    ticketSelect.setImageResource(R.mipmap.kuang_xz);
+                } else if (payType.equals("jifen")) {
+                    getPayInfo(3);
                 }
                 break;
             default:
@@ -204,6 +200,15 @@ public class SelectShopTypeActivity extends MyActivity {
                             aliPay(data.getData().get(0).getStr());
                         } else if (type == 2) {
                             weChatPay(data.getData().get(0).getStr());
+                        } else if (type == 3) {
+                            toast(data.getMsg());
+                            if (data.getStatus() == 1) {
+                                shopJoinPay.complete();
+                                ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
+                                startActivity(ShopJoinActivity.class);
+                            } else if (data.getStatus() == 0) {
+                                shopJoinPay.fail();
+                            }
                         }
                     }
 
@@ -273,8 +278,6 @@ public class SelectShopTypeActivity extends MyActivity {
                 shopJoinPay.complete();
                 EventBus.getDefault().post(new LoginMessage("update"));
                 ToastUtils.showShort(StringUtils.getString(R.string.pay_success));
-
-                ShopTypeBean.DataBean.ShopBean item = shopTypeAdapter.getItem(shopTypeAdapter.selectIndex);
                 startActivity(ShopJoinActivity.class);
                 finish();
             } else {
@@ -291,6 +294,9 @@ public class SelectShopTypeActivity extends MyActivity {
                 .subscribe(new ApiObserver<ShopTypeBean>() {
                     @Override
                     protected void success(ShopTypeBean data) {
+                        integral.setText(StringUtils.getString(R.string.integral) + "(" +
+                                StringUtils.getString(R.string.can_use) + data.getData().get(0).getCoupon() +
+                                StringUtils.getString(R.string.integral) + ")");
                         shopTypeAdapter.addData(data.getData().get(0).getShop());
                         for (int i = 0; i < data.getData().get(0).getShop().size(); i++) {
                             ShopTypeBean.DataBean.ShopBean shopBean = data.getData().get(0).getShop().get(i);

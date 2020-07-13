@@ -379,8 +379,9 @@
     <string name="shop_price">店铺价格:</string>
     <string name="chose_pay_type_sign">您暂未选择支付方式</string>
     <string name="buy_it_now">立即购买</string>
-    <string name="my_ticket">我的优惠券</string>
-    <string name="ticket">优惠券</string>
+    <string name="my_ticket">我的积分</string>
+    <string name="ticket">积分</string>
+    <string name="integral">积分</string>
     <string-array name="ticket_title">
         <item>未使用</item>
         <item>已使用</item>
@@ -399,4 +400,5 @@
     <string name="proprietary_mall">自营商城</string>
 
     <string name="expiration_time">到期时间：</string>
+    <string name="can_use">可用金额</string>
 </resources>

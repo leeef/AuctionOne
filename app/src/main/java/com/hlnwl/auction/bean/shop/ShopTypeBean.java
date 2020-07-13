@@ -46,8 +46,16 @@ public class ShopTypeBean {
     public static class DataBean {
         private String lang;
         private String userid;
+        private String coupon;
         private List<ShopBean> shop;
 
+        public String getCoupon() {
+            return coupon;
+        }
+
+        public void setCoupon(String coupon) {
+            this.coupon = coupon;
+        }
 
         public String getLang() {
             return lang;

@@ -78,6 +78,15 @@ public class OrderDetailBean {
         private String paytime;
         private String sendtime;
         private String status_text;
+        private String aid;
+
+        public String getAid() {
+            return aid;
+        }
+
+        public void setAid(String aid) {
+            this.aid = aid;
+        }
 
         public String getId() {
             return id;

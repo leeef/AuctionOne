@@ -322,7 +322,7 @@ public interface Api {
                                  @Field("token") String token,
                                  @Field("shopid") String shopId,
                                  @Field("price") String price,
-                                 //支付类型 1支付宝 2微信
+                                 //支付类型 1支付宝 2微信 3积分
                                  @Field("paytype") int type);
 
 
@@ -530,5 +530,6 @@ public interface Api {
     Observable<JoinBean> payNow(@Field("userid") String userid,
                                 @Field("token") String token,
                                 @Field("oid") String oid,
-                                @Field("paytype") String paytype);
+                                @Field("paytype") String paytype,
+                                @Field("aid") String aid);
 }
