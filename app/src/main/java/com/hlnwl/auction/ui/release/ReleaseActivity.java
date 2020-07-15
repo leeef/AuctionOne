@@ -8,14 +8,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -47,29 +44,20 @@ import com.hjq.permissions.XXPermissions;
 import com.hlnwl.auction.R;
 import com.hlnwl.auction.base.BaseDialog;
 import com.hlnwl.auction.base.MyActivity;
-import com.hlnwl.auction.bean.NoDataBean;
 import com.hlnwl.auction.bean.category.CategoryData;
 import com.hlnwl.auction.bean.category.CategoryErji;
 import com.hlnwl.auction.bean.goods.SpecBean;
-import com.hlnwl.auction.message.LoginMessage;
-import com.hlnwl.auction.ui.user.info.SettingActivity;
-import com.hlnwl.auction.ui.user.shop.ShopJoinStatusActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
 import com.hlnwl.auction.utils.my.CashierInputFilter;
 import com.hlnwl.auction.utils.photo.PictureUtile;
 import com.hlnwl.auction.utils.sp.SPUtils;
-import com.hlnwl.auction.view.ExpandableGridView;
 import com.hlnwl.auction.view.dialog.MenuDialog;
 import com.hlnwl.auction.view.dialog.WaitDialog;
 import com.hlnwl.auction.view.widget.ClearEditText;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
-
-import org.greenrobot.eventbus.EventBus;
-import org.json.JSONArray;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -79,7 +67,6 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
 
@@ -232,10 +219,10 @@ public class ReleaseActivity extends MyActivity implements BaseQuickAdapter.OnIt
                                                 public void onSelected(Dialog dialog, int position, String text) {
                                                     if (position == 0) {
 
-                                                        PictureUtile.addPic(ReleaseActivity.this,selectList,9);
+                                                        PictureUtile.addPic(ReleaseActivity.this, selectList, 9);
                                                     } else if (position == 1) {
 
-                                                        PictureUtile.getCamera(ReleaseActivity.this,selectList);
+                                                        PictureUtile.getCamera(ReleaseActivity.this, selectList);
                                                     }
                                                 }
 
@@ -350,12 +337,12 @@ public class ReleaseActivity extends MyActivity implements BaseQuickAdapter.OnIt
                     }
                     commit_imgs = TextUtils.join(",", up_imgs);
                 }
-                log(spec.length()+"");
+                log(spec.length() + "");
                 log(spec);
                 if (spec.length() == 24) {
 
 
-                        spec = "";
+                    spec = "";
 
                 }
                 mReleaseSure.start();
@@ -501,12 +488,11 @@ public class ReleaseActivity extends MyActivity implements BaseQuickAdapter.OnIt
             mNineGridAdapter.notifyDataSetChanged();
         }
         for (LocalMedia localMedia : paths) {
-            ninePaths.add(localMedia.getPath());
-//            if (DeviceUtils.getSDKVersionCode()<29){
-//                ninePaths.add(localMedia.getCompressPath());
-//            }else {
-//                ninePaths.add(localMedia.getAndroidQToPath());
-//            }
+            if (DeviceUtils.getSDKVersionCode() < 29) {
+                ninePaths.add(localMedia.getPath());
+            } else {
+                ninePaths.add(localMedia.getAndroidQToPath());
+            }
         }
 //        mNineGridAdapter.addData(paths);
 
