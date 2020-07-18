@@ -103,6 +103,12 @@ public class OrderDetailActivity extends MyActivity {
     LinearLayout payLayout;
     @BindView(R.id.goods_order_goto_pay)
     TextView goodsOrderGotoPay;
+    @BindView(R.id.express_company)
+    TextView expressCompany;
+    @BindView(R.id.express_number)
+    TextView expressNumber;
+    @BindView(R.id.express_layout)
+    LinearLayout expressLayout;
 
 
     private String type;
@@ -214,16 +220,20 @@ public class OrderDetailActivity extends MyActivity {
                 mOrderDetailFhTime.setVisibility(View.VISIBLE);
                 mOrderDetailFhTime.setText(StringUtils.getString(R.string.send_time) + " " + data.getSendtime());
             }
-            mOrderDetailCopy.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //获取剪贴板管理器：
-                    ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            if (data.getStatus().equals("2")) {
+                expressLayout.setVisibility(View.VISIBLE);
+                expressCompany.setText(StringUtils.getString(R.string.express_company) + " " + data.getExpress());
+                expressNumber.setText(StringUtils.getString(R.string.express_number) + " " + data.getExpressnum());
+            } else {
+                expressLayout.setVisibility(View.GONE);
+            }
+            mOrderDetailCopy.setOnClickListener(view -> {
+                //获取剪贴板管理器：
+                ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
 // 创建普通字符型ClipData
-                    ClipData mClipData = ClipData.newPlainText("Label", data.getOrder_sn());
+                ClipData mClipData = ClipData.newPlainText("Label", data.getOrder_sn());
 // 将ClipData内容放到系统剪贴板里。
-                    cm.setPrimaryClip(mClipData);
-                }
+                cm.setPrimaryClip(mClipData);
             });
             showComplete();
         } catch (Exception e) {

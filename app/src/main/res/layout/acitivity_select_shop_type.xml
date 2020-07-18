@@ -208,7 +208,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/qb_px_20"
-                        android:src="@mipmap/jifen_icon" />
+                        android:src="@mipmap/jifen_icon2" />
 
                     <TextView
                         android:id="@+id/integral"
@@ -217,7 +217,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/qb_px_12"
                         android:gravity="center_vertical"
-                        android:text="@string/integral"
+                        android:text="@string/free_to_enter"
                         android:textColor="@color/selector_pay"
                         android:textSize="@dimen/qb_px_15" />
 

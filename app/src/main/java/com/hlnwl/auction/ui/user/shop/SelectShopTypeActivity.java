@@ -294,8 +294,8 @@ public class SelectShopTypeActivity extends MyActivity {
                 .subscribe(new ApiObserver<ShopTypeBean>() {
                     @Override
                     protected void success(ShopTypeBean data) {
-                        integral.setText(StringUtils.getString(R.string.integral) + "(" +
-                                StringUtils.getString(R.string.can_use) + data.getData().get(0).getCoupon() +
+                        integral.setText(StringUtils.getString(R.string.free_to_enter) + "(" +
+                                data.getData().get(0).getCoupon() +
                                 StringUtils.getString(R.string.integral) + ")");
                         shopTypeAdapter.addData(data.getData().get(0).getShop());
                         for (int i = 0; i < data.getData().get(0).getShop().size(); i++) {

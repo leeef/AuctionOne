@@ -79,6 +79,8 @@ public class OrderDetailBean {
         private String sendtime;
         private String status_text;
         private String aid;
+        private String express;
+        private String expressnum;
 
         public String getAid() {
             return aid;
@@ -86,6 +88,22 @@ public class OrderDetailBean {
 
         public void setAid(String aid) {
             this.aid = aid;
+        }
+
+        public String getExpress() {
+            return express;
+        }
+
+        public void setExpress(String express) {
+            this.express = express;
+        }
+
+        public String getExpressnum() {
+            return expressnum;
+        }
+
+        public void setExpressnum(String expressnum) {
+            this.expressnum = expressnum;
         }
 
         public String getId() {

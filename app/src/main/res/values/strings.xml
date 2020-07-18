@@ -397,8 +397,12 @@
         <item>1</item>
         <item>1</item>
     </string-array>
-    <string name="proprietary_mall">自营商城</string>
+    <string name="proprietary_mall">自营区</string>
 
     <string name="expiration_time">到期时间：</string>
     <string name="can_use">可用金额</string>
+    <string name="express_company">快递公司:</string>
+    <string name="express_number">快递单号:</string>
+    <string name="free_to_enter">免费入驻</string>
+
 </resources>
