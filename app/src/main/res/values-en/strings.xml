@@ -401,4 +401,5 @@
     <string name="express_company">express company:</string>
     <string name="express_number">express number:</string>
     <string name="free_to_enter">free to enter</string>
+    <string name="ticket_sign">(All the points on this platform are for the use of stores only)</string>
 </resources>

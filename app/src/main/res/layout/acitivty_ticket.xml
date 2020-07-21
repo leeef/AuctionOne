@@ -35,14 +35,26 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/qb_px_20"
-                android:text="@string/ticket"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ticket"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ticket_sign" />
+            </LinearLayout>
+
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab"
