@@ -10,6 +10,13 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 public class BaseHolderBean implements MultiItemEntity {
     public int viewType;
 
+    public BaseHolderBean() {
+    }
+
+    public BaseHolderBean(int viewType) {
+        this.viewType = viewType;
+    }
+
     public int getViewType() {
         return viewType;
     }

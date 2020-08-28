@@ -17,7 +17,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -74,11 +73,18 @@ public class GoodListActivity extends MyActivity {
     protected void initData() {
         list.setLayoutManager(new GridLayoutManager(this, 2));
         goodListAdapter = new GoodListAdapter(new ArrayList<>());
+        goodListAdapter.setSpanSizeLookup((gridLayoutManager, i) -> {
+            if (goodListAdapter.getItem(i).viewType == 1) return 2;
+            return 1;
+        });
         list.setAdapter(goodListAdapter);
+        goodListAdapter.addData(new BaseHolderBean(1));
         goodListAdapter.setOnItemClickListener((adapter, view, position) -> {
-                    GoodListBean.DataBean goodListBean = goodListAdapter.getItem(position);
-                    startActivity(new Intent(GoodListActivity.this, ShopDetailActivity.class)
-                            .putExtra("id", goodListBean.getId()));
+                    if (goodListAdapter.getItem(position).viewType == 0) {
+                        GoodListBean.DataBean goodListBean = (GoodListBean.DataBean) goodListAdapter.getItem(position);
+                        startActivity(new Intent(GoodListActivity.this, ShopDetailActivity.class)
+                                .putExtra("id", goodListBean.getId()));
+                    }
                 }
         );
         srlListCommon.setOnRefreshListener(refreshLayout -> {
@@ -101,6 +107,7 @@ public class GoodListActivity extends MyActivity {
                         if (page == 1) {
                             srlListCommon.finishRefresh();
                             goodListAdapter.getData().clear();
+                            goodListAdapter.addData(new BaseHolderBean(1));
                         } else {
                             srlListCommon.finishLoadMore();
                         }

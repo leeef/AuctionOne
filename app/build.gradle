@@ -34,6 +34,13 @@ android {
             storePassword "123456"
         }
     }
+    lintOptions {
+
+        checkReleaseBuilds false
+
+        abortOnError false
+
+    }
     buildTypes {
         release {
             // 不显示Log
@@ -83,7 +90,7 @@ dependencies {
 
     api rootProject.ext.dependencies["eventbus"]
     annotationProcessor rootProject.ext.dependencies["eventbus-annotation"]
-        api rootProject.ext.dependencies["marqueeview"]
+    api rootProject.ext.dependencies["marqueeview"]
     api rootProject.ext.dependencies["banner"]
     api rootProject.ext.dependencies["FlycoTabLayout_Lib"]
     api rootProject.ext.dependencies["adapter"]

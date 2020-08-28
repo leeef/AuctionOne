@@ -1,5 +1,7 @@
 package com.hlnwl.auction.bean.goods;
 
+import com.hlnwl.auction.ui.store.BaseHolderBean;
+
 import java.util.List;
 
 /**
@@ -43,7 +45,7 @@ public class GoodListBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean extends BaseHolderBean {
         /**
          * id : 3
          * name : 民国粉彩四系盖罐
