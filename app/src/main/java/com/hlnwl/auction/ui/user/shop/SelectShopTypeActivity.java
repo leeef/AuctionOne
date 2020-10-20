@@ -59,6 +59,8 @@ public class SelectShopTypeActivity extends MyActivity {
     NestedRadioGroup payDialogNestedGroup;
     @BindView(R.id.pay_dialog_alipay)
     NestedRadioLayout payDialogAlipay;
+    @BindView(R.id.ticket_layout)
+    NestedRadioLayout ticketLayout;
     @BindView(R.id.shop_join_pay)
     LoadingButton shopJoinPay;
 
@@ -76,7 +78,7 @@ public class SelectShopTypeActivity extends MyActivity {
     ImageView ticketSelect;
 
 
-    private String payType = "alipay";
+    private String payType = "jifen";
     private IWXAPI wxAPI;
 
     private static final int SDK_PAY_FLAG = 1;
@@ -150,7 +152,7 @@ public class SelectShopTypeActivity extends MyActivity {
         typeList.setLayoutManager(new LinearLayoutManager(this));
         shopTypeAdapter = new ShopTypeAdapter(new ArrayList<>());
         typeList.setAdapter(shopTypeAdapter);
-        payDialogAlipay.setChecked(true);
+        ticketLayout.setChecked(true);
         payDialogNestedGroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.pay_dialog_wechat:
