@@ -405,5 +405,6 @@
     <string name="express_number">快递单号:</string>
     <string name="free_to_enter">免费入驻</string>
     <string name="ticket_sign">(该平台所有积分仅供入驻店铺使用)</string>
+    <string name="agreement">隐私协议</string>
 
 </resources>

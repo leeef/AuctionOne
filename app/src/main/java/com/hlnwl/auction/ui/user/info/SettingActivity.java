@@ -11,10 +11,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.allen.library.SuperTextView;
-
 import com.bakerj.rxretrohttp.RxRetroHttp;
 import com.bakerj.rxretrohttp.subscriber.ApiObserver;
-import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.flod.loadingbutton.LoadingButton;
@@ -22,15 +20,13 @@ import com.hjq.bar.TitleBar;
 import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
-
 import com.hlnwl.auction.R;
-import com.hlnwl.auction.app.MyApplication;
 import com.hlnwl.auction.base.BaseDialog;
 import com.hlnwl.auction.base.MyActivity;
 import com.hlnwl.auction.bean.NoDataBean;
 import com.hlnwl.auction.message.LoginMessage;
 import com.hlnwl.auction.message.QuitMessage;
-import com.hlnwl.auction.ui.common.IndexActivity;
+import com.hlnwl.auction.ui.common.CommonWebActivity;
 import com.hlnwl.auction.ui.common.LoginActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.http.MessageUtils;
@@ -43,7 +39,6 @@ import com.hlnwl.auction.view.dialog.MessageDialog;
 import com.hlnwl.auction.view.dialog.WaitDialog;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 
 import org.greenrobot.eventbus.EventBus;
@@ -70,7 +65,7 @@ public class SettingActivity extends MyActivity {
     SuperTextView mModifyHeadimg;
     @BindView(R.id.modify_nick_name)
     SuperTextView mModifyNickName;
-//    @BindView(R.id.modify_pay_pwd)
+    //    @BindView(R.id.modify_pay_pwd)
 //    SuperTextView mModifyPayPwd;
     @BindView(R.id.quit)
     LoadingButton mQuit;
@@ -95,7 +90,7 @@ public class SettingActivity extends MyActivity {
             mModifyNickName.setRightString("暂未设置昵称");
         }
         ImageLoaderUtils.display(this, mModifyHeadimg.getRightIconIV(),
-                 StringUtils.null2Length0(SPUtils.getHeadimg()));
+                StringUtils.null2Length0(SPUtils.getHeadimg()));
 
     }
 
@@ -106,7 +101,7 @@ public class SettingActivity extends MyActivity {
 
 
     @OnClick({R.id.modify_headimg, R.id.modify_nick_name,
-            R.id.modify_pwd, R.id.address,R.id.quit})
+            R.id.modify_pwd, R.id.address, R.id.quit, R.id.agreement})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.modify_headimg:
@@ -132,11 +127,11 @@ public class SettingActivity extends MyActivity {
                                             public void onSelected(Dialog dialog, int position, String text) {
                                                 if (position == 0) {
 
-                                                    PictureUtile.addPic(SettingActivity.this,mSelectList,1);
+                                                    PictureUtile.addPic(SettingActivity.this, mSelectList, 1);
 
                                                 } else if (position == 1) {
 
-                                                    PictureUtile.getCamera(SettingActivity.this,mSelectList);
+                                                    PictureUtile.getCamera(SettingActivity.this, mSelectList);
                                                 }
                                             }
 
@@ -169,7 +164,7 @@ public class SettingActivity extends MyActivity {
 
                             @Override
                             public void onConfirm(Dialog dialog, String content) {
-                                if (content.length()==0){
+                                if (content.length() == 0) {
                                     toast(StringUtils.getString(R.string.nick_name_null));
                                     return;
                                 }
@@ -217,12 +212,15 @@ public class SettingActivity extends MyActivity {
                         })
                         .show();
                 break;
+            case R.id.agreement:
+                CommonWebActivity.runActivity(this, getString(R.string.agreement), "http://www.yicang123.com/xy.html");
+                break;
         }
     }
 
     private void modifyNickName(String content) {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .modifyNickName(SPUtils.getLanguage(),SPUtils.getUserId(),SPUtils.getToken(),content), this)
+                .modifyNickName(SPUtils.getLanguage(), SPUtils.getUserId(), SPUtils.getToken(), content), this)
                 .subscribe(new ApiObserver<NoDataBean>() {
                                @Override
                                protected void success(NoDataBean data) {
@@ -282,7 +280,7 @@ public class SettingActivity extends MyActivity {
 
     private void commitHead(String compressPath) {
         RxRetroHttp.composeRequest(RxRetroHttp.create(Api.class)
-                .setHeadImg(SPUtils.getLanguage(),SPUtils.getUserId(),SPUtils.getToken(),
+                .setHeadImg(SPUtils.getLanguage(), SPUtils.getUserId(), SPUtils.getToken(),
                         Bitmap2StrByBase64(BitmapFactory.decodeFile(compressPath))), this)
                 .subscribe(new ApiObserver<NoDataBean>() {
                                @Override
@@ -314,6 +312,7 @@ public class SettingActivity extends MyActivity {
                            }
                 );
     }
+
     /**
      * 通过Base32将Bitmap转换成Base64字符串
      *

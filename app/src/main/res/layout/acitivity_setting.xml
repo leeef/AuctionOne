@@ -56,6 +56,14 @@
                     app:sRightIconRes="@mipmap/more"
                     />
 
+                <com.allen.library.SuperTextView
+                    android:id="@+id/agreement"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qb_px_50"
+                    android:layout_marginTop="@dimen/qb_px_1"
+                    app:sLeftTextString="@string/agreement"
+                    app:sRightIconRes="@mipmap/more" />
+
 
 
                 <com.flod.loadingbutton.LoadingButton
