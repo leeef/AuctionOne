@@ -88,8 +88,8 @@
                 android:id="@+id/pay_dialog_alipay"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/qb_px_45"
-                android:visibility="gone"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -135,15 +135,15 @@
                 android:layout_height="@dimen/qb_px_1"
                 android:layout_marginLeft="@dimen/qb_px_15"
                 android:layout_marginRight="@dimen/qb_px_15"
-                android:visibility="gone"
-                android:background="@color/line" />
+                android:background="@color/line"
+                android:visibility="gone" />
 
             <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
                 android:id="@+id/pay_dialog_wechat"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/qb_px_45"
-                android:visibility="gone"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -189,10 +189,10 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/qb_px_1"
-                android:visibility="gone"
                 android:layout_marginLeft="@dimen/qb_px_15"
                 android:layout_marginRight="@dimen/qb_px_15"
-                android:background="@color/line" />
+                android:background="@color/line"
+                android:visibility="gone" />
 
             <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
                 android:id="@+id/ticket_layout"
@@ -252,11 +252,43 @@
     </com.hlnwl.auction.view.radiogrouplib.NestedRadioGroup>
 
 
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/qb_px_1"
         android:background="@color/line" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/qb_px_20"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/qb_px_20"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/shop_join_xieyi"
+            android:layout_width="@dimen/qb_px_15"
+            android:layout_height="@dimen/qb_px_15"
+            android:background="@drawable/checkbox_style"
+            android:button="@null"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="@string/read_and_agree" />
+
+        <TextView
+            android:id="@+id/shop_join_service_yrz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/join_protocol"
+            android:textColor="@color/main" />
+
+    </LinearLayout>
     <com.flod.loadingbutton.LoadingButton
         android:id="@+id/shop_join_pay"
         android:layout_width="match_parent"

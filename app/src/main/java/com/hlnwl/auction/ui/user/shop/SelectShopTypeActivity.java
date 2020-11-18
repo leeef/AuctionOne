@@ -6,6 +6,7 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.flod.loadingbutton.LoadingButton;
 import com.hjq.bar.TitleBar;
 import com.hlnwl.auction.R;
+import com.hlnwl.auction.app.MyApplication;
 import com.hlnwl.auction.base.MyActivity;
 import com.hlnwl.auction.bean.pay.AuthResult;
 import com.hlnwl.auction.bean.pay.WeiXinPay;
@@ -27,6 +29,7 @@ import com.hlnwl.auction.bean.shop.ShopTypeBean;
 import com.hlnwl.auction.bean.user.shop.JoinBean;
 import com.hlnwl.auction.message.LoginMessage;
 import com.hlnwl.auction.message.WeChatMessage;
+import com.hlnwl.auction.ui.common.CommonWebActivity;
 import com.hlnwl.auction.utils.http.Api;
 import com.hlnwl.auction.utils.pay.Constant;
 import com.hlnwl.auction.utils.sp.SPUtils;
@@ -76,6 +79,8 @@ public class SelectShopTypeActivity extends MyActivity {
 
     @BindView(R.id.ticket_select)
     ImageView ticketSelect;
+    @BindView(R.id.shop_join_xieyi)
+    CheckBox mShopJoinXieyi;
 
 
     private String payType = "jifen";
@@ -168,10 +173,14 @@ public class SelectShopTypeActivity extends MyActivity {
         });
     }
 
-    @OnClick({R.id.shop_join_pay})
+    @OnClick({R.id.shop_join_pay, R.id.shop_join_service_yrz})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.shop_join_pay:
+                if (!mShopJoinXieyi.isChecked()) {
+                    ToastUtils.showShort(getResources().getString(R.string.regist_join));
+                    return;
+                }
                 shopJoinPay.start();
                 if (payType.equals("")) {
                     ToastUtils.showShort(R.string.chose_pay_type_sign);
@@ -184,6 +193,11 @@ public class SelectShopTypeActivity extends MyActivity {
                     getPayInfo(3);
                 }
                 break;
+            case R.id.shop_join_service_yrz:
+                CommonWebActivity.runActivity(this, StringUtils.getString(R.string.join_protocol),
+                        MyApplication.BaseUrl + "/index/index/agree");
+                break;
+
             default:
                 break;
         }
@@ -303,12 +317,12 @@ public class SelectShopTypeActivity extends MyActivity {
                         for (int i = 0; i < data.getData().get(0).getShop().size(); i++) {
                             ShopTypeBean.DataBean.ShopBean shopBean = data.getData().get(0).getShop().get(i);
                             if (i == 0) {
-                                shopPrice.setText("￥" + shopBean.getValue());
+                                shopPrice.setText("￥" + shopBean.getValue() + "积分");
                             }
                         }
                         shopTypeAdapter.setOnItemClickListener((adapter, view, position) -> {
                             shopTypeAdapter.selectIndex = position;
-                            shopPrice.setText("￥" + data.getData().get(0).getShop().get(position).getValue());
+                            shopPrice.setText("￥" + data.getData().get(0).getShop().get(position).getValue() + "积分");
                             shopTypeAdapter.notifyDataSetChanged();
                         });
 
