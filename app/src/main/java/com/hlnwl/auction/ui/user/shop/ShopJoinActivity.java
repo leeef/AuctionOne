@@ -356,10 +356,6 @@ public class ShopJoinActivity extends MyActivity {
                     ToastUtils.showShort(StringUtils.getString(R.string.shop_img_null));
                     return;
                 }
-                if (!mShopJoinXieyi.isChecked()) {
-                    ToastUtils.showShort(getResources().getString(R.string.regist_join));
-                    return;
-                }
                 mShopJoinPay.start();
                 mDialog = new WaitDialog.Builder(ShopJoinActivity.this)
                         .setMessage(StringUtils.getString(R.string.joining)) // 消息文本可以不用填写
