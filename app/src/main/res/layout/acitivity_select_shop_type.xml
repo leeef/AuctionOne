@@ -88,8 +88,7 @@
                 android:id="@+id/pay_dialog_alipay"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/qb_px_45"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -135,15 +134,13 @@
                 android:layout_height="@dimen/qb_px_1"
                 android:layout_marginLeft="@dimen/qb_px_15"
                 android:layout_marginRight="@dimen/qb_px_15"
-                android:background="@color/line"
-                android:visibility="gone" />
+                android:background="@color/line" />
 
             <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
                 android:id="@+id/pay_dialog_wechat"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/qb_px_45"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -191,8 +188,7 @@
                 android:layout_height="@dimen/qb_px_1"
                 android:layout_marginLeft="@dimen/qb_px_15"
                 android:layout_marginRight="@dimen/qb_px_15"
-                android:background="@color/line"
-                android:visibility="gone" />
+                android:background="@color/line" />
 
             <com.hlnwl.auction.view.radiogrouplib.NestedRadioLayout
                 android:id="@+id/ticket_layout"
@@ -250,7 +246,6 @@
 
 
     </com.hlnwl.auction.view.radiogrouplib.NestedRadioGroup>
-
 
 
     <View

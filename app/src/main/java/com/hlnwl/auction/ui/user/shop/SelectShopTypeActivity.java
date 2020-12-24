@@ -83,7 +83,7 @@ public class SelectShopTypeActivity extends MyActivity {
     CheckBox mShopJoinXieyi;
 
 
-    private String payType = "jifen";
+    private String payType = "alipay";
     private IWXAPI wxAPI;
 
     private static final int SDK_PAY_FLAG = 1;
@@ -157,7 +157,7 @@ public class SelectShopTypeActivity extends MyActivity {
         typeList.setLayoutManager(new LinearLayoutManager(this));
         shopTypeAdapter = new ShopTypeAdapter(new ArrayList<>());
         typeList.setAdapter(shopTypeAdapter);
-        ticketLayout.setChecked(true);
+        payDialogAlipay.setChecked(true);
         payDialogNestedGroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.pay_dialog_wechat:
@@ -317,12 +317,12 @@ public class SelectShopTypeActivity extends MyActivity {
                         for (int i = 0; i < data.getData().get(0).getShop().size(); i++) {
                             ShopTypeBean.DataBean.ShopBean shopBean = data.getData().get(0).getShop().get(i);
                             if (i == 0) {
-                                shopPrice.setText("￥" + shopBean.getValue() + "积分");
+                                shopPrice.setText("￥" + shopBean.getValue() + "元");
                             }
                         }
                         shopTypeAdapter.setOnItemClickListener((adapter, view, position) -> {
                             shopTypeAdapter.selectIndex = position;
-                            shopPrice.setText("￥" + data.getData().get(0).getShop().get(position).getValue() + "积分");
+                            shopPrice.setText("￥" + data.getData().get(0).getShop().get(position).getValue() + "元");
                             shopTypeAdapter.notifyDataSetChanged();
                         });
 
