@@ -188,7 +188,7 @@ public class HomeFragment extends MyLazyFragment implements OnRefreshListener, O
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.home_selet_language:
-                MorePopup morePopup = new MorePopup(getActivity());
+                MorePopup morePopup = new MorePopup(mActivity);
                 morePopup.showPopupWindow(0, 200);
                 morePopup.setOnMoreItemListener(new MorePopup.OnItemClickListener() {
                     @Override
